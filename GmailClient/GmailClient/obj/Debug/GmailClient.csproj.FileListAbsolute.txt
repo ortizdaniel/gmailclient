@@ -1,0 +1,9 @@
+c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\bin\Debug\GmailClient.exe.config
+c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\bin\Debug\GmailClient.exe
+c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\bin\Debug\GmailClient.pdb
+c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj\Debug\GmailClient.csprojResolveAssemblyReference.cache
+c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj\Debug\GmailClient.frmPrincipal.resources
+c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj\Debug\GmailClient.Properties.Resources.resources
+c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj\Debug\GmailClient.csproj.GenerateResource.Cache
+c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj\Debug\GmailClient.exe
+c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj\Debug\GmailClient.pdb
