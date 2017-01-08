@@ -19,7 +19,7 @@ public class MessageManager
     /// <param name="service">Gmail API service instance.</param>
     /// <param name="userId">User's email address. The special value "me"
     /// can be used to indicate the authenticated user.</param>
-    private static List<Thread> ListThreads(GmailService service, String userId)
+    private static List<Thread> ListThreads(GmailService service, String userId, int numMessages)
     {
         List<Thread> result = new List<Thread>();
         UsersResource.ThreadsResource.ListRequest request = service.Users.Threads.List(userId);
@@ -38,7 +38,7 @@ public class MessageManager
             }
         } while (!String.IsNullOrEmpty(request.PageToken));
 
-        return result;
+        return result.GetRange(0, numMessages - 1);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class MessageManager
     {
         List<Mensaje> mensajes = new List<Mensaje>();
 
-        List<Thread> threads = MessageManager.ListThreads(service, userId);
+        List<Thread> threads = MessageManager.ListThreads(service, userId, 20);
         foreach (Thread thread in threads)
         {
             Mensaje msg = new Mensaje();
