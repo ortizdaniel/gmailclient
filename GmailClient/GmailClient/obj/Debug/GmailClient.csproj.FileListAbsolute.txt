@@ -7,3 +7,37 @@ c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj
 c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj\Debug\GmailClient.csproj.GenerateResource.Cache
 c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj\Debug\GmailClient.exe
 c:\users\david\documents\visual studio 2015\Projects\GmailClient\GmailClient\obj\Debug\GmailClient.pdb
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\GmailClient.exe.config
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.exe
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.pdb
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\GmailClient.exe
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\GmailClient.pdb
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.csprojResolveAssemblyReference.cache
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.frmPrincipal.resources
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.Properties.Resources.resources
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.csproj.GenerateResource.Cache
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\client_secret.json
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Auth.dll
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Core.dll
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.dll
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Gmail.v1.dll
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.PlatformServices.dll
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\log4net.dll
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Newtonsoft.Json.dll
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Zlib.Portable.dll
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.pdb
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.xml
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Auth.pdb
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Auth.xml
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Auth.PlatformServices.pdb
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Auth.PlatformServices.xml
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Core.pdb
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Core.xml
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Gmail.v1.pdb
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.Gmail.v1.xml
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.PlatformServices.pdb
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Google.Apis.PlatformServices.xml
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\log4net.xml
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Newtonsoft.Json.xml
+D:\Universidad\Projectes\GmailClient\Git\gmailclient\GmailClient\GmailClient\bin\Debug\Zlib.Portable.xml

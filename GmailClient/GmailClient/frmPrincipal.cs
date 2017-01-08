@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Apis.Gmail.v1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,17 @@ namespace GmailClient
 {
     public partial class frmPrincipal : Form
     {
-        public frmPrincipal()
+        GmailService service;
+        string userId;
+
+        public frmPrincipal(GmailService service, string userId)
         {
             InitializeComponent();
             pictureBox1.BackColor = Color.Transparent;
             label1.BackColor = Color.Transparent;
             label1.Text = "ShNipe";
+            this.service = service;
+            this.userId = userId;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -57,11 +63,14 @@ namespace GmailClient
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            ListViewItem lvi = new ListViewItem("Dani");
-
-            lvi.SubItems.Add("Eres Marica");
-            lvi.SubItems.Add("Lo se");
-            listView1.Items.Add(lvi);
+            List<Mensaje> msgs = MessageManager.getMensajes(userId, service);
+            foreach (Mensaje m in msgs) {
+                ListViewItem lvi = new ListViewItem(m.From);
+                lvi.SubItems.Add(m.Subject);
+                lvi.SubItems.Add(m.Body);
+                listView1.Items.Add(lvi);
+            }
+            
             
         }
 
