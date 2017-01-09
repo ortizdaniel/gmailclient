@@ -49,21 +49,22 @@
             this.btnOpcionesUsuario = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.pgbProgreso = new System.Windows.Forms.ToolStripProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcBandejas = new System.Windows.Forms.TabControl();
-            this.tbpSpam = new System.Windows.Forms.TabPage();
             this.tbpBandejaEntrada = new System.Windows.Forms.TabPage();
-            this.tbpEnviados = new System.Windows.Forms.TabPage();
             this.lvMensajes = new System.Windows.Forms.ListView();
             this.clmRemitente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmAsunto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPreview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmIdMensaje = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbpSpam = new System.Windows.Forms.TabPage();
+            this.tbpEnviados = new System.Windows.Forms.TabPage();
+            this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -273,17 +274,18 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar1});
+            this.pgbProgreso});
             this.statusStrip1.Location = new System.Drawing.Point(0, 476);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(734, 22);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripProgressBar1
+            // pgbProgreso
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.pgbProgreso.Name = "pgbProgreso";
+            this.pgbProgreso.Size = new System.Drawing.Size(100, 16);
+            this.pgbProgreso.Value = 50;
             // 
             // menuStrip1
             // 
@@ -308,14 +310,14 @@
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -336,16 +338,6 @@
             this.tbcBandejas.Size = new System.Drawing.Size(564, 379);
             this.tbcBandejas.TabIndex = 13;
             // 
-            // tbpSpam
-            // 
-            this.tbpSpam.Location = new System.Drawing.Point(4, 22);
-            this.tbpSpam.Name = "tbpSpam";
-            this.tbpSpam.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpSpam.Size = new System.Drawing.Size(556, 353);
-            this.tbpSpam.TabIndex = 1;
-            this.tbpSpam.Text = "Spam";
-            this.tbpSpam.UseVisualStyleBackColor = true;
-            // 
             // tbpBandejaEntrada
             // 
             this.tbpBandejaEntrada.Controls.Add(this.lvMensajes);
@@ -357,16 +349,6 @@
             this.tbpBandejaEntrada.Text = "Bandeja de entrada";
             this.tbpBandejaEntrada.UseVisualStyleBackColor = true;
             this.tbpBandejaEntrada.Click += new System.EventHandler(this.tabPage1_Click);
-            // 
-            // tbpEnviados
-            // 
-            this.tbpEnviados.Location = new System.Drawing.Point(4, 22);
-            this.tbpEnviados.Name = "tbpEnviados";
-            this.tbpEnviados.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpEnviados.Size = new System.Drawing.Size(556, 353);
-            this.tbpEnviados.TabIndex = 2;
-            this.tbpEnviados.Text = "Correos enviados";
-            this.tbpEnviados.UseVisualStyleBackColor = true;
             // 
             // lvMensajes
             // 
@@ -405,6 +387,31 @@
             // 
             this.clmIdMensaje.Text = "id";
             this.clmIdMensaje.Width = 0;
+            // 
+            // tbpSpam
+            // 
+            this.tbpSpam.Location = new System.Drawing.Point(4, 22);
+            this.tbpSpam.Name = "tbpSpam";
+            this.tbpSpam.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpSpam.Size = new System.Drawing.Size(556, 353);
+            this.tbpSpam.TabIndex = 1;
+            this.tbpSpam.Text = "Spam";
+            this.tbpSpam.UseVisualStyleBackColor = true;
+            // 
+            // tbpEnviados
+            // 
+            this.tbpEnviados.Location = new System.Drawing.Point(4, 22);
+            this.tbpEnviados.Name = "tbpEnviados";
+            this.tbpEnviados.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpEnviados.Size = new System.Drawing.Size(556, 353);
+            this.tbpEnviados.TabIndex = 2;
+            this.tbpEnviados.Text = "Correos enviados";
+            this.tbpEnviados.UseVisualStyleBackColor = true;
+            // 
+            // bgwMessages
+            // 
+            this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
+            this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
             // 
             // frmPrincipal
             // 
@@ -470,7 +477,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiMarcarSpam;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripProgressBar pgbProgreso;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
@@ -485,6 +492,7 @@
         private System.Windows.Forms.ColumnHeader clmPreview;
         private System.Windows.Forms.ColumnHeader clmIdMensaje;
         private System.Windows.Forms.TabPage tbpEnviados;
+        private System.ComponentModel.BackgroundWorker bgwMessages;
     }
 }
 

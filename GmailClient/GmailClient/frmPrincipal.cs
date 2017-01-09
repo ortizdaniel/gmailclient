@@ -69,15 +69,7 @@ namespace GmailClient
 
         private void btnBandejaEntrada_Click_1(object sender, EventArgs e)
         {
-            int i = 1;
-            List<Mensaje> msgs = MessageManager.getMensajes(userId, service);
-            foreach (Mensaje m in msgs) {
-                ListViewItem lvi = new ListViewItem(m.From);
-                lvi.SubItems.Add(m.Subject);
-                lvi.SubItems.Add(m.Body);
-                lvi.SubItems.Add(i.ToString());
-                lvMensajes.Items.Add(lvi);
-            }
+            bgwMessages.RunWorkerAsync();
             
             
         }
@@ -162,6 +154,28 @@ namespace GmailClient
         {
             
         }
-        
+
+        private void bgwMessages_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int i = 1;
+            List<Mensaje> msgs = MessageManager.getMensajes(userId, service);
+            foreach (Mensaje m in msgs)
+            {
+                ListViewItem lvi = new ListViewItem(m.From);
+                lvi.SubItems.Add(m.Subject);
+                lvi.SubItems.Add(m.Body);
+                lvi.SubItems.Add(i.ToString());
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    lvMensajes.Items.Add(lvi);
+                }));
+                
+            }
+        }
+
+        private void bgwMessages_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pgbProgreso.Value = e.ProgressPercentage;
+        }
     }
 }
