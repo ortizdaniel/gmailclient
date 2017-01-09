@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace GmailClient
 {
@@ -19,11 +20,14 @@ namespace GmailClient
         public frmPrincipal(GmailService service, string userId)
         {
             InitializeComponent();
-            pictureBox1.BackColor = Color.Transparent;
+            imLSGmail.BackColor = Color.Transparent;
             label1.BackColor = Color.Transparent;
             label1.Text = "ShNipe";
             this.service = service;
             this.userId = userId;
+            lvMensajes.Columns[0].Width = 100;
+            lvMensajes.Columns[1].Width = 150;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,22 +35,12 @@ namespace GmailClient
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnSpam_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void btnEnviados_Click(object sender, EventArgs e)
         {
 
         }
@@ -56,19 +50,19 @@ namespace GmailClient
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void lvMensajes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnBandejaEntrada_Click_1(object sender, EventArgs e)
         {
             List<Mensaje> msgs = MessageManager.getMensajes(userId, service);
             foreach (Mensaje m in msgs) {
                 ListViewItem lvi = new ListViewItem(m.From);
                 lvi.SubItems.Add(m.Subject);
                 lvi.SubItems.Add(m.Body);
-                listView1.Items.Add(lvi);
+                lvMensajes.Items.Add(lvi);
             }
             
             
@@ -79,24 +73,30 @@ namespace GmailClient
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnOpcionesUsuario_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            contextMenuStrip1.Show(button1, new Point(0, button1.Height));
+            if(lvMensajes.SelectedItems.Count == 1)
+            {
+                tsmiResponder.Visible = true;
+            }else
+            {
+                tsmiResponder.Visible = false;
+            }
         }
     }
 }
