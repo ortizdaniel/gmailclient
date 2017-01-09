@@ -109,7 +109,7 @@
             this.lvMensajes.GridLines = true;
             this.lvMensajes.Location = new System.Drawing.Point(183, 74);
             this.lvMensajes.Name = "lvMensajes";
-            this.lvMensajes.Size = new System.Drawing.Size(421, 411);
+            this.lvMensajes.Size = new System.Drawing.Size(545, 411);
             this.lvMensajes.TabIndex = 1;
             this.lvMensajes.UseCompatibleStateImageBehavior = false;
             this.lvMensajes.View = System.Windows.Forms.View.Details;
@@ -273,7 +273,7 @@
             // btnOpcionesUsuario
             // 
             this.btnOpcionesUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnOpcionesUsuario.Image")));
-            this.btnOpcionesUsuario.Location = new System.Drawing.Point(582, 13);
+            this.btnOpcionesUsuario.Location = new System.Drawing.Point(700, 12);
             this.btnOpcionesUsuario.Name = "btnOpcionesUsuario";
             this.btnOpcionesUsuario.Size = new System.Drawing.Size(22, 16);
             this.btnOpcionesUsuario.TabIndex = 9;
@@ -285,7 +285,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(430, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(548, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tableLayoutPanel1.RowCount = 1;
@@ -299,7 +299,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(616, 498);
+            this.ClientSize = new System.Drawing.Size(734, 498);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnOpcionesUsuario);
             this.Controls.Add(this.imLSGmail);

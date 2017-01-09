@@ -37,6 +37,7 @@ namespace GmailClient
             this.userId = userId;
             lvMensajes.Columns[0].Width = 100;
             lvMensajes.Columns[1].Width = 150;
+            lvMensajes.Columns[2].Width = 300;
             lvMensajes.Columns[3].Width = 0;
         }
 
