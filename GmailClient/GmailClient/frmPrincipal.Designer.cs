@@ -37,6 +37,7 @@
             this.clmRemitente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmAsunto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPreview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmIdMensaje = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiResponder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiResponderRemitente = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,9 +52,10 @@
             this.imLSGmail = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnOpcionesUsuario = new System.Windows.Forms.Button();
-            this.clmIdMensaje = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBandejaEntrada
@@ -127,6 +129,11 @@
             // 
             this.clmPreview.Text = "Contenido";
             this.clmPreview.Width = 186;
+            // 
+            // clmIdMensaje
+            // 
+            this.clmIdMensaje.Text = "id";
+            this.clmIdMensaje.Width = 0;
             // 
             // contextMenuStrip1
             // 
@@ -253,13 +260,15 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(524, 12);
+            this.label1.Location = new System.Drawing.Point(91, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 17);
             this.label1.TabIndex = 8;
             this.label1.Text = "label1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnOpcionesUsuario
             // 
@@ -271,10 +280,19 @@
             this.btnOpcionesUsuario.UseVisualStyleBackColor = true;
             this.btnOpcionesUsuario.Click += new System.EventHandler(this.btnOpcionesUsuario_Click);
             // 
-            // clmIdMensaje
+            // tableLayoutPanel1
             // 
-            this.clmIdMensaje.Text = "id";
-            this.clmIdMensaje.Width = 0;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(430, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(146, 35);
+            this.tableLayoutPanel1.TabIndex = 10;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // frmPrincipal
             // 
@@ -282,8 +300,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(616, 498);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnOpcionesUsuario);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.imLSGmail);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.btnActualizar);
@@ -302,8 +320,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -331,6 +350,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiEliminar;
         private System.Windows.Forms.ToolStripMenuItem tsmiMarcarSpam;
         private System.Windows.Forms.ColumnHeader clmIdMensaje;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

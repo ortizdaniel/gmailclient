@@ -22,7 +22,17 @@ namespace GmailClient
             InitializeComponent();
             imLSGmail.BackColor = Color.Transparent;
             label1.BackColor = Color.Transparent;
-            label1.Text = Usuario.GetProfile(service, userId).EmailAddress;
+            String userMail = Usuario.GetProfile(service, userId).EmailAddress;
+            StringBuilder aux = new StringBuilder("                ");
+            for (int i = 0; i < userMail.Length; i++)
+            {
+               if(userMail[i] == '@')
+                {
+                    break; 
+                }
+                aux[i] = userMail[i];
+            }
+            label1.Text = aux.ToString();
             this.service = service;
             this.userId = userId;
             lvMensajes.Columns[0].Width = 100;
@@ -122,6 +132,11 @@ namespace GmailClient
             {
                 Console.WriteLine("Error " + e.Message);
             }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
