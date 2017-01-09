@@ -116,7 +116,7 @@ public class MessageManager
                     msg.From = h.Value;
                 }
             }
-            msg.Body = GetAttachments(service, userId, m.Id);
+            msg.Body = m.Snippet;
 
             mensajes.Add(msg);
         }
@@ -130,18 +130,17 @@ public class MessageManager
     /// <param name="userId">User's email address. The special value "me"
     /// can be used to indicate the authenticated user.</param>
     /// <param name="messageId">ID of Message containing attachment.</param>
-    public static string GetAttachments(GmailService service, String userId, String messageId)
+    public static string GetAttachments(GmailService service, String userId, Message message)
     {
         try
         {
-            Message message = service.Users.Messages.Get(userId, messageId).Execute();
             IList<MessagePart> parts = message.Payload.Parts;
             foreach (MessagePart part in parts)
             {
                 if (!String.IsNullOrEmpty(part.Filename))
                 {
                     String attId = part.Body.AttachmentId;
-                    MessagePartBody attachPart = service.Users.Messages.Attachments.Get(userId, messageId, attId).Execute();
+                    MessagePartBody attachPart = service.Users.Messages.Attachments.Get(userId, message.Id, attId).Execute();
 
                     // Converting from RFC 4648 base64 to base64url encoding
                     // see http://en.wikipedia.org/wiki/Base64#Implementations_and_history
