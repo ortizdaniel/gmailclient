@@ -21,7 +21,7 @@ namespace GmailClient
             InitializeComponent();
             pictureBox1.BackColor = Color.Transparent;
             label1.BackColor = Color.Transparent;
-            label1.Text = "ShNipe";
+            label1.Text = Usuario.GetProfile(service, userId).EmailAddress;
             this.service = service;
             this.userId = userId;
         }
