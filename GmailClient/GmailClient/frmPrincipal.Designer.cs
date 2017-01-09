@@ -30,94 +30,139 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.btnBandejaEntrada = new System.Windows.Forms.Button();
+            this.btnSpam = new System.Windows.Forms.Button();
+            this.btnEnviados = new System.Windows.Forms.Button();
+            this.lvMensajes = new System.Windows.Forms.ListView();
             this.clmRemitente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmAsunto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPreview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiResponder = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiResponderRemitente = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiResponderAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imLSGmail = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btnOpcionesUsuario = new System.Windows.Forms.Button();
+            this.tsmiMarcarSpam = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnBandejaEntrada
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(9, 94);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Bandeja de Entrada";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnBandejaEntrada.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBandejaEntrada.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBandejaEntrada.Location = new System.Drawing.Point(12, 94);
+            this.btnBandejaEntrada.Name = "btnBandejaEntrada";
+            this.btnBandejaEntrada.Size = new System.Drawing.Size(152, 35);
+            this.btnBandejaEntrada.TabIndex = 0;
+            this.btnBandejaEntrada.Text = "Bandeja de Entrada";
+            this.btnBandejaEntrada.UseVisualStyleBackColor = false;
+            this.btnBandejaEntrada.Click += new System.EventHandler(this.btnBandejaEntrada_Click_1);
             // 
-            // button2
+            // btnSpam
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(9, 135);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 35);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Spam";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSpam.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSpam.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSpam.Location = new System.Drawing.Point(12, 135);
+            this.btnSpam.Name = "btnSpam";
+            this.btnSpam.Size = new System.Drawing.Size(152, 35);
+            this.btnSpam.TabIndex = 0;
+            this.btnSpam.Text = "Spam";
+            this.btnSpam.UseVisualStyleBackColor = false;
+            this.btnSpam.Click += new System.EventHandler(this.btnSpam_Click);
             // 
-            // button3
+            // btnEnviados
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button3.Location = new System.Drawing.Point(12, 176);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(152, 35);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Correos Enviados";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnEnviados.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEnviados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnviados.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnEnviados.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnEnviados.Location = new System.Drawing.Point(12, 176);
+            this.btnEnviados.Name = "btnEnviados";
+            this.btnEnviados.Size = new System.Drawing.Size(152, 35);
+            this.btnEnviados.TabIndex = 0;
+            this.btnEnviados.Text = "Correos Enviados";
+            this.btnEnviados.UseVisualStyleBackColor = false;
+            this.btnEnviados.Click += new System.EventHandler(this.btnEnviados_Click);
             // 
-            // listView1
+            // lvMensajes
             // 
-            this.listView1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvMensajes.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lvMensajes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmRemitente,
             this.clmAsunto,
             this.clmPreview});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(183, 74);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(421, 411);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.lvMensajes.ContextMenuStrip = this.contextMenuStrip1;
+            this.lvMensajes.FullRowSelect = true;
+            this.lvMensajes.GridLines = true;
+            this.lvMensajes.Location = new System.Drawing.Point(183, 74);
+            this.lvMensajes.Name = "lvMensajes";
+            this.lvMensajes.Size = new System.Drawing.Size(421, 411);
+            this.lvMensajes.TabIndex = 1;
+            this.lvMensajes.UseCompatibleStateImageBehavior = false;
+            this.lvMensajes.View = System.Windows.Forms.View.Details;
+            this.lvMensajes.SelectedIndexChanged += new System.EventHandler(this.lvMensajes_SelectedIndexChanged);
             // 
             // clmRemitente
             // 
             this.clmRemitente.Text = "Remitente";
-            this.clmRemitente.Width = 67;
+            this.clmRemitente.Width = 115;
             // 
             // clmAsunto
             // 
             this.clmAsunto.Text = "Asunto";
-            this.clmAsunto.Width = 102;
+            this.clmAsunto.Width = 131;
             // 
             // clmPreview
             // 
             this.clmPreview.Text = "Contenido";
-            this.clmPreview.Width = 229;
+            this.clmPreview.Width = 186;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiResponder,
+            this.tsmiEliminar,
+            this.tsmiMarcarSpam});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(179, 70);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // tsmiResponder
+            // 
+            this.tsmiResponder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiResponderRemitente,
+            this.tsmiResponderAll});
+            this.tsmiResponder.Name = "tsmiResponder";
+            this.tsmiResponder.Size = new System.Drawing.Size(178, 22);
+            this.tsmiResponder.Text = "Responder";
+            this.tsmiResponder.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // tsmiResponderRemitente
+            // 
+            this.tsmiResponderRemitente.Name = "tsmiResponderRemitente";
+            this.tsmiResponderRemitente.Size = new System.Drawing.Size(172, 22);
+            this.tsmiResponderRemitente.Text = "Responder";
+            // 
+            // tsmiResponderAll
+            // 
+            this.tsmiResponderAll.Name = "tsmiResponderAll";
+            this.tsmiResponderAll.Size = new System.Drawing.Size(172, 22);
+            this.tsmiResponderAll.Text = "Responder a todos";
+            // 
+            // tsmiEliminar
+            // 
+            this.tsmiEliminar.Name = "tsmiEliminar";
+            this.tsmiEliminar.Size = new System.Drawing.Size(178, 22);
+            this.tsmiEliminar.Text = "Eliminar";
             // 
             // button4
             // 
@@ -159,19 +204,19 @@
             this.button6.Text = "Borrar";
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // btnActualizar
             // 
-            this.button7.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(183, 12);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(43, 41);
-            this.button7.TabIndex = 5;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnActualizar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActualizar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.Location = new System.Drawing.Point(183, 12);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(43, 41);
+            this.btnActualizar.TabIndex = 5;
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // button8
             // 
@@ -186,16 +231,15 @@
             this.button8.Text = "Redactar Correo";
             this.button8.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
+            // imLSGmail
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(155, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.imLSGmail.Image = ((System.Drawing.Image)(resources.GetObject("imLSGmail.Image")));
+            this.imLSGmail.Location = new System.Drawing.Point(9, 12);
+            this.imLSGmail.Name = "imLSGmail";
+            this.imLSGmail.Size = new System.Drawing.Size(155, 50);
+            this.imLSGmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imLSGmail.TabIndex = 7;
+            this.imLSGmail.TabStop = false;
             // 
             // label1
             // 
@@ -206,49 +250,49 @@
             this.label1.Size = new System.Drawing.Size(52, 17);
             this.label1.TabIndex = 8;
             this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // button9
+            // btnOpcionesUsuario
             // 
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.Location = new System.Drawing.Point(582, 13);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(22, 16);
-            this.button9.TabIndex = 9;
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.btnOpcionesUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnOpcionesUsuario.Image")));
+            this.btnOpcionesUsuario.Location = new System.Drawing.Point(582, 13);
+            this.btnOpcionesUsuario.Name = "btnOpcionesUsuario";
+            this.btnOpcionesUsuario.Size = new System.Drawing.Size(22, 16);
+            this.btnOpcionesUsuario.TabIndex = 9;
+            this.btnOpcionesUsuario.UseVisualStyleBackColor = true;
+            this.btnOpcionesUsuario.Click += new System.EventHandler(this.btnOpcionesUsuario_Click);
             // 
-            // contextMenuStrip1
+            // tsmiMarcarSpam
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            this.contextMenuStrip1.Text = "Cerrar Session";
+            this.tsmiMarcarSpam.Name = "tsmiMarcarSpam";
+            this.tsmiMarcarSpam.Size = new System.Drawing.Size(178, 22);
+            this.tsmiMarcarSpam.Text = "Marcar como Spam";
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(616, 498);
-            this.Controls.Add(this.button9);
+            this.Controls.Add(this.btnOpcionesUsuario);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.imLSGmail);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lvMensajes);
+            this.Controls.Add(this.btnEnviados);
+            this.Controls.Add(this.btnSpam);
+            this.Controls.Add(this.btnBandejaEntrada);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmPrincipal";
             this.Text = "GmailClient";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,22 +300,27 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button btnBandejaEntrada;
+        private System.Windows.Forms.Button btnSpam;
+        private System.Windows.Forms.Button btnEnviados;
+        private System.Windows.Forms.ListView lvMensajes;
         private System.Windows.Forms.ColumnHeader clmRemitente;
         private System.Windows.Forms.ColumnHeader clmAsunto;
         private System.Windows.Forms.ColumnHeader clmPreview;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imLSGmail;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnOpcionesUsuario;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiResponder;
+        private System.Windows.Forms.ToolStripMenuItem tsmiResponderRemitente;
+        private System.Windows.Forms.ToolStripMenuItem tsmiResponderAll;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEliminar;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMarcarSpam;
     }
 }
 
