@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblInfo.Text" xml:space="preserve">
+    <value>Aquí puedes iniciar sesión en tu cuenta de Gmail.
+Cuando estés listo para iniciar sesión, da click en el
+botón inferior y se abrirá el navegador web con el
+login necesario de Google.
+Al acabar, y al haber otorgado permisos, cierra el
+navegador y vuelve a esta ventana, donde podrás dar
+click en "Continuar."</value>
+  </data>
+  <metadata name="bgwWait.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
