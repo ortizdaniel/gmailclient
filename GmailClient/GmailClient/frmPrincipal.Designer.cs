@@ -42,6 +42,7 @@
             this.tsmiResponderRemitente = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiResponderAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMarcarSpam = new System.Windows.Forms.ToolStripMenuItem();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -50,7 +51,7 @@
             this.imLSGmail = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnOpcionesUsuario = new System.Windows.Forms.Button();
-            this.tsmiMarcarSpam = new System.Windows.Forms.ToolStripMenuItem();
+            this.clmIdMensaje = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.SuspendLayout();
@@ -99,7 +100,8 @@
             this.lvMensajes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmRemitente,
             this.clmAsunto,
-            this.clmPreview});
+            this.clmPreview,
+            this.clmIdMensaje});
             this.lvMensajes.ContextMenuStrip = this.contextMenuStrip1;
             this.lvMensajes.FullRowSelect = true;
             this.lvMensajes.GridLines = true;
@@ -163,6 +165,13 @@
             this.tsmiEliminar.Name = "tsmiEliminar";
             this.tsmiEliminar.Size = new System.Drawing.Size(178, 22);
             this.tsmiEliminar.Text = "Eliminar";
+            this.tsmiEliminar.Click += new System.EventHandler(this.tsmiEliminar_Click);
+            // 
+            // tsmiMarcarSpam
+            // 
+            this.tsmiMarcarSpam.Name = "tsmiMarcarSpam";
+            this.tsmiMarcarSpam.Size = new System.Drawing.Size(178, 22);
+            this.tsmiMarcarSpam.Text = "Marcar como Spam";
             // 
             // button4
             // 
@@ -230,6 +239,7 @@
             this.button8.TabIndex = 6;
             this.button8.Text = "Redactar Correo";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // imLSGmail
             // 
@@ -261,11 +271,10 @@
             this.btnOpcionesUsuario.UseVisualStyleBackColor = true;
             this.btnOpcionesUsuario.Click += new System.EventHandler(this.btnOpcionesUsuario_Click);
             // 
-            // tsmiMarcarSpam
+            // clmIdMensaje
             // 
-            this.tsmiMarcarSpam.Name = "tsmiMarcarSpam";
-            this.tsmiMarcarSpam.Size = new System.Drawing.Size(178, 22);
-            this.tsmiMarcarSpam.Text = "Marcar como Spam";
+            this.clmIdMensaje.Text = "id";
+            this.clmIdMensaje.Width = 0;
             // 
             // frmPrincipal
             // 
@@ -321,6 +330,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiResponderAll;
         private System.Windows.Forms.ToolStripMenuItem tsmiEliminar;
         private System.Windows.Forms.ToolStripMenuItem tsmiMarcarSpam;
+        private System.Windows.Forms.ColumnHeader clmIdMensaje;
     }
 }
 
