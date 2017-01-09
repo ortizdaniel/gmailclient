@@ -22,18 +22,20 @@ namespace GmailClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            
+                if (!Login.isLogged())
+                {
+                    //Mostrar boton de logear
+                    Application.Run(new frmLogin());
+                }
+                if (Login.isLogged())
+                {
+                    service = Login.DoLogin();
+                    Application.Run(new frmPrincipal(service, "me"));
+                }
+            
             //Se mira si no hay ningun archivo de login
-            if (!Login.isLogged())
-            {
-                //Mostrar boton de logear
-                Application.Run(new frmLogin());
-            }
-            if (Login.isLogged())
-            {
-                service = Login.DoLogin();
-                Application.Run(new frmPrincipal(service, "me"));
-            }
+            
         }
 
         public static void SetService(GmailService gs)
