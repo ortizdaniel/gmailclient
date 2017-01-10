@@ -37,6 +37,7 @@ namespace GmailClient
             label1.Text = aux.ToString();
             this.service = service;
             this.userId = userId;
+            this.BackColor = Color.LightGray;
             lvMensajes.Columns[0].Width = 100;
             lvMensajes.Columns[1].Width = 150;
             lvMensajes.Columns[2].Width = 300;
@@ -240,9 +241,12 @@ namespace GmailClient
 
         private void tsmiCambiarFondo_Click(object sender, EventArgs e)
         {
-            if(this.BackgroundImage == null)
+            if(this.BackgroundImage == null && this.BackColor == Color.LightGray)
             {
                 tsmiLimpiarFondo.Visible = false;
+            }else
+            {
+                tsmiLimpiarFondo.Visible = true;
             }
         }
 
@@ -255,6 +259,15 @@ namespace GmailClient
         private void bgwMessages_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             pgbProgreso.Value = 0;
+        }
+
+        private void tsmiColorFondo_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            if(dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.BackColor = dlg.Color;
+            }
         }
     }
 }

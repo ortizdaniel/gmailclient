@@ -71,15 +71,15 @@
             this.clmSpamAsunto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSpamContenido = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSpamId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tbpEnviados = new System.Windows.Forms.TabPage();
-            this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.clmSpamUnseen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbpEnviados = new System.Windows.Forms.TabPage();
             this.lvCorreosEnviados = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -265,7 +265,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -314,6 +314,7 @@
             this.tsmiColorFondo.Name = "tsmiColorFondo";
             this.tsmiColorFondo.Size = new System.Drawing.Size(206, 22);
             this.tsmiColorFondo.Text = "Cambiar Color Fondo";
+            this.tsmiColorFondo.Click += new System.EventHandler(this.tsmiColorFondo_Click);
             // 
             // tsmiImagenFondo
             // 
@@ -324,8 +325,8 @@
             // tsmiLimpiarFondo
             // 
             this.tsmiLimpiarFondo.Name = "tsmiLimpiarFondo";
-            this.tsmiLimpiarFondo.Size = new System.Drawing.Size(206, 22);
-            this.tsmiLimpiarFondo.Text = "Limpiar Fondo";
+            this.tsmiLimpiarFondo.Size = new System.Drawing.Size(235, 22);
+            this.tsmiLimpiarFondo.Text = "Restablecer Fondo por defecto";
             this.tsmiLimpiarFondo.Click += new System.EventHandler(this.tsmiLimpiarFondo_Click);
             // 
             // tbcBandejas
@@ -444,6 +445,10 @@
             this.clmSpamId.Text = "id";
             this.clmSpamId.Width = 0;
             // 
+            // clmSpamUnseen
+            // 
+            this.clmSpamUnseen.Text = "Unseen";
+            // 
             // tbpEnviados
             // 
             this.tbpEnviados.Controls.Add(this.lvCorreosEnviados);
@@ -454,16 +459,6 @@
             this.tbpEnviados.TabIndex = 2;
             this.tbpEnviados.Text = "Correos enviados";
             this.tbpEnviados.UseVisualStyleBackColor = true;
-            // 
-            // bgwMessages
-            // 
-            this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
-            this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
-            this.bgwMessages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwMessages_RunWorkerCompleted);
-            // 
-            // clmSpamUnseen
-            // 
-            this.clmSpamUnseen.Text = "Unseen";
             // 
             // lvCorreosEnviados
             // 
@@ -507,6 +502,12 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Unseen";
+            // 
+            // bgwMessages
+            // 
+            this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
+            this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
+            this.bgwMessages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwMessages_RunWorkerCompleted);
             // 
             // frmPrincipal
             // 
