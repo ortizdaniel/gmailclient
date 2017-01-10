@@ -40,7 +40,7 @@
             this.tsmiMarcarLeido = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMarcarNoLeido = new System.Windows.Forms.ToolStripMenuItem();
             this.btnActualizar = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnRedactar = new System.Windows.Forms.Button();
             this.imLSGmail = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -176,19 +176,19 @@
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // button8
+            // btnRedactar
             // 
-            this.button8.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button8.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button8.Location = new System.Drawing.Point(37, 116);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(95, 41);
-            this.button8.TabIndex = 6;
-            this.button8.Text = "Redactar Correo";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnRedactar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnRedactar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRedactar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnRedactar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnRedactar.Location = new System.Drawing.Point(37, 116);
+            this.btnRedactar.Name = "btnRedactar";
+            this.btnRedactar.Size = new System.Drawing.Size(95, 41);
+            this.btnRedactar.TabIndex = 6;
+            this.btnRedactar.Text = "Redactar Correo";
+            this.btnRedactar.UseVisualStyleBackColor = false;
+            this.btnRedactar.Click += new System.EventHandler(this.btnRedactar_Click);
             // 
             // imLSGmail
             // 
@@ -312,14 +312,14 @@
             // tsmiColorFondo
             // 
             this.tsmiColorFondo.Name = "tsmiColorFondo";
-            this.tsmiColorFondo.Size = new System.Drawing.Size(206, 22);
+            this.tsmiColorFondo.Size = new System.Drawing.Size(235, 22);
             this.tsmiColorFondo.Text = "Cambiar Color Fondo";
             this.tsmiColorFondo.Click += new System.EventHandler(this.tsmiColorFondo_Click);
             // 
             // tsmiImagenFondo
             // 
             this.tsmiImagenFondo.Name = "tsmiImagenFondo";
-            this.tsmiImagenFondo.Size = new System.Drawing.Size(206, 22);
+            this.tsmiImagenFondo.Size = new System.Drawing.Size(235, 22);
             this.tsmiImagenFondo.Text = "Introducir Imagen Fondo";
             // 
             // tsmiLimpiarFondo
@@ -520,7 +520,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.imLSGmail);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.btnRedactar);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnBandejaEntrada);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -552,7 +552,7 @@
 
         private System.Windows.Forms.Button btnBandejaEntrada;
         private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnRedactar;
         private System.Windows.Forms.PictureBox imLSGmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
