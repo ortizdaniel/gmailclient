@@ -59,6 +59,9 @@
             this.tsmiCerrarSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiInterfaz = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCambiarFondo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorFondo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiImagenFondo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLimpiarFondo = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcBandejas = new System.Windows.Forms.TabControl();
             this.tbpBandejaEntrada = new System.Windows.Forms.TabPage();
             this.lvMensajes = new System.Windows.Forms.ListView();
@@ -69,9 +72,6 @@
             this.tbpSpam = new System.Windows.Forms.TabPage();
             this.tbpEnviados = new System.Windows.Forms.TabPage();
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
-            this.tsmiColorFondo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiImagenFondo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLimpiarFondo = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -296,7 +296,6 @@
             // 
             this.pgbProgreso.Name = "pgbProgreso";
             this.pgbProgreso.Size = new System.Drawing.Size(100, 16);
-            this.pgbProgreso.Value = 50;
             // 
             // menuStrip1
             // 
@@ -343,7 +342,7 @@
             // tsmiCerrarSesion
             // 
             this.tsmiCerrarSesion.Name = "tsmiCerrarSesion";
-            this.tsmiCerrarSesion.Size = new System.Drawing.Size(143, 22);
+            this.tsmiCerrarSesion.Size = new System.Drawing.Size(152, 22);
             this.tsmiCerrarSesion.Text = "Cerrar Sesión";
             this.tsmiCerrarSesion.Click += new System.EventHandler(this.tsmiCerrarSesion_Click);
             // 
@@ -365,6 +364,25 @@
             this.tsmiCambiarFondo.Size = new System.Drawing.Size(156, 22);
             this.tsmiCambiarFondo.Text = "Cambiar Fondo";
             this.tsmiCambiarFondo.Click += new System.EventHandler(this.tsmiCambiarFondo_Click);
+            // 
+            // tsmiColorFondo
+            // 
+            this.tsmiColorFondo.Name = "tsmiColorFondo";
+            this.tsmiColorFondo.Size = new System.Drawing.Size(206, 22);
+            this.tsmiColorFondo.Text = "Cambiar Color Fondo";
+            // 
+            // tsmiImagenFondo
+            // 
+            this.tsmiImagenFondo.Name = "tsmiImagenFondo";
+            this.tsmiImagenFondo.Size = new System.Drawing.Size(206, 22);
+            this.tsmiImagenFondo.Text = "Introducir Imagen Fondo";
+            // 
+            // tsmiLimpiarFondo
+            // 
+            this.tsmiLimpiarFondo.Name = "tsmiLimpiarFondo";
+            this.tsmiLimpiarFondo.Size = new System.Drawing.Size(206, 22);
+            this.tsmiLimpiarFondo.Text = "Limpiar Fondo";
+            this.tsmiLimpiarFondo.Click += new System.EventHandler(this.tsmiLimpiarFondo_Click);
             // 
             // tbcBandejas
             // 
@@ -451,25 +469,7 @@
             // 
             this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
             this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
-            // 
-            // tsmiColorFondo
-            // 
-            this.tsmiColorFondo.Name = "tsmiColorFondo";
-            this.tsmiColorFondo.Size = new System.Drawing.Size(206, 22);
-            this.tsmiColorFondo.Text = "Cambiar Color Fondo";
-            // 
-            // tsmiImagenFondo
-            // 
-            this.tsmiImagenFondo.Name = "tsmiImagenFondo";
-            this.tsmiImagenFondo.Size = new System.Drawing.Size(206, 22);
-            this.tsmiImagenFondo.Text = "Introducir Imagen Fondo";
-            // 
-            // tsmiLimpiarFondo
-            // 
-            this.tsmiLimpiarFondo.Name = "tsmiLimpiarFondo";
-            this.tsmiLimpiarFondo.Size = new System.Drawing.Size(206, 22);
-            this.tsmiLimpiarFondo.Text = "Limpiar Fondo";
-            this.tsmiLimpiarFondo.Click += new System.EventHandler(this.tsmiLimpiarFondo_Click);
+            this.bgwMessages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwMessages_RunWorkerCompleted);
             // 
             // frmPrincipal
             // 
