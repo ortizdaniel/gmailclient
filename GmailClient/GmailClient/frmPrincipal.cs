@@ -42,7 +42,17 @@ namespace GmailClient
             lvMensajes.Columns[2].Width = 300;
             lvMensajes.Columns[3].Width = 0;
             lvMensajes.Columns[4].Width = 0;
-            for(int i = 0; i < lvMensajes.Items.Count;i++)
+            lvSpam.Columns[0].Width = 100;
+            lvSpam.Columns[1].Width = 150;
+            lvSpam.Columns[2].Width = 300;
+            lvSpam.Columns[3].Width = 0;
+            lvSpam.Columns[4].Width = 0;
+            lvCorreosEnviados.Columns[0].Width = 100;
+            lvCorreosEnviados.Columns[1].Width = 150;
+            lvCorreosEnviados.Columns[2].Width = 300;
+            lvCorreosEnviados.Columns[3].Width = 0;
+            lvCorreosEnviados.Columns[4].Width = 0;
+            for (int i = 0; i < lvMensajes.Items.Count;i++)
             {
                 lvMensajes.Items[i].BackColor = Color.Gray;
             }
@@ -158,7 +168,10 @@ namespace GmailClient
         {
             this.Invoke(new MethodInvoker(delegate
             {
-                pgbProgreso.Value += n;
+                try
+                {
+                    pgbProgreso.Value += n;
+                } catch (ArgumentOutOfRangeException ex) { }
             }));
         }
 
@@ -171,12 +184,11 @@ namespace GmailClient
             int differencePerMsg = 60 / (msgs.Count);
             foreach (Mensaje m in msgs)
             {
-<<<<<<< HEAD
-                    ListViewItem lvi = new ListViewItem(m.From);
-                    lvi.SubItems.Add(m.Subject);
-                    lvi.SubItems.Add(m.Body);
-                    lvi.SubItems.Add(i.ToString());
-                    lvi.SubItems.Add(m.IsUnread.ToString());
+                ListViewItem lvi = new ListViewItem(m.From);
+                lvi.SubItems.Add(m.Subject);
+                lvi.SubItems.Add(m.Body);
+                lvi.SubItems.Add(i.ToString());
+                lvi.SubItems.Add(m.IsUnread.ToString());
                 if (m.IsInbox)
                 {
                     this.Invoke(new MethodInvoker(delegate
@@ -184,15 +196,7 @@ namespace GmailClient
                         lvMensajes.Items.Add(lvi);
                     }));
                 }
-                if (m.IsSent)
-=======
-                addToProgress(differencePerMsg);
-                ListViewItem lvi = new ListViewItem(m.From);
-                lvi.SubItems.Add(m.Subject);
-                lvi.SubItems.Add(m.Body);
-                lvi.SubItems.Add(i++.ToString());
-                this.Invoke(new MethodInvoker(delegate
->>>>>>> bce36045be134d2a0b3f77381e2b0747f438e831
+                /*if (m.IsSent)
                 {
                     this.Invoke(new MethodInvoker(delegate
                     {
@@ -205,7 +209,7 @@ namespace GmailClient
                     {
                         lvSpam.Items.Add(lvi);
                     }));
-                }
+                }*/
                 i++;
             }
             addToProgress(100 - pgbProgreso.Value);

@@ -22,7 +22,6 @@ public class MessageManager
     private static List<Thread> ListThreads(GmailService service, String userId, int numMessages)
     {
         List<Thread> result = new List<Thread>();
-        service.Users.Threads.List(userId).MaxResults = numMessages;
         UsersResource.ThreadsResource.ListRequest request = service.Users.Threads.List(userId);
         
         do
