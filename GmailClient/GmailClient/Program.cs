@@ -22,7 +22,6 @@ namespace GmailClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
                 if (!Login.isLogged())
                 {
                     //Mostrar boton de logear

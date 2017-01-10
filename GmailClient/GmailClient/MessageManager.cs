@@ -99,6 +99,7 @@ public class MessageManager
             Mensaje msg = new Mensaje();
             Thread t = MessageManager.GetThread(service, userId, thread.Id);
             Message m = MessageManager.GetMessage(service, userId, t.Id);
+
             foreach (MessagePartHeader h in m.Payload.Headers)
             {
                 if (h.Name == "Subject")
@@ -120,7 +121,22 @@ public class MessageManager
             foreach (string labelId in m.LabelIds)
             {
                 Label label = service.Users.Labels.Get(userId, labelId).Execute();
-                Console.WriteLine(label.Name);
+                if (label.Name == "UNREAD")
+                {
+                    msg.IsUnread = true;
+                }
+                if (label.Name == "INBOX")
+                {
+                    msg.IsInbox = true;
+                }
+                if (label.Name == "SPAM")
+                {
+                    msg.IsSpam = true;
+                }
+                if (label.Name == "SENT")
+                {
+                    msg.IsSent = true;
+                }
             }
             msg.Body = m.Snippet;
 
