@@ -184,32 +184,43 @@ namespace GmailClient
             int differencePerMsg = 60 / (msgs.Count);
             foreach (Mensaje m in msgs)
             {
-                ListViewItem lvi = new ListViewItem(m.From);
-                lvi.SubItems.Add(m.Subject);
-                lvi.SubItems.Add(m.Body);
-                lvi.SubItems.Add(i.ToString());
-                lvi.SubItems.Add(m.IsUnread.ToString());
                 if (m.IsInbox)
                 {
+                    ListViewItem lvi = new ListViewItem(m.From);
+                    lvi.SubItems.Add(m.Subject);
+                    lvi.SubItems.Add(m.Body);
+                    lvi.SubItems.Add(i.ToString());
+                    lvi.SubItems.Add(m.IsUnread.ToString());
                     this.Invoke(new MethodInvoker(delegate
                     {
                         lvMensajes.Items.Add(lvi);
                     }));
                 }
-                /*if (m.IsSent)
+                if (m.IsSent)
                 {
+                    ListViewItem lviSent = new ListViewItem(m.From);
+                    lviSent.SubItems.Add(m.Subject);
+                    lviSent.SubItems.Add(m.Body);
+                    lviSent.SubItems.Add(i.ToString());
+                    lviSent.SubItems.Add(m.IsUnread.ToString());
                     this.Invoke(new MethodInvoker(delegate
                     {
-                        lvCorreosEnviados.Items.Add(lvi);
+
+                        lvCorreosEnviados.Items.Add(lviSent);
                     }));
                 }
                 if (m.IsSpam)
                 {
+                    ListViewItem lviSpam = new ListViewItem(m.From);
+                    lviSpam.SubItems.Add(m.Subject);
+                    lviSpam.SubItems.Add(m.Body);
+                    lviSpam.SubItems.Add(i.ToString());
+                    lviSpam.SubItems.Add(m.IsUnread.ToString());
                     this.Invoke(new MethodInvoker(delegate
                     {
-                        lvSpam.Items.Add(lvi);
+                        lvSpam.Items.Add(lviSpam);
                     }));
-                }*/
+                }
                 i++;
             }
             addToProgress(100 - pgbProgreso.Value);
