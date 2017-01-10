@@ -65,6 +65,12 @@
             this.clmPreview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmIdMensaje = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbpSpam = new System.Windows.Forms.TabPage();
+<<<<<<< HEAD
+=======
+            this.tbpEnviados = new System.Windows.Forms.TabPage();
+            this.bgwMessages = new System.ComponentModel.BackgroundWorker();
+<<<<<<< HEAD
+>>>>>>> bce36045be134d2a0b3f77381e2b0747f438e831
             this.lvSpam = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -76,8 +82,13 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+<<<<<<< HEAD
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.clmUnseen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+=======
+=======
+>>>>>>> 13a5f785caab8f96fbdc92fe2a45f4c7680b0b39
+>>>>>>> bce36045be134d2a0b3f77381e2b0747f438e831
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -238,7 +249,6 @@
             // 
             this.pgbProgreso.Name = "pgbProgreso";
             this.pgbProgreso.Size = new System.Drawing.Size(100, 16);
-            this.pgbProgreso.Value = 50;
             // 
             // menuStrip1
             // 
@@ -285,7 +295,7 @@
             // tsmiCerrarSesion
             // 
             this.tsmiCerrarSesion.Name = "tsmiCerrarSesion";
-            this.tsmiCerrarSesion.Size = new System.Drawing.Size(143, 22);
+            this.tsmiCerrarSesion.Size = new System.Drawing.Size(152, 22);
             this.tsmiCerrarSesion.Text = "Cerrar Sesión";
             this.tsmiCerrarSesion.Click += new System.EventHandler(this.tsmiCerrarSesion_Click);
             // 
@@ -400,6 +410,26 @@
             this.tbpSpam.Text = "Spam";
             this.tbpSpam.UseVisualStyleBackColor = true;
             // 
+<<<<<<< HEAD
+=======
+            // tbpEnviados
+            // 
+            this.tbpEnviados.Controls.Add(this.lvCorreosEnviados);
+            this.tbpEnviados.Location = new System.Drawing.Point(4, 22);
+            this.tbpEnviados.Name = "tbpEnviados";
+            this.tbpEnviados.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpEnviados.Size = new System.Drawing.Size(556, 353);
+            this.tbpEnviados.TabIndex = 2;
+            this.tbpEnviados.Text = "Correos enviados";
+            this.tbpEnviados.UseVisualStyleBackColor = true;
+            // 
+            // bgwMessages
+            // 
+            this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
+            this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
+<<<<<<< HEAD
+            // 
+>>>>>>> bce36045be134d2a0b3f77381e2b0747f438e831
             // lvSpam
             // 
             this.lvSpam.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -486,6 +516,9 @@
             // 
             this.columnHeader8.Text = "id";
             this.columnHeader8.Width = 0;
+=======
+            this.bgwMessages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwMessages_RunWorkerCompleted);
+>>>>>>> 13a5f785caab8f96fbdc92fe2a45f4c7680b0b39
             // 
             // bgwMessages
             // 

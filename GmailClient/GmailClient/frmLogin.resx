@@ -122,9 +122,9 @@
 Cuando estés listo para iniciar sesión, da click en el
 botón inferior y se abrirá el navegador web con el
 login necesario de Google.
-Al acabar, y al haber otorgado permisos, cierra el
-navegador y vuelve a esta ventana, donde podrás dar
-click en "Continuar."</value>
+Al acabar, y al haber otorgado permisos, esta ventana
+se cerrará automáticamente y se abrirá la ventana
+principal del cliente.</value>
   </data>
   <metadata name="bgwWait.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

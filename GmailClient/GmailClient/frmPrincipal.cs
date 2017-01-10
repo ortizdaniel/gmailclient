@@ -154,12 +154,24 @@ namespace GmailClient
             
         }
 
+        private void addToProgress(int n)
+        {
+            this.Invoke(new MethodInvoker(delegate
+            {
+                pgbProgreso.Value += n;
+            }));
+        }
+
         private void bgwMessages_DoWork(object sender, DoWorkEventArgs e)
         {
             int i = 1;
+            addToProgress(10);
             List<Mensaje> msgs = MessageManager.getMensajes(userId, service);
+            addToProgress(30);
+            int differencePerMsg = 60 / (msgs.Count);
             foreach (Mensaje m in msgs)
             {
+<<<<<<< HEAD
                     ListViewItem lvi = new ListViewItem(m.From);
                     lvi.SubItems.Add(m.Subject);
                     lvi.SubItems.Add(m.Body);
@@ -173,6 +185,14 @@ namespace GmailClient
                     }));
                 }
                 if (m.IsSent)
+=======
+                addToProgress(differencePerMsg);
+                ListViewItem lvi = new ListViewItem(m.From);
+                lvi.SubItems.Add(m.Subject);
+                lvi.SubItems.Add(m.Body);
+                lvi.SubItems.Add(i++.ToString());
+                this.Invoke(new MethodInvoker(delegate
+>>>>>>> bce36045be134d2a0b3f77381e2b0747f438e831
                 {
                     this.Invoke(new MethodInvoker(delegate
                     {
@@ -188,11 +208,12 @@ namespace GmailClient
                 }
                 i++;
             }
+            addToProgress(100 - pgbProgreso.Value);
         }
 
         private void bgwMessages_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            pgbProgreso.Value = e.ProgressPercentage;
+            
         }
 
         private void tsmiCerrarSesion_Click(object sender, EventArgs e)
@@ -214,6 +235,11 @@ namespace GmailClient
         {
             this.BackgroundImage = null;
             this.BackColor = Color.LightGray;
+        }
+
+        private void bgwMessages_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            pgbProgreso.Value = 0;
         }
     }
 }
