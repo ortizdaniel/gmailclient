@@ -122,9 +122,10 @@ namespace GmailClient
             }
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void btnRedactar_Click(object sender, EventArgs e)
         {
-
+            /*Application.EnableVisualStyles();
+            Application.Run(new frmRedactar());*/
         }
 
         private void tsmiEliminar_Click(object sender, EventArgs e)
