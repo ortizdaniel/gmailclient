@@ -108,7 +108,7 @@ namespace GmailClient
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", "/select, ");
+
         }
 
         private void tsmiEliminar_Click(object sender, EventArgs e)
@@ -163,7 +163,7 @@ namespace GmailClient
                 {
                     lvMensajes.Items.Add(lvi);
                 }));
-                
+                i++;
             }
         }
 

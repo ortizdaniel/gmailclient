@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.btnBandejaEntrada = new System.Windows.Forms.Button();
-            this.btnSpam = new System.Windows.Forms.Button();
-            this.btnEnviados = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiResponder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiResponderRemitente = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,9 +39,6 @@
             this.tsmiMarcarSpam = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMarcarLeido = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMarcarNoLeido = new System.Windows.Forms.ToolStripMenuItem();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.imLSGmail = new System.Windows.Forms.PictureBox();
@@ -59,6 +54,9 @@
             this.tsmiCerrarSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiInterfaz = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCambiarFondo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColorFondo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiImagenFondo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLimpiarFondo = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcBandejas = new System.Windows.Forms.TabControl();
             this.tbpBandejaEntrada = new System.Windows.Forms.TabPage();
             this.lvMensajes = new System.Windows.Forms.ListView();
@@ -69,9 +67,16 @@
             this.tbpSpam = new System.Windows.Forms.TabPage();
             this.tbpEnviados = new System.Windows.Forms.TabPage();
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
-            this.tsmiColorFondo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiImagenFondo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLimpiarFondo = new System.Windows.Forms.ToolStripMenuItem();
+            this.lvSpam = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvCorreosEnviados = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -79,45 +84,21 @@
             this.menuStrip1.SuspendLayout();
             this.tbcBandejas.SuspendLayout();
             this.tbpBandejaEntrada.SuspendLayout();
+            this.tbpSpam.SuspendLayout();
+            this.tbpEnviados.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBandejaEntrada
             // 
             this.btnBandejaEntrada.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnBandejaEntrada.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBandejaEntrada.Location = new System.Drawing.Point(12, 94);
+            this.btnBandejaEntrada.Location = new System.Drawing.Point(9, 193);
             this.btnBandejaEntrada.Name = "btnBandejaEntrada";
             this.btnBandejaEntrada.Size = new System.Drawing.Size(152, 35);
             this.btnBandejaEntrada.TabIndex = 0;
             this.btnBandejaEntrada.Text = "Bandeja de Entrada";
             this.btnBandejaEntrada.UseVisualStyleBackColor = false;
             this.btnBandejaEntrada.Click += new System.EventHandler(this.btnBandejaEntrada_Click_1);
-            // 
-            // btnSpam
-            // 
-            this.btnSpam.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSpam.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSpam.Location = new System.Drawing.Point(12, 135);
-            this.btnSpam.Name = "btnSpam";
-            this.btnSpam.Size = new System.Drawing.Size(152, 35);
-            this.btnSpam.TabIndex = 0;
-            this.btnSpam.Text = "Spam";
-            this.btnSpam.UseVisualStyleBackColor = false;
-            this.btnSpam.Click += new System.EventHandler(this.btnSpam_Click);
-            // 
-            // btnEnviados
-            // 
-            this.btnEnviados.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnEnviados.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEnviados.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnEnviados.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnEnviados.Location = new System.Drawing.Point(12, 176);
-            this.btnEnviados.Name = "btnEnviados";
-            this.btnEnviados.Size = new System.Drawing.Size(152, 35);
-            this.btnEnviados.TabIndex = 0;
-            this.btnEnviados.Text = "Correos Enviados";
-            this.btnEnviados.UseVisualStyleBackColor = false;
-            this.btnEnviados.Click += new System.EventHandler(this.btnEnviados_Click);
             // 
             // contextMenuStrip1
             // 
@@ -178,46 +159,6 @@
             this.tsmiMarcarNoLeido.Size = new System.Drawing.Size(191, 22);
             this.tsmiMarcarNoLeido.Text = "Marcar como no leído";
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button4.Location = new System.Drawing.Point(12, 278);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(141, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Marcar como leído";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button5.Location = new System.Drawing.Point(12, 307);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(141, 23);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Marcar como no leído";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button6.Location = new System.Drawing.Point(12, 336);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(141, 23);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Borrar";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
             // btnActualizar
             // 
             this.btnActualizar.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -225,7 +166,7 @@
             this.btnActualizar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(183, 27);
+            this.btnActualizar.Location = new System.Drawing.Point(193, 36);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(43, 41);
             this.btnActualizar.TabIndex = 5;
@@ -238,7 +179,7 @@
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
             this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button8.Location = new System.Drawing.Point(232, 27);
+            this.button8.Location = new System.Drawing.Point(37, 116);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(95, 41);
             this.button8.TabIndex = 6;
@@ -249,7 +190,7 @@
             // imLSGmail
             // 
             this.imLSGmail.Image = ((System.Drawing.Image)(resources.GetObject("imLSGmail.Image")));
-            this.imLSGmail.Location = new System.Drawing.Point(9, 27);
+            this.imLSGmail.Location = new System.Drawing.Point(6, 33);
             this.imLSGmail.Name = "imLSGmail";
             this.imLSGmail.Size = new System.Drawing.Size(155, 50);
             this.imLSGmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -322,7 +263,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -365,6 +306,25 @@
             this.tsmiCambiarFondo.Size = new System.Drawing.Size(156, 22);
             this.tsmiCambiarFondo.Text = "Cambiar Fondo";
             this.tsmiCambiarFondo.Click += new System.EventHandler(this.tsmiCambiarFondo_Click);
+            // 
+            // tsmiColorFondo
+            // 
+            this.tsmiColorFondo.Name = "tsmiColorFondo";
+            this.tsmiColorFondo.Size = new System.Drawing.Size(206, 22);
+            this.tsmiColorFondo.Text = "Cambiar Color Fondo";
+            // 
+            // tsmiImagenFondo
+            // 
+            this.tsmiImagenFondo.Name = "tsmiImagenFondo";
+            this.tsmiImagenFondo.Size = new System.Drawing.Size(206, 22);
+            this.tsmiImagenFondo.Text = "Introducir Imagen Fondo";
+            // 
+            // tsmiLimpiarFondo
+            // 
+            this.tsmiLimpiarFondo.Name = "tsmiLimpiarFondo";
+            this.tsmiLimpiarFondo.Size = new System.Drawing.Size(206, 22);
+            this.tsmiLimpiarFondo.Text = "Limpiar Fondo";
+            this.tsmiLimpiarFondo.Click += new System.EventHandler(this.tsmiLimpiarFondo_Click);
             // 
             // tbcBandejas
             // 
@@ -429,6 +389,7 @@
             // 
             // tbpSpam
             // 
+            this.tbpSpam.Controls.Add(this.lvSpam);
             this.tbpSpam.Location = new System.Drawing.Point(4, 22);
             this.tbpSpam.Name = "tbpSpam";
             this.tbpSpam.Padding = new System.Windows.Forms.Padding(3);
@@ -439,6 +400,7 @@
             // 
             // tbpEnviados
             // 
+            this.tbpEnviados.Controls.Add(this.lvCorreosEnviados);
             this.tbpEnviados.Location = new System.Drawing.Point(4, 22);
             this.tbpEnviados.Name = "tbpEnviados";
             this.tbpEnviados.Padding = new System.Windows.Forms.Padding(3);
@@ -452,24 +414,81 @@
             this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
             this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
             // 
-            // tsmiColorFondo
+            // lvSpam
             // 
-            this.tsmiColorFondo.Name = "tsmiColorFondo";
-            this.tsmiColorFondo.Size = new System.Drawing.Size(206, 22);
-            this.tsmiColorFondo.Text = "Cambiar Color Fondo";
+            this.lvSpam.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lvSpam.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lvSpam.ContextMenuStrip = this.contextMenuStrip1;
+            this.lvSpam.FullRowSelect = true;
+            this.lvSpam.GridLines = true;
+            this.lvSpam.Location = new System.Drawing.Point(0, 0);
+            this.lvSpam.Name = "lvSpam";
+            this.lvSpam.Size = new System.Drawing.Size(556, 353);
+            this.lvSpam.TabIndex = 14;
+            this.lvSpam.UseCompatibleStateImageBehavior = false;
+            this.lvSpam.View = System.Windows.Forms.View.Details;
             // 
-            // tsmiImagenFondo
+            // columnHeader1
             // 
-            this.tsmiImagenFondo.Name = "tsmiImagenFondo";
-            this.tsmiImagenFondo.Size = new System.Drawing.Size(206, 22);
-            this.tsmiImagenFondo.Text = "Introducir Imagen Fondo";
+            this.columnHeader1.Text = "Remitente";
+            this.columnHeader1.Width = 115;
             // 
-            // tsmiLimpiarFondo
+            // columnHeader2
             // 
-            this.tsmiLimpiarFondo.Name = "tsmiLimpiarFondo";
-            this.tsmiLimpiarFondo.Size = new System.Drawing.Size(206, 22);
-            this.tsmiLimpiarFondo.Text = "Limpiar Fondo";
-            this.tsmiLimpiarFondo.Click += new System.EventHandler(this.tsmiLimpiarFondo_Click);
+            this.columnHeader2.Text = "Asunto";
+            this.columnHeader2.Width = 131;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Contenido";
+            this.columnHeader3.Width = 186;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "id";
+            this.columnHeader4.Width = 0;
+            // 
+            // lvCorreosEnviados
+            // 
+            this.lvCorreosEnviados.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lvCorreosEnviados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.lvCorreosEnviados.ContextMenuStrip = this.contextMenuStrip1;
+            this.lvCorreosEnviados.FullRowSelect = true;
+            this.lvCorreosEnviados.GridLines = true;
+            this.lvCorreosEnviados.Location = new System.Drawing.Point(0, 0);
+            this.lvCorreosEnviados.Name = "lvCorreosEnviados";
+            this.lvCorreosEnviados.Size = new System.Drawing.Size(556, 353);
+            this.lvCorreosEnviados.TabIndex = 14;
+            this.lvCorreosEnviados.UseCompatibleStateImageBehavior = false;
+            this.lvCorreosEnviados.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Remitente";
+            this.columnHeader5.Width = 99;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Asunto";
+            this.columnHeader6.Width = 131;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Contenido";
+            this.columnHeader7.Width = 186;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "id";
+            this.columnHeader8.Width = 0;
             // 
             // frmPrincipal
             // 
@@ -484,11 +503,6 @@
             this.Controls.Add(this.imLSGmail);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.btnEnviados);
-            this.Controls.Add(this.btnSpam);
             this.Controls.Add(this.btnBandejaEntrada);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -508,6 +522,8 @@
             this.menuStrip1.PerformLayout();
             this.tbcBandejas.ResumeLayout(false);
             this.tbpBandejaEntrada.ResumeLayout(false);
+            this.tbpSpam.ResumeLayout(false);
+            this.tbpEnviados.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,11 +532,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnBandejaEntrada;
-        private System.Windows.Forms.Button btnSpam;
-        private System.Windows.Forms.Button btnEnviados;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.PictureBox imLSGmail;
@@ -557,6 +568,16 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiColorFondo;
         private System.Windows.Forms.ToolStripMenuItem tsmiImagenFondo;
         private System.Windows.Forms.ToolStripMenuItem tsmiLimpiarFondo;
+        private System.Windows.Forms.ListView lvSpam;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ListView lvCorreosEnviados;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
     }
 }
 
