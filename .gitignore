@@ -1,4 +1,7 @@
-GmailClient/GmailClient/bin/Debug/GmailClient.exe
-GmailClient/GmailClient/bin/Debug/GmailClient.pdb
-GmailClient/GmailClient/obj/Debug/GmailClient.exe
-GmailClient/GmailClient/obj/Debug/GmailClient.pdb
+GmailClient/GmailClient/bin/*
+GmailClient/GmailClient/obj/*
+GmailClient/GmailClient/.vs/*
+GmailClient/GmailClient/.vs/*/*
+GmailClient/GmailClient/bin/*/*
+GmailClient/GmailClient/obj/*/*
+.gitignore
