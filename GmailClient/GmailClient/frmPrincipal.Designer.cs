@@ -67,6 +67,7 @@
             this.tbpSpam = new System.Windows.Forms.TabPage();
             this.tbpEnviados = new System.Windows.Forms.TabPage();
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
+<<<<<<< HEAD
             this.lvSpam = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -77,6 +78,8 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+=======
+>>>>>>> 13a5f785caab8f96fbdc92fe2a45f4c7680b0b39
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -237,7 +240,6 @@
             // 
             this.pgbProgreso.Name = "pgbProgreso";
             this.pgbProgreso.Size = new System.Drawing.Size(100, 16);
-            this.pgbProgreso.Value = 50;
             // 
             // menuStrip1
             // 
@@ -284,7 +286,7 @@
             // tsmiCerrarSesion
             // 
             this.tsmiCerrarSesion.Name = "tsmiCerrarSesion";
-            this.tsmiCerrarSesion.Size = new System.Drawing.Size(143, 22);
+            this.tsmiCerrarSesion.Size = new System.Drawing.Size(152, 22);
             this.tsmiCerrarSesion.Text = "Cerrar Sesión";
             this.tsmiCerrarSesion.Click += new System.EventHandler(this.tsmiCerrarSesion_Click);
             // 
@@ -413,6 +415,7 @@
             // 
             this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
             this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
+<<<<<<< HEAD
             // 
             // lvSpam
             // 
@@ -489,6 +492,9 @@
             // 
             this.columnHeader8.Text = "id";
             this.columnHeader8.Width = 0;
+=======
+            this.bgwMessages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwMessages_RunWorkerCompleted);
+>>>>>>> 13a5f785caab8f96fbdc92fe2a45f4c7680b0b39
             // 
             // frmPrincipal
             // 

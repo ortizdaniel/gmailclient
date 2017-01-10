@@ -24,12 +24,7 @@ namespace GmailClient
         {
             bgwWait.RunWorkerAsync();
         }
-
-        private void btnContinuar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
+        
         private void bgwWait_DoWork(object sender, DoWorkEventArgs e)
         {
             Program.SetService(Login.DoLogin());
@@ -37,7 +32,7 @@ namespace GmailClient
 
         private void bgwWait_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            btnContinuar.Enabled = true;
+            Close();
         }
     }
 }
