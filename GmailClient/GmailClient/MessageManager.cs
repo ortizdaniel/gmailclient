@@ -116,12 +116,20 @@ public class MessageManager
                     msg.From = h.Value;
                 }
             }
+            
+            foreach (string labelId in m.LabelIds)
+            {
+                Label label = service.Users.Labels.Get(userId, labelId).Execute();
+                Console.WriteLine(label.Name);
+            }
             msg.Body = m.Snippet;
 
             mensajes.Add(msg);
         }
         return mensajes;
     }
+
+
 
     /// <summary>
     /// Get and store attachment from Message with given ID.
