@@ -78,11 +78,11 @@ public class MessageManager
      * @return: lista de los mensajes
      * 
      */
-    public static List<Mensaje> getMensajes(String userId, GmailService service)
+    public static List<Mensaje> getMensajes(String userId, GmailService service, int maxMensajes)
     {
         List<Mensaje> mensajes = new List<Mensaje>();
 
-        List<Thread> threads = MessageManager.ListThreads(service, userId, 20);
+        List<Thread> threads = MessageManager.ListThreads(service, userId, maxMensajes);
         foreach (Thread thread in threads)
         {
             Mensaje msg = new Mensaje();
