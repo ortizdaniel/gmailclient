@@ -75,3 +75,4 @@ C:\Projectes\git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.cspro
 C:\Projectes\git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.frmPrincipal.resources
 C:\Projectes\git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.Properties.Resources.resources
 C:\Projectes\git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.csproj.GenerateResource.Cache
+C:\Projectes\git\gmailclient\GmailClient\GmailClient\obj\Debug\GmailClient.frmLogin.resources

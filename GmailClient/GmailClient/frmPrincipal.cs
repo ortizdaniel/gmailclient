@@ -36,6 +36,7 @@ namespace GmailClient
             label1.Text = aux.ToString();
             this.service = service;
             this.userId = userId;
+            this.BackColor = Color.LightGray;
             lvMensajes.Columns[0].Width = 100;
             lvMensajes.Columns[1].Width = 150;
             lvMensajes.Columns[2].Width = 300;
@@ -49,7 +50,7 @@ namespace GmailClient
 
         private void btnSpam_Click(object sender, EventArgs e)
         {
-
+            //lvMensajes.Items[0].BackColor = Color.Aqua;
         }
 
         private void btnEnviados_Click(object sender, EventArgs e)
@@ -133,13 +134,6 @@ namespace GmailClient
 
         }
 
-        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Login.DoLogout();
-            Application.Restart();
-            Close();
-        }
-
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -176,6 +170,27 @@ namespace GmailClient
         private void bgwMessages_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             pgbProgreso.Value = e.ProgressPercentage;
+        }
+
+        private void tsmiCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Login.DoLogout();
+            Application.Restart();
+            Close();
+        }
+
+        private void tsmiCambiarFondo_Click(object sender, EventArgs e)
+        {
+            if(this.BackgroundImage == null)
+            {
+                tsmiLimpiarFondo.Visible = false;
+            }
+        }
+
+        private void tsmiLimpiarFondo_Click(object sender, EventArgs e)
+        {
+            this.BackgroundImage = null;
+            this.BackColor = Color.Gray;
         }
     }
 }
