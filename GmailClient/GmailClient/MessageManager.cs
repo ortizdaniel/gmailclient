@@ -19,25 +19,20 @@ public class MessageManager
     /// <param name="service">Gmail API service instance.</param>
     /// <param name="userId">User's email address. The special value "me"
     /// can be used to indicate the authenticated user.</param>
-    private static List<Thread> ListThreads(GmailService service, String userId, int numMessages)
+    private static List<Thread> ListThreads(GmailService service, String userId, int numMessages, string label)
     {
         List<Thread> result = new List<Thread>();
-        UsersResource.ThreadsResource.ListRequest request = service.Users.Threads.List(userId);
         
-        do
+        UsersResource.ThreadsResource.ListRequest request = service.Users.Threads.List(userId);
+        if (label != null)
         {
-            try
-            {
-                ListThreadsResponse response = request.Execute();
-                result.AddRange(response.Threads);
-                request.PageToken = response.NextPageToken;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("An error occurred: " + e.Message);
-            }
-        } while (!String.IsNullOrEmpty(request.PageToken));
-        return result.GetRange(0, numMessages - 1);
+            request.LabelIds = label;
+        }        
+        request.MaxResults = numMessages;
+        
+        ListThreadsResponse response = request.Execute();
+        result.AddRange(response.Threads);        
+        return result;
     }
 
     /// <summary>
@@ -88,11 +83,11 @@ public class MessageManager
      * @return: lista de los mensajes
      * 
      */
-    public static List<Mensaje> getMensajes(String userId, GmailService service)
+    public static List<Mensaje> getMensajes(String userId, GmailService service, int maxMessages, string etiqueta = null)
     {
         List<Mensaje> mensajes = new List<Mensaje>();
 
-        List<Thread> threads = MessageManager.ListThreads(service, userId, 20);
+        List<Thread> threads = MessageManager.ListThreads(service, userId, maxMessages, etiqueta);
         foreach (Thread thread in threads)
         {
             Mensaje msg = new Mensaje();
