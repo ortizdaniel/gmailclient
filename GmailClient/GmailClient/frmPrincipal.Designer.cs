@@ -65,18 +65,19 @@
             this.clmPreview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmIdMensaje = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbpSpam = new System.Windows.Forms.TabPage();
-            this.tbpEnviados = new System.Windows.Forms.TabPage();
-            this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.lvSpam = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbpEnviados = new System.Windows.Forms.TabPage();
             this.lvCorreosEnviados = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.bgwMessages = new System.ComponentModel.BackgroundWorker();
+            this.clmUnseen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -263,7 +264,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -356,7 +357,8 @@
             this.clmRemitente,
             this.clmAsunto,
             this.clmPreview,
-            this.clmIdMensaje});
+            this.clmIdMensaje,
+            this.clmUnseen});
             this.lvMensajes.ContextMenuStrip = this.contextMenuStrip1;
             this.lvMensajes.FullRowSelect = true;
             this.lvMensajes.GridLines = true;
@@ -398,22 +400,6 @@
             this.tbpSpam.Text = "Spam";
             this.tbpSpam.UseVisualStyleBackColor = true;
             // 
-            // tbpEnviados
-            // 
-            this.tbpEnviados.Controls.Add(this.lvCorreosEnviados);
-            this.tbpEnviados.Location = new System.Drawing.Point(4, 22);
-            this.tbpEnviados.Name = "tbpEnviados";
-            this.tbpEnviados.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpEnviados.Size = new System.Drawing.Size(556, 353);
-            this.tbpEnviados.TabIndex = 2;
-            this.tbpEnviados.Text = "Correos enviados";
-            this.tbpEnviados.UseVisualStyleBackColor = true;
-            // 
-            // bgwMessages
-            // 
-            this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
-            this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
-            // 
             // lvSpam
             // 
             this.lvSpam.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -452,6 +438,17 @@
             this.columnHeader4.Text = "id";
             this.columnHeader4.Width = 0;
             // 
+            // tbpEnviados
+            // 
+            this.tbpEnviados.Controls.Add(this.lvCorreosEnviados);
+            this.tbpEnviados.Location = new System.Drawing.Point(4, 22);
+            this.tbpEnviados.Name = "tbpEnviados";
+            this.tbpEnviados.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpEnviados.Size = new System.Drawing.Size(556, 353);
+            this.tbpEnviados.TabIndex = 2;
+            this.tbpEnviados.Text = "Correos enviados";
+            this.tbpEnviados.UseVisualStyleBackColor = true;
+            // 
             // lvCorreosEnviados
             // 
             this.lvCorreosEnviados.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -489,6 +486,15 @@
             // 
             this.columnHeader8.Text = "id";
             this.columnHeader8.Width = 0;
+            // 
+            // bgwMessages
+            // 
+            this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
+            this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
+            // 
+            // clmUnseen
+            // 
+            this.clmUnseen.Text = "Unseen";
             // 
             // frmPrincipal
             // 
@@ -578,6 +584,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader clmUnseen;
     }
 }
 

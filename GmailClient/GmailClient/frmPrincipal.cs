@@ -41,6 +41,11 @@ namespace GmailClient
             lvMensajes.Columns[1].Width = 150;
             lvMensajes.Columns[2].Width = 300;
             lvMensajes.Columns[3].Width = 0;
+            lvMensajes.Columns[4].Width = 0;
+            for(int i = 0; i < lvMensajes.Items.Count;i++)
+            {
+                lvMensajes.Items[i].BackColor = Color.Gray;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -155,14 +160,32 @@ namespace GmailClient
             List<Mensaje> msgs = MessageManager.getMensajes(userId, service);
             foreach (Mensaje m in msgs)
             {
-                ListViewItem lvi = new ListViewItem(m.From);
-                lvi.SubItems.Add(m.Subject);
-                lvi.SubItems.Add(m.Body);
-                lvi.SubItems.Add(i.ToString());
-                this.Invoke(new MethodInvoker(delegate
+                    ListViewItem lvi = new ListViewItem(m.From);
+                    lvi.SubItems.Add(m.Subject);
+                    lvi.SubItems.Add(m.Body);
+                    lvi.SubItems.Add(i.ToString());
+                    lvi.SubItems.Add(m.IsUnread.ToString());
+                if (m.IsInbox)
                 {
-                    lvMensajes.Items.Add(lvi);
-                }));
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvMensajes.Items.Add(lvi);
+                    }));
+                }
+                if (m.IsSent)
+                {
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvCorreosEnviados.Items.Add(lvi);
+                    }));
+                }
+                if (m.IsSpam)
+                {
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvSpam.Items.Add(lvi);
+                    }));
+                }
                 i++;
             }
         }
