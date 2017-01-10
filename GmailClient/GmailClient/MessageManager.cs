@@ -23,21 +23,11 @@ public class MessageManager
     {
         List<Thread> result = new List<Thread>();
         UsersResource.ThreadsResource.ListRequest request = service.Users.Threads.List(userId);
-        
-        do
-        {
-            try
-            {
-                ListThreadsResponse response = request.Execute();
-                result.AddRange(response.Threads);
-                request.PageToken = response.NextPageToken;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("An error occurred: " + e.Message);
-            }
-        } while (!String.IsNullOrEmpty(request.PageToken));
-        return result.GetRange(0, numMessages - 1);
+        request.MaxResults = numMessages;
+        ListThreadsResponse response = request.Execute();
+        result.AddRange(response.Threads);
+
+        return result;
     }
 
     /// <summary>
