@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using GmailQuickstart;
+using System.Diagnostics;
 
 namespace GmailClient
 {
@@ -36,7 +37,6 @@ namespace GmailClient
             label1.Text = aux.ToString();
             this.service = service;
             this.userId = userId;
-            this.BackColor = Color.LightGray;
             lvMensajes.Columns[0].Width = 100;
             lvMensajes.Columns[1].Width = 150;
             lvMensajes.Columns[2].Width = 300;
@@ -108,7 +108,7 @@ namespace GmailClient
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            Process.Start("explorer.exe", "/select, ");
         }
 
         private void tsmiEliminar_Click(object sender, EventArgs e)
@@ -190,7 +190,7 @@ namespace GmailClient
         private void tsmiLimpiarFondo_Click(object sender, EventArgs e)
         {
             this.BackgroundImage = null;
-            this.BackColor = Color.Gray;
+            this.BackColor = Color.LightGray;
         }
     }
 }
