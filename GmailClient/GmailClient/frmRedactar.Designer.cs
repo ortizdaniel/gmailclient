@@ -45,7 +45,7 @@
             // 
             this.lblDestinatario.AutoSize = true;
             this.lblDestinatario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDestinatario.Location = new System.Drawing.Point(12, 53);
+            this.lblDestinatario.Location = new System.Drawing.Point(12, 73);
             this.lblDestinatario.Name = "lblDestinatario";
             this.lblDestinatario.Size = new System.Drawing.Size(103, 18);
             this.lblDestinatario.TabIndex = 0;
@@ -65,6 +65,7 @@
             // 
             // tbContenido
             // 
+            this.tbContenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbContenido.Location = new System.Drawing.Point(15, 211);
             this.tbContenido.Multiline = true;
             this.tbContenido.Name = "tbContenido";
@@ -75,7 +76,7 @@
             // 
             this.lblAsunto.AutoSize = true;
             this.lblAsunto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAsunto.Location = new System.Drawing.Point(12, 116);
+            this.lblAsunto.Location = new System.Drawing.Point(12, 136);
             this.lblAsunto.Name = "lblAsunto";
             this.lblAsunto.Size = new System.Drawing.Size(58, 18);
             this.lblAsunto.TabIndex = 3;
@@ -83,18 +84,20 @@
             // 
             // tbDestinatario
             // 
-            this.tbDestinatario.Location = new System.Drawing.Point(15, 74);
+            this.tbDestinatario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDestinatario.Location = new System.Drawing.Point(12, 94);
             this.tbDestinatario.Multiline = true;
             this.tbDestinatario.Name = "tbDestinatario";
-            this.tbDestinatario.Size = new System.Drawing.Size(448, 29);
+            this.tbDestinatario.Size = new System.Drawing.Size(448, 26);
             this.tbDestinatario.TabIndex = 4;
             // 
             // tbAsunto
             // 
-            this.tbAsunto.Location = new System.Drawing.Point(15, 147);
+            this.tbAsunto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAsunto.Location = new System.Drawing.Point(15, 157);
             this.tbAsunto.Multiline = true;
             this.tbAsunto.Name = "tbAsunto";
-            this.tbAsunto.Size = new System.Drawing.Size(448, 29);
+            this.tbAsunto.Size = new System.Drawing.Size(448, 25);
             this.tbAsunto.TabIndex = 5;
             // 
             // cbSize

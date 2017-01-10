@@ -124,8 +124,9 @@ namespace GmailClient
 
         private void btnRedactar_Click(object sender, EventArgs e)
         {
-            /*Application.EnableVisualStyles();
-            Application.Run(new frmRedactar());*/
+
+                frmRedactar frm = new frmRedactar();
+                frm.ShowDialog();
         }
 
         private void tsmiEliminar_Click(object sender, EventArgs e)

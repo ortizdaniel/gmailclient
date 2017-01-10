@@ -16,7 +16,7 @@ namespace GmailClient
         {
             InitializeComponent();
             cbFont.SelectedItem = "Microsoft Sans Serif";
-            cbSize.SelectedItem = "8";
+            cbSize.SelectedItem = "10";
         }
 
         private void frmRedactar_Load(object sender, EventArgs e)
