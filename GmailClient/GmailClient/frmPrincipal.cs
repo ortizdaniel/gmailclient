@@ -251,7 +251,7 @@ namespace GmailClient
         private void tsmiLimpiarFondo_Click(object sender, EventArgs e)
         {
             this.BackgroundImage = null;
-            this.BackColor = Color.LightGray;
+            this.BackColor = Color.Gainsboro;
         }
 
         private void bgwMessages_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -286,6 +286,11 @@ namespace GmailClient
         private void btnLeerMensajes_Click(object sender, EventArgs e)
         {
             lvMensajes_DoubleClick(sender, e);
+        }
+
+        private void tsmiMarcarLeido_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
