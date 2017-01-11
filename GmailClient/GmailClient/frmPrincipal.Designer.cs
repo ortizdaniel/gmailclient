@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-            this.btnBandejaEntrada = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiResponder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiResponderRemitente = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,18 +89,6 @@
             this.tbpSpam.SuspendLayout();
             this.tbpEnviados.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnBandejaEntrada
-            // 
-            this.btnBandejaEntrada.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBandejaEntrada.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBandejaEntrada.Location = new System.Drawing.Point(9, 193);
-            this.btnBandejaEntrada.Name = "btnBandejaEntrada";
-            this.btnBandejaEntrada.Size = new System.Drawing.Size(152, 35);
-            this.btnBandejaEntrada.TabIndex = 0;
-            this.btnBandejaEntrada.Text = "Bandeja de Entrada";
-            this.btnBandejaEntrada.UseVisualStyleBackColor = false;
-            this.btnBandejaEntrada.Click += new System.EventHandler(this.btnBandejaEntrada_Click_1);
             // 
             // contextMenuStrip1
             // 
@@ -182,7 +169,7 @@
             this.btnRedactar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRedactar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnRedactar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnRedactar.Location = new System.Drawing.Point(37, 116);
+            this.btnRedactar.Location = new System.Drawing.Point(33, 134);
             this.btnRedactar.Name = "btnRedactar";
             this.btnRedactar.Size = new System.Drawing.Size(95, 41);
             this.btnRedactar.TabIndex = 6;
@@ -265,7 +252,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -522,7 +509,6 @@
             this.Controls.Add(this.imLSGmail);
             this.Controls.Add(this.btnRedactar);
             this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.btnBandejaEntrada);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -549,8 +535,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnBandejaEntrada;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnRedactar;
         private System.Windows.Forms.PictureBox imLSGmail;

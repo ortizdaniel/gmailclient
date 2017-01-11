@@ -38,6 +38,7 @@ namespace GmailClient
             label1.Text = aux.ToString();
             this.service = service;
             this.userId = userId;
+            /* Diseño de los objetos */
             this.BackColor = Color.LightGray;
             lvMensajes.Columns[0].Width = 100;
             lvMensajes.Columns[1].Width = 150;
@@ -58,6 +59,8 @@ namespace GmailClient
             {
                 lvMensajes.Items[i].BackColor = Color.Gray;
             }
+            /* Carga mensajes */
+            bgwMessages.RunWorkerAsync();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -85,21 +88,10 @@ namespace GmailClient
 
         }
 
-        private void btnBandejaEntrada_Click_1(object sender, EventArgs e)
-        {
-            bgwMessages.RunWorkerAsync();
-            
-            
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-
+            lvMensajes.Clear();
+            bgwMessages.RunWorkerAsync();
         }
 
         private void btnOpcionesUsuario_Click(object sender, EventArgs e)
