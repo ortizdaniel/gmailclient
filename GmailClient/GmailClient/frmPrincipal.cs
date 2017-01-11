@@ -87,7 +87,14 @@ namespace GmailClient
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             lvMensajes.Clear();
-            bgwMessages.RunWorkerAsync();
+            if (bgwMessages.IsBusy)
+            {
+                MessageBox.Show(this, "Espera, que sigo trabajando!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                bgwMessages.RunWorkerAsync();
+            }
         }
 
         private void btnOpcionesUsuario_Click(object sender, EventArgs e)
@@ -260,6 +267,7 @@ namespace GmailClient
                 this.BackColor = dlg.Color;
             }
         }
+<<<<<<< HEAD
         private void ordenaCorreus(List<int> lista)
         {
             for(int i = lista[0]; i < lista.Count(); i++) 
@@ -267,5 +275,20 @@ namespace GmailClient
 
             }
         }
+=======
+
+        private void lvMensajes_DoubleClick(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in lvMensajes.SelectedItems)
+            {
+                (new frmView(mensajes[Convert.ToInt32(item.SubItems[3].Text) - 1])).Show();
+            }
+        }
+
+        private void btnLeerMensajes_Click(object sender, EventArgs e)
+        {
+            lvMensajes_DoubleClick(sender, e);
+        }
+>>>>>>> 09ba677063206a4d3b68f204901fdeb64fb90f42
     }
 }
