@@ -182,7 +182,7 @@ namespace GmailClient
         {
             int i = 1;
             addToProgress(10);
-            List<Mensaje> msgs = MessageManager.getMensajes(userId, service, 10);
+            List<Mensaje> msgs = MessageManager.getMensajes(userId, service);
             addToProgress(30);
             int differencePerMsg = 60 / (msgs.Count);
             foreach (Mensaje m in msgs)
