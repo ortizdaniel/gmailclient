@@ -38,6 +38,7 @@ namespace GmailClient
             label1.Text = aux.ToString();
             this.service = service;
             this.userId = userId;
+            /* Diseño de los objetos */
             this.BackColor = Color.LightGray;
             lvMensajes.Columns[0].Width = 100;
             lvMensajes.Columns[1].Width = 150;
@@ -54,10 +55,8 @@ namespace GmailClient
             lvCorreosEnviados.Columns[2].Width = 300;
             lvCorreosEnviados.Columns[3].Width = 0;
             lvCorreosEnviados.Columns[4].Width = 0;
-            for (int i = 0; i < lvMensajes.Items.Count;i++)
-            {
-                lvMensajes.Items[i].BackColor = Color.Gray;
-            }
+            /* Carga mensajes */
+            bgwMessages.RunWorkerAsync();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -85,21 +84,17 @@ namespace GmailClient
 
         }
 
-        private void btnBandejaEntrada_Click_1(object sender, EventArgs e)
-        {
-            bgwMessages.RunWorkerAsync();
-            
-            
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-
+            lvMensajes.Items.Clear();
+            if (bgwMessages.IsBusy)
+            {
+                MessageBox.Show(this, "Proceso en marcha espera a que termine", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                bgwMessages.RunWorkerAsync();
+            }
         }
 
         private void btnOpcionesUsuario_Click(object sender, EventArgs e)
@@ -130,15 +125,18 @@ namespace GmailClient
                 frm.ShowDialog();
         }
 
-        private void tsmiEliminar_Click(object sender, EventArgs e)
+        internal void tsmiEliminar_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+            //List<int> listaCorreos = new List<int>();
+            for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
             {
-                
                 int messageNumber = Convert.ToInt32(lvMensajes.SelectedItems[i].SubItems[3].Text) - 1;
-                Console.WriteLine("Num = {0} \n Id = {1} \n Text = {2}", messageNumber, mensajes[messageNumber].MessageId, mensajes[messageNumber].Body);
+                //listaCorreos.Add(messageNumber);
+                lvMensajes.SelectedItems[i].BackColor = Color.DarkGray;
+                lvMensajes.SelectedItems[i].ForeColor = Color.White;
                 MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
             }
+            //ordenaCorreus(listaCorreos);
         }
         
 
@@ -203,6 +201,7 @@ namespace GmailClient
                     {
                         lvMensajes.Items.Add(lvi);
                     }));
+
                 }
                 if (m.IsSent)
                 {
@@ -216,6 +215,7 @@ namespace GmailClient
 
                         lvCorreosEnviados.Items.Add(lviSent);
                     }));
+                    if (m.IsUnread) { lviSent.SubItems[i-1].BackColor = Color.White; }
                 }
                 
                 if (m.IsSpam)
@@ -225,7 +225,11 @@ namespace GmailClient
                     lviSpam.SubItems.Add(m.Body);
                     lviSpam.SubItems.Add(i.ToString());
                     lviSpam.SubItems.Add(m.IsUnread.ToString());
-                    
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvSpam.Items.Add(lviSpam);
+                    }));
+                    if (m.IsUnread) { lviSpam.SubItems[lviSpam.SubItems.Count].BackColor = Color.White; }
                 }
                 
                 i++;
@@ -269,7 +273,7 @@ namespace GmailClient
         private void tsmiLimpiarFondo_Click(object sender, EventArgs e)
         {
             this.BackgroundImage = null;
-            this.BackColor = Color.LightGray;
+            this.BackColor = Color.Gainsboro;
         }
 
         private void bgwMessages_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -286,7 +290,28 @@ namespace GmailClient
             }
         }
 
-        private void lvMensajes_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void ordenaCorreus(List<int> lista)
+        {
+            for(int i = lista[0]; i < lista.Count(); i++) 
+            {
+
+            }
+        }
+
+        private void lvMensajes_DoubleClick(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in lvMensajes.SelectedItems)
+            {
+                (new frmView(this, mensajes[Convert.ToInt32(item.SubItems[3].Text) - 1])).Show();
+            }
+        }
+
+        private void btnLeerMensajes_Click(object sender, EventArgs e)
+        {
+            lvMensajes_DoubleClick(sender, e);
+        }
+
+        private void tsmiMarcarLeido_Click(object sender, EventArgs e)
         {
 
         }

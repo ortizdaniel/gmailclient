@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-            this.btnBandejaEntrada = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiResponder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiResponderRemitente = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,20 +65,21 @@
             this.clmIdMensaje = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmUnseen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbpSpam = new System.Windows.Forms.TabPage();
-            this.lvSpam = new System.Windows.Forms.ListView();
-            this.clmSpamRemitente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmSpamAsunto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmSpamContenido = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmSpamId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmSpamUnseen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbpEnviados = new System.Windows.Forms.TabPage();
-            this.lvCorreosEnviados = new System.Windows.Forms.ListView();
+            this.bgwMessages = new System.ComponentModel.BackgroundWorker();
+            this.btnLeerMensajes = new System.Windows.Forms.ToolStripMenuItem();
+            this.lvSpam = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.bgwMessages = new System.ComponentModel.BackgroundWorker();
+            this.lvCorreosEnviados = new System.Windows.Forms.ListView();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -91,28 +91,17 @@
             this.tbpEnviados.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnBandejaEntrada
-            // 
-            this.btnBandejaEntrada.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBandejaEntrada.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBandejaEntrada.Location = new System.Drawing.Point(9, 193);
-            this.btnBandejaEntrada.Name = "btnBandejaEntrada";
-            this.btnBandejaEntrada.Size = new System.Drawing.Size(152, 35);
-            this.btnBandejaEntrada.TabIndex = 0;
-            this.btnBandejaEntrada.Text = "Bandeja de Entrada";
-            this.btnBandejaEntrada.UseVisualStyleBackColor = false;
-            this.btnBandejaEntrada.Click += new System.EventHandler(this.btnBandejaEntrada_Click_1);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnLeerMensajes,
             this.tsmiResponder,
             this.tsmiEliminar,
             this.tsmiMarcarSpam,
             this.tsmiMarcarLeido,
             this.tsmiMarcarNoLeido});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 136);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // tsmiResponder
@@ -148,13 +137,14 @@
             // 
             this.tsmiMarcarSpam.Name = "tsmiMarcarSpam";
             this.tsmiMarcarSpam.Size = new System.Drawing.Size(191, 22);
-            this.tsmiMarcarSpam.Text = "Marcar como Spam";
+            this.tsmiMarcarSpam.Text = "Marcar como spam";
             // 
             // tsmiMarcarLeido
             // 
             this.tsmiMarcarLeido.Name = "tsmiMarcarLeido";
             this.tsmiMarcarLeido.Size = new System.Drawing.Size(191, 22);
             this.tsmiMarcarLeido.Text = "Marcar como leído";
+            this.tsmiMarcarLeido.Click += new System.EventHandler(this.tsmiMarcarLeido_Click);
             // 
             // tsmiMarcarNoLeido
             // 
@@ -182,7 +172,7 @@
             this.btnRedactar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRedactar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnRedactar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnRedactar.Location = new System.Drawing.Point(37, 116);
+            this.btnRedactar.Location = new System.Drawing.Point(242, 36);
             this.btnRedactar.Name = "btnRedactar";
             this.btnRedactar.Size = new System.Drawing.Size(95, 41);
             this.btnRedactar.TabIndex = 6;
@@ -286,7 +276,7 @@
             // tsmiCerrarSesion
             // 
             this.tsmiCerrarSesion.Name = "tsmiCerrarSesion";
-            this.tsmiCerrarSesion.Size = new System.Drawing.Size(143, 22);
+            this.tsmiCerrarSesion.Size = new System.Drawing.Size(152, 22);
             this.tsmiCerrarSesion.Text = "Cerrar Sesión";
             this.tsmiCerrarSesion.Click += new System.EventHandler(this.tsmiCerrarSesion_Click);
             // 
@@ -334,10 +324,10 @@
             this.tbcBandejas.Controls.Add(this.tbpBandejaEntrada);
             this.tbcBandejas.Controls.Add(this.tbpSpam);
             this.tbcBandejas.Controls.Add(this.tbpEnviados);
-            this.tbcBandejas.Location = new System.Drawing.Point(170, 94);
+            this.tbcBandejas.Location = new System.Drawing.Point(0, 89);
             this.tbcBandejas.Name = "tbcBandejas";
             this.tbcBandejas.SelectedIndex = 0;
-            this.tbcBandejas.Size = new System.Drawing.Size(564, 379);
+            this.tbcBandejas.Size = new System.Drawing.Size(734, 384);
             this.tbcBandejas.TabIndex = 13;
             // 
             // tbpBandejaEntrada
@@ -346,7 +336,7 @@
             this.tbpBandejaEntrada.Location = new System.Drawing.Point(4, 22);
             this.tbpBandejaEntrada.Name = "tbpBandejaEntrada";
             this.tbpBandejaEntrada.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpBandejaEntrada.Size = new System.Drawing.Size(556, 353);
+            this.tbpBandejaEntrada.Size = new System.Drawing.Size(726, 358);
             this.tbpBandejaEntrada.TabIndex = 0;
             this.tbpBandejaEntrada.Text = "Bandeja de entrada";
             this.tbpBandejaEntrada.UseVisualStyleBackColor = true;
@@ -366,26 +356,29 @@
             this.lvMensajes.GridLines = true;
             this.lvMensajes.Location = new System.Drawing.Point(0, 0);
             this.lvMensajes.Name = "lvMensajes";
-            this.lvMensajes.Size = new System.Drawing.Size(556, 353);
+            this.lvMensajes.Size = new System.Drawing.Size(726, 358);
             this.lvMensajes.TabIndex = 2;
             this.lvMensajes.UseCompatibleStateImageBehavior = false;
             this.lvMensajes.View = System.Windows.Forms.View.Details;
-            this.lvMensajes.SelectedIndexChanged += new System.EventHandler(this.lvMensajes_SelectedIndexChanged_1);
+
+            //this.lvMensajes.SelectedIndexChanged += new System.EventHandler(this.lvMensajes_SelectedIndexChanged_1);
+
+            this.lvMensajes.DoubleClick += new System.EventHandler(this.lvMensajes_DoubleClick);
             // 
             // clmRemitente
             // 
             this.clmRemitente.Text = "Remitente";
-            this.clmRemitente.Width = 115;
+            this.clmRemitente.Width = 154;
             // 
             // clmAsunto
             // 
             this.clmAsunto.Text = "Asunto";
-            this.clmAsunto.Width = 131;
+            this.clmAsunto.Width = 168;
             // 
             // clmPreview
             // 
             this.clmPreview.Text = "Contenido";
-            this.clmPreview.Width = 186;
+            this.clmPreview.Width = 340;
             // 
             // clmIdMensaje
             // 
@@ -402,53 +395,10 @@
             this.tbpSpam.Location = new System.Drawing.Point(4, 22);
             this.tbpSpam.Name = "tbpSpam";
             this.tbpSpam.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpSpam.Size = new System.Drawing.Size(556, 353);
+            this.tbpSpam.Size = new System.Drawing.Size(726, 358);
             this.tbpSpam.TabIndex = 1;
             this.tbpSpam.Text = "Spam";
             this.tbpSpam.UseVisualStyleBackColor = true;
-            // 
-            // lvSpam
-            // 
-            this.lvSpam.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lvSpam.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmSpamRemitente,
-            this.clmSpamAsunto,
-            this.clmSpamContenido,
-            this.clmSpamId,
-            this.clmSpamUnseen});
-            this.lvSpam.ContextMenuStrip = this.contextMenuStrip1;
-            this.lvSpam.FullRowSelect = true;
-            this.lvSpam.GridLines = true;
-            this.lvSpam.Location = new System.Drawing.Point(0, 0);
-            this.lvSpam.Name = "lvSpam";
-            this.lvSpam.Size = new System.Drawing.Size(556, 353);
-            this.lvSpam.TabIndex = 14;
-            this.lvSpam.UseCompatibleStateImageBehavior = false;
-            this.lvSpam.View = System.Windows.Forms.View.Details;
-            // 
-            // clmSpamRemitente
-            // 
-            this.clmSpamRemitente.Text = "Remitente";
-            this.clmSpamRemitente.Width = 115;
-            // 
-            // clmSpamAsunto
-            // 
-            this.clmSpamAsunto.Text = "Asunto";
-            this.clmSpamAsunto.Width = 131;
-            // 
-            // clmSpamContenido
-            // 
-            this.clmSpamContenido.Text = "Contenido";
-            this.clmSpamContenido.Width = 186;
-            // 
-            // clmSpamId
-            // 
-            this.clmSpamId.Text = "id";
-            this.clmSpamId.Width = 0;
-            // 
-            // clmSpamUnseen
-            // 
-            this.clmSpamUnseen.Text = "Unseen";
             // 
             // tbpEnviados
             // 
@@ -456,44 +406,57 @@
             this.tbpEnviados.Location = new System.Drawing.Point(4, 22);
             this.tbpEnviados.Name = "tbpEnviados";
             this.tbpEnviados.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpEnviados.Size = new System.Drawing.Size(556, 353);
+            this.tbpEnviados.Size = new System.Drawing.Size(726, 358);
             this.tbpEnviados.TabIndex = 2;
             this.tbpEnviados.Text = "Correos enviados";
             this.tbpEnviados.UseVisualStyleBackColor = true;
             // 
-            // lvCorreosEnviados
+            // bgwMessages
             // 
-            this.lvCorreosEnviados.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lvCorreosEnviados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
+            this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
+            this.bgwMessages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwMessages_RunWorkerCompleted);
+            // 
+            // btnLeerMensajes
+            // 
+            this.btnLeerMensajes.Name = "btnLeerMensajes";
+            this.btnLeerMensajes.Size = new System.Drawing.Size(191, 22);
+            this.btnLeerMensajes.Text = "Leer mensaje(s)";
+            this.btnLeerMensajes.Click += new System.EventHandler(this.btnLeerMensajes_Click);
+            // 
+            // lvSpam
+            // 
+            this.lvSpam.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lvSpam.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.lvCorreosEnviados.ContextMenuStrip = this.contextMenuStrip1;
-            this.lvCorreosEnviados.FullRowSelect = true;
-            this.lvCorreosEnviados.GridLines = true;
-            this.lvCorreosEnviados.Location = new System.Drawing.Point(0, 0);
-            this.lvCorreosEnviados.Name = "lvCorreosEnviados";
-            this.lvCorreosEnviados.Size = new System.Drawing.Size(556, 353);
-            this.lvCorreosEnviados.TabIndex = 3;
-            this.lvCorreosEnviados.UseCompatibleStateImageBehavior = false;
-            this.lvCorreosEnviados.View = System.Windows.Forms.View.Details;
+            this.lvSpam.ContextMenuStrip = this.contextMenuStrip1;
+            this.lvSpam.FullRowSelect = true;
+            this.lvSpam.GridLines = true;
+            this.lvSpam.Location = new System.Drawing.Point(0, 3);
+            this.lvSpam.Name = "lvSpam";
+            this.lvSpam.Size = new System.Drawing.Size(726, 353);
+            this.lvSpam.TabIndex = 3;
+            this.lvSpam.UseCompatibleStateImageBehavior = false;
+            this.lvSpam.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Remitente";
-            this.columnHeader1.Width = 115;
+            this.columnHeader1.Width = 154;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Asunto";
-            this.columnHeader2.Width = 131;
+            this.columnHeader2.Width = 168;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Contenido";
-            this.columnHeader3.Width = 186;
+            this.columnHeader3.Width = 340;
             // 
             // columnHeader4
             // 
@@ -504,17 +467,54 @@
             // 
             this.columnHeader5.Text = "Unseen";
             // 
-            // bgwMessages
+            // lvCorreosEnviados
             // 
-            this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
-            this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
-            this.bgwMessages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwMessages_RunWorkerCompleted);
+            this.lvCorreosEnviados.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lvCorreosEnviados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10});
+            this.lvCorreosEnviados.ContextMenuStrip = this.contextMenuStrip1;
+            this.lvCorreosEnviados.FullRowSelect = true;
+            this.lvCorreosEnviados.GridLines = true;
+            this.lvCorreosEnviados.Location = new System.Drawing.Point(0, 3);
+            this.lvCorreosEnviados.Name = "lvCorreosEnviados";
+            this.lvCorreosEnviados.Size = new System.Drawing.Size(726, 353);
+            this.lvCorreosEnviados.TabIndex = 3;
+            this.lvCorreosEnviados.UseCompatibleStateImageBehavior = false;
+            this.lvCorreosEnviados.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Remitente";
+            this.columnHeader6.Width = 154;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Asunto";
+            this.columnHeader7.Width = 168;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Contenido";
+            this.columnHeader8.Width = 340;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "id";
+            this.columnHeader9.Width = 0;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Unseen";
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(734, 498);
             this.Controls.Add(this.tbcBandejas);
             this.Controls.Add(this.statusStrip1);
@@ -523,12 +523,11 @@
             this.Controls.Add(this.imLSGmail);
             this.Controls.Add(this.btnRedactar);
             this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.btnBandejaEntrada);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "frmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GmailClient";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -550,8 +549,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnBandejaEntrada;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnRedactar;
         private System.Windows.Forms.PictureBox imLSGmail;
@@ -588,19 +585,20 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiColorFondo;
         private System.Windows.Forms.ToolStripMenuItem tsmiImagenFondo;
         private System.Windows.Forms.ToolStripMenuItem tsmiLimpiarFondo;
-        private System.Windows.Forms.ListView lvSpam;
-        private System.Windows.Forms.ColumnHeader clmSpamRemitente;
-        private System.Windows.Forms.ColumnHeader clmSpamAsunto;
-        private System.Windows.Forms.ColumnHeader clmSpamContenido;
-        private System.Windows.Forms.ColumnHeader clmSpamId;
         private System.Windows.Forms.ColumnHeader clmUnseen;
-        private System.Windows.Forms.ColumnHeader clmSpamUnseen;
-        private System.Windows.Forms.ListView lvCorreosEnviados;
+        private System.Windows.Forms.ToolStripMenuItem btnLeerMensajes;
+        private System.Windows.Forms.ListView lvSpam;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ListView lvCorreosEnviados;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
     }
 }
 
