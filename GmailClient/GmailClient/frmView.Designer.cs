@@ -32,10 +32,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnMarcarComoLeido = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMarcarComoNoLeido = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMarcarComoSpam = new System.Windows.Forms.ToolStripMenuItem();
             this.btnResponder = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReenviar = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnMarcarComoSpam = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.txtAsunto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +49,7 @@
             this.txtContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtContenido.BackColor = System.Drawing.Color.White;
             this.txtContenido.Location = new System.Drawing.Point(12, 92);
             this.txtContenido.Multiline = true;
             this.txtContenido.Name = "txtContenido";
@@ -84,6 +85,12 @@
             this.btnMarcarComoNoLeido.Size = new System.Drawing.Size(136, 20);
             this.btnMarcarComoNoLeido.Text = "Marcar como no léido";
             // 
+            // btnMarcarComoSpam
+            // 
+            this.btnMarcarComoSpam.Name = "btnMarcarComoSpam";
+            this.btnMarcarComoSpam.Size = new System.Drawing.Size(122, 20);
+            this.btnMarcarComoSpam.Text = "Marcar como spam";
+            // 
             // btnResponder
             // 
             this.btnResponder.Name = "btnResponder";
@@ -102,12 +109,6 @@
             this.btnEliminar.Size = new System.Drawing.Size(62, 20);
             this.btnEliminar.Text = "Eliminar";
             // 
-            // btnMarcarComoSpam
-            // 
-            this.btnMarcarComoSpam.Name = "btnMarcarComoSpam";
-            this.btnMarcarComoSpam.Size = new System.Drawing.Size(122, 20);
-            this.btnMarcarComoSpam.Text = "Marcar como spam";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -119,6 +120,9 @@
             // 
             // txtAsunto
             // 
+            this.txtAsunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAsunto.BackColor = System.Drawing.Color.White;
             this.txtAsunto.Location = new System.Drawing.Point(61, 27);
             this.txtAsunto.Name = "txtAsunto";
             this.txtAsunto.ReadOnly = true;
@@ -136,6 +140,9 @@
             // 
             // txtRemitente
             // 
+            this.txtRemitente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRemitente.BackColor = System.Drawing.Color.White;
             this.txtRemitente.Location = new System.Drawing.Point(76, 53);
             this.txtRemitente.Name = "txtRemitente";
             this.txtRemitente.ReadOnly = true;

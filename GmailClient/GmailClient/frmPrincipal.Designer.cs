@@ -79,6 +79,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
+            this.btnLeerMensajes = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -93,13 +94,14 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnLeerMensajes,
             this.tsmiResponder,
             this.tsmiEliminar,
             this.tsmiMarcarSpam,
             this.tsmiMarcarLeido,
             this.tsmiMarcarNoLeido});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 158);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // tsmiResponder
@@ -357,6 +359,7 @@
             this.lvMensajes.TabIndex = 2;
             this.lvMensajes.UseCompatibleStateImageBehavior = false;
             this.lvMensajes.View = System.Windows.Forms.View.Details;
+            this.lvMensajes.DoubleClick += new System.EventHandler(this.lvMensajes_DoubleClick);
             // 
             // clmRemitente
             // 
@@ -496,6 +499,13 @@
             this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
             this.bgwMessages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwMessages_RunWorkerCompleted);
             // 
+            // btnLeerMensajes
+            // 
+            this.btnLeerMensajes.Name = "btnLeerMensajes";
+            this.btnLeerMensajes.Size = new System.Drawing.Size(191, 22);
+            this.btnLeerMensajes.Text = "Leer mensaje(s)";
+            this.btnLeerMensajes.Click += new System.EventHandler(this.btnLeerMensajes_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -584,6 +594,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ToolStripMenuItem btnLeerMensajes;
     }
 }
 
