@@ -279,7 +279,7 @@ namespace GmailClient
         {
             foreach (ListViewItem item in lvMensajes.SelectedItems)
             {
-                (new frmView(mensajes[Convert.ToInt32(item.SubItems[3].Text) - 1])).Show();
+                (new frmView(this, mensajes[Convert.ToInt32(item.SubItems[3].Text) - 1])).Show();
             }
         }
 
