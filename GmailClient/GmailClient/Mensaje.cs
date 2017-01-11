@@ -17,5 +17,7 @@ namespace GmailClient
         public Boolean IsInbox { get; set; } = false;
         public Boolean IsSpam { get; set; } = false;
         public Boolean IsSent { get; set; } = false;
+        public Boolean IsSocial { get; set; } = false;
+        public Boolean IsPromotional { get; set; } = false;
     }
 }

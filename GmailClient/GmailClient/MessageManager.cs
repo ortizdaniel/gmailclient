@@ -125,6 +125,14 @@ public class MessageManager
 
             foreach(String l in m.LabelIds)
             {
+                if (l == "CATEGORY_SOCIAL")
+                {
+                    msg.IsSocial = true;
+                }
+                if (l == "CATEGORY_PROMOTIONS")
+                {
+                    msg.IsPromotional = true;
+                }
                 if (l == "INBOX")
                 {
                     msg.IsInbox = true;
