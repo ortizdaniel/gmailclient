@@ -273,7 +273,7 @@ namespace GmailClient
             for(int i = 0; i< lvMensajes.Items.Count; i++)
             {
                 Console.WriteLine(lvMensajes.Items[i].SubItems[3].Text);
-                if (lvMensajes.Items[i].SubItems[3].Text.Equals("true"))
+                if (lvMensajes.Items[i].SubItems[3].Text.Equals("True"))
                 {
                     lvMensajes.Items[i].Font = fontBold;
                     lvMensajes.Items[i].BackColor = Color.White;
