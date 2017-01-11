@@ -130,8 +130,7 @@ namespace GmailClient
             {
                 int messageNumber = lvMensajes.Items.IndexOf(lvMensajes.SelectedItems[i]);
                 //listaCorreos.Add(messageNumber);
-                lvMensajes.SelectedItems[i].BackColor = Color.DarkGray;
-                lvMensajes.SelectedItems[i].ForeColor = Color.White;
+                lvMensajes.SelectedItems[i].Remove();
                 MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
             }
             //ordenaCorreus(listaCorreos);
