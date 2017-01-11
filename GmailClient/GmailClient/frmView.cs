@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Google.Apis.Gmail.v1;
+using System;
 using System.Windows.Forms;
 
 namespace GmailClient
@@ -14,11 +8,13 @@ namespace GmailClient
     {
 
         private Mensaje m;
+        private frmPrincipal principal;
 
-        public frmView(Mensaje m)
+        public frmView(frmPrincipal principal, Mensaje m)
         {
             InitializeComponent();
             this.m = m;
+            this.principal = principal;
         }
 
         private void frmView_Load(object sender, EventArgs e)
@@ -31,6 +27,11 @@ namespace GmailClient
         private void btnMarcarComoLeido_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            principal.tsmiEliminar_Click(sender, e);
         }
     }
 }

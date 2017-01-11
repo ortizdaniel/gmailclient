@@ -129,7 +129,7 @@ namespace GmailClient
                 frm.ShowDialog();
         }
 
-        private void tsmiEliminar_Click(object sender, EventArgs e)
+        internal void tsmiEliminar_Click(object sender, EventArgs e)
         {
             for(int i = 0; i < lvMensajes.SelectedItems.Count; i++)
             {
