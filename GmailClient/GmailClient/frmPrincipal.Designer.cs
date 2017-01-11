@@ -265,7 +265,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -370,6 +370,7 @@
             this.lvMensajes.TabIndex = 2;
             this.lvMensajes.UseCompatibleStateImageBehavior = false;
             this.lvMensajes.View = System.Windows.Forms.View.Details;
+            this.lvMensajes.SelectedIndexChanged += new System.EventHandler(this.lvMensajes_SelectedIndexChanged_1);
             // 
             // clmRemitente
             // 
