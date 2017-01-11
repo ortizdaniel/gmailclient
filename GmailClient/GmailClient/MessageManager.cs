@@ -21,10 +21,11 @@ public class MessageManager
     /// <param name="userId">User's email address. The special value "me"
     /// can be used to indicate the authenticated user.</param>
     private static List<Thread> ListThreads(GmailService service, String userId, int numMessages)
-    {
+    {        
         List<Thread> result = new List<Thread>();
         UsersResource.ThreadsResource.ListRequest request = service.Users.Threads.List(userId);
         request.MaxResults = numMessages;
+        request.LabelIds = "INBOX";
         ListThreadsResponse response = request.Execute();
         result.AddRange(response.Threads);
 
@@ -74,21 +75,37 @@ public class MessageManager
     }
 
 
+    public static List<Message> ListMessages(GmailService service, String userId, int maxMessages, string[] labels, string query = null)
+    {
+        List<Message> result = new List<Message>();
+        UsersResource.MessagesResource.ListRequest request = service.Users.Messages.List(userId);
+        request.MaxResults = maxMessages;
+        request.LabelIds = new Google.Apis.Util.Repeatable<string>(labels);
+                ListMessagesResponse response = request.Execute();
+                result.AddRange(response.Messages);
+               
+
+        return result;
+    }
+
     /**
      * Obtiene todos los mensajes de un usuario (recibidos y enviados)
      * @return: lista de los mensajes
      * 
      */
-    public static List<Mensaje> getMensajes(String userId, GmailService service, int maxMensajes)
+    public static List<Mensaje> getMensajes(String userId, GmailService service, int maxMensajes, string[] labels)
     {
         List<Mensaje> mensajes = new List<Mensaje>();
 
-        List<Thread> threads = MessageManager.ListThreads(service, userId, maxMensajes);
-        foreach (Thread thread in threads)
+        List<Message> messages = ListMessages(service, userId, maxMensajes, labels);
+
+        int i = 0;
+        foreach (Message ms in messages)
         {
             Mensaje msg = new Mensaje();
-            Thread t = MessageManager.GetThread(service, userId, thread.Id);
-            Message m = MessageManager.GetMessage(service, userId, t.Id);
+           
+            Message m = service.Users.Messages.Get(userId, ms.Id).Execute();
+            
 
             foreach (MessagePartHeader h in m.Payload.Headers)
             {
@@ -107,32 +124,32 @@ public class MessageManager
                     msg.From = h.Value;
                 }
             }
-            
-            foreach (string labelId in m.LabelIds)
-            {
-                Label label = service.Users.Labels.Get(userId, labelId).Execute();
-                if (label.Name == "UNREAD")
-                {
-                    msg.IsUnread = true;
-                }
-                if (label.Name == "INBOX")
+            foreach (string l in labels) {
+                if (l == "INBOX")
                 {
                     msg.IsInbox = true;
                 }
-                if (label.Name == "SPAM")
+                if (l == "UNREAD")
+                {
+                    msg.IsUnread = true;
+                }
+                
+                if (l == "SPAM")
                 {
                     msg.IsSpam = true;
                 }
-                if (label.Name == "SENT")
+                if (l == "SENT")
                 {
                     msg.IsSent = true;
                 }
             }
+                   
             msg.MessageId = m.Id;
             msg.Body = m.Snippet;
-
+            
             mensajes.Add(msg);
         }
+        
         return mensajes;
     }
 

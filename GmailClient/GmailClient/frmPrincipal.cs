@@ -175,11 +175,21 @@ namespace GmailClient
 
         private void bgwMessages_DoWork(object sender, DoWorkEventArgs e)
         {
+                       
             int i = 1;
             addToProgress(10);
-            mensajes = MessageManager.getMensajes(userId, service,20);
+            mensajes = MessageManager.getMensajes(userId, service, 20, new string[] {"INBOX"});
             addToProgress(30);
             int differencePerMsg = 60 / (mensajes.Count);
+            this.Invoke(new MethodInvoker(delegate
+            {
+                try
+                {
+
+                    lvMensajes.BeginUpdate();
+                }
+                catch (ArgumentOutOfRangeException ex) { }
+            }));
             foreach (Mensaje m in mensajes)
             {
                 if (m.IsInbox)
@@ -207,6 +217,7 @@ namespace GmailClient
                         lvCorreosEnviados.Items.Add(lviSent);
                     }));
                 }
+                
                 if (m.IsSpam)
                 {
                     ListViewItem lviSpam = new ListViewItem(m.From);
@@ -214,14 +225,22 @@ namespace GmailClient
                     lviSpam.SubItems.Add(m.Body);
                     lviSpam.SubItems.Add(i.ToString());
                     lviSpam.SubItems.Add(m.IsUnread.ToString());
-                    this.Invoke(new MethodInvoker(delegate
-                    {
-                        lvSpam.Items.Add(lviSpam);
-                    }));
+                    
                 }
+                
                 i++;
             }
+            this.Invoke(new MethodInvoker(delegate
+            {
+                try
+                {
+                    lvMensajes.EndUpdate();
+                }
+                catch (ArgumentOutOfRangeException ex) { }
+            }));
+            
             addToProgress(100 - pgbProgreso.Value);
+            
         }
 
         private void bgwMessages_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -265,6 +284,11 @@ namespace GmailClient
             {
                 this.BackColor = dlg.Color;
             }
+        }
+
+        private void lvMensajes_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
