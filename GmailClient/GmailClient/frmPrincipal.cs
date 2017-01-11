@@ -125,12 +125,15 @@ namespace GmailClient
 
         internal void tsmiEliminar_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+            foreach (ListViewItem item in lvMensajes.SelectedItems)
             {
-                int messageNumber = lvMensajes.Items.IndexOf(lvMensajes.SelectedItems[i]);
-                //listaCorreos.Add(messageNumber);
-                lvMensajes.SelectedItems[i].Remove();
+                int messageNumber = lvMensajes.Items.IndexOf(item);
+                item.Remove();
                 MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
+                for (int i = messageNumber; i < mensajes.Count - 1; i++)
+                {
+                    mensajes[i] = mensajes[i + 1];
+                }
             }
         }
         
