@@ -77,6 +77,8 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
+            this.cbNumMensajes = new System.Windows.Forms.ComboBox();
+            this.lbNumMensajes = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -499,12 +501,44 @@
             this.bgwMessages.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwMessages_ProgressChanged);
             this.bgwMessages.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwMessages_RunWorkerCompleted);
             // 
+            // cbNumMensajes
+            // 
+            this.cbNumMensajes.FormattingEnabled = true;
+            this.cbNumMensajes.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "100"});
+            this.cbNumMensajes.Location = new System.Drawing.Point(658, 74);
+            this.cbNumMensajes.Name = "cbNumMensajes";
+            this.cbNumMensajes.Size = new System.Drawing.Size(64, 21);
+            this.cbNumMensajes.TabIndex = 14;
+            this.cbNumMensajes.SelectedIndexChanged += new System.EventHandler(this.cbNumMensajes_SelectedIndexChanged);
+            // 
+            // lbNumMensajes
+            // 
+            this.lbNumMensajes.AutoSize = true;
+            this.lbNumMensajes.Location = new System.Drawing.Point(501, 77);
+            this.lbNumMensajes.Name = "lbNumMensajes";
+            this.lbNumMensajes.Size = new System.Drawing.Size(151, 13);
+            this.lbNumMensajes.TabIndex = 15;
+            this.lbNumMensajes.Text = "Numero de mensajes a cargar:";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(734, 498);
+            this.Controls.Add(this.lbNumMensajes);
+            this.Controls.Add(this.cbNumMensajes);
             this.Controls.Add(this.tbcBandejas);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -585,6 +619,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ComboBox cbNumMensajes;
+        private System.Windows.Forms.Label lbNumMensajes;
     }
 }
 

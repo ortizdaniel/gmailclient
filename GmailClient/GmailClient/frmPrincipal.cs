@@ -19,10 +19,13 @@ namespace GmailClient
         GmailService service;
         string userId;
         List<Mensaje> mensajes;
+        int numeroMensajes = 0;
 
         public frmPrincipal(GmailService service, string userId)
         {
             InitializeComponent();
+            cbNumMensajes.SelectedItem = "20";
+            numeroMensajes = Convert.ToInt32(cbNumMensajes.SelectedItem);
             imLSGmail.BackColor = Color.Transparent;
             label1.BackColor = Color.Transparent;
             String userMail = Usuario.GetProfile(service, userId).EmailAddress;
@@ -172,9 +175,8 @@ namespace GmailClient
         private void bgwMessages_DoWork(object sender, DoWorkEventArgs e)
         {
                        
-            int i = 1;
             addToProgress(10);
-            mensajes = MessageManager.getMensajes(userId, service, 20);
+            mensajes = MessageManager.getMensajes(userId, service, numeroMensajes);
             addToProgress(30);
             int differencePerMsg = 60 / (mensajes.Count);
             this.Invoke(new MethodInvoker(delegate
@@ -330,6 +332,11 @@ namespace GmailClient
             lvCorreosEnviados.Columns[1].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.3f);
             lvCorreosEnviados.Columns[2].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.4f);
             lvCorreosEnviados.Columns[3].Width = 0;
+        }
+
+        private void cbNumMensajes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numeroMensajes = Convert.ToInt32(cbNumMensajes.SelectedItem);
         }
     }
 }
