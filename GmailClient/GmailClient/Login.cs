@@ -17,7 +17,8 @@ namespace GmailQuickstart
     {
         // If modifying these scopes, delete your previously saved credentials
         // at ~/.credentials/gmail-dotnet-quickstart.json
-        static string[] Scopes = { GmailService.Scope.GmailReadonly };
+        static string[] Scopes = { "https://mail.google.com/", "https://www.googleapis.com/auth/gmail.modify", "https://www.googleapis.com/auth/gmail.compose",
+                                    "https://www.googleapis.com/auth/gmail.send"};
         static string ApplicationName = "Gmail API .NET Quickstart";
 
         /**

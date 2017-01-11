@@ -18,6 +18,7 @@ namespace GmailClient
     {
         GmailService service;
         string userId;
+        List<Mensaje> mensajes;
 
         public frmPrincipal(GmailService service, string userId)
         {
@@ -133,19 +134,13 @@ namespace GmailClient
         {
             for(int i = 0; i < lvMensajes.SelectedItems.Count; i++)
             {
-                deleteMessage(lvMensajes.SelectedItems[i].SubItems[3].Text);
+                
+                int messageNumber = Convert.ToInt32(lvMensajes.SelectedItems[i].SubItems[3].Text) - 1;
+                Console.WriteLine("Num = {0} \n Id = {1} \n Text = {2}", messageNumber, mensajes[messageNumber].MessageId, mensajes[messageNumber].Body);
+                MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
             }
         }
-        private void deleteMessage( String messageId)
-        {
-            try
-            {
-                service.Users.Messages.Delete(userId, messageId).Execute();
-            }catch(Exception e)
-            {
-                Console.WriteLine("Error " + e.Message);
-            }
-        }
+        
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -182,10 +177,10 @@ namespace GmailClient
         {
             int i = 1;
             addToProgress(10);
-            List<Mensaje> msgs = MessageManager.getMensajes(userId, service,20);
+            mensajes = MessageManager.getMensajes(userId, service,20);
             addToProgress(30);
-            int differencePerMsg = 60 / (msgs.Count);
-            foreach (Mensaje m in msgs)
+            int differencePerMsg = 60 / (mensajes.Count);
+            foreach (Mensaje m in mensajes)
             {
                 if (m.IsInbox)
                 {

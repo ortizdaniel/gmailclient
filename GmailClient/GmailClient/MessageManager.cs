@@ -11,6 +11,7 @@ using System.Text;
 public class MessageManager
 {
 
+
     // ...
 
     /// <summary>
@@ -127,6 +128,7 @@ public class MessageManager
                     msg.IsSent = true;
                 }
             }
+            msg.MessageId = m.Id;
             msg.Body = m.Snippet;
 
             mensajes.Add(msg);
@@ -134,6 +136,18 @@ public class MessageManager
         return mensajes;
     }
 
+
+    public static void DeleteMessage(GmailService service, string userId, string messageId)
+    {
+        try
+        {
+            service.Users.Messages.Delete(userId, messageId).Execute();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error " + e.Message);
+        }
+    }
 
 
     /// <summary>
