@@ -40,21 +40,19 @@ namespace GmailClient
             this.userId = userId;
             /* Diseño de los objetos */
             this.BackColor = Color.LightGray;
-            lvMensajes.Columns[0].Width = 100;
-            lvMensajes.Columns[1].Width = 150;
-            lvMensajes.Columns[2].Width = 300;
+            lvMensajes.Columns[0].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
+            lvMensajes.Columns[1].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
+            lvMensajes.Columns[2].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.4f);
             lvMensajes.Columns[3].Width = 0;
-            lvMensajes.Columns[4].Width = 0;
-            lvSpam.Columns[0].Width = 100;
-            lvSpam.Columns[1].Width = 150;
-            lvSpam.Columns[2].Width = 300;
+            lvSpam.Columns[0].Width = Convert.ToInt32(lvSpam.Size.Width * 0.3f);
+            lvSpam.Columns[1].Width = Convert.ToInt32(lvSpam.Size.Width * 0.3f);
+            lvSpam.Columns[2].Width = Convert.ToInt32(lvSpam.Size.Width * 0.4f);
             lvSpam.Columns[3].Width = 0;
-            lvSpam.Columns[4].Width = 0;
-            lvCorreosEnviados.Columns[0].Width = 100;
-            lvCorreosEnviados.Columns[1].Width = 150;
-            lvCorreosEnviados.Columns[2].Width = 300;
+            lvCorreosEnviados.Columns[0].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.3f);
+            lvCorreosEnviados.Columns[1].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.3f);
+            lvCorreosEnviados.Columns[2].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.4f);
             lvCorreosEnviados.Columns[3].Width = 0;
-            lvCorreosEnviados.Columns[4].Width = 0;
+
             /* Carga mensajes */
             bgwMessages.RunWorkerAsync();
         }
@@ -192,7 +190,6 @@ namespace GmailClient
                     ListViewItem lvi = new ListViewItem(m.From);
                     lvi.SubItems.Add(m.Subject);
                     lvi.SubItems.Add(m.Body);
-                    lvi.SubItems.Add(i.ToString());
                     lvi.SubItems.Add(m.IsUnread.ToString());
                     this.Invoke(new MethodInvoker(delegate
                     {
@@ -205,7 +202,6 @@ namespace GmailClient
                     ListViewItem lviSent = new ListViewItem(m.From);
                     lviSent.SubItems.Add(m.Subject);
                     lviSent.SubItems.Add(m.Body);
-                    lviSent.SubItems.Add(i.ToString());
                     lviSent.SubItems.Add(m.IsUnread.ToString());
                     this.Invoke(new MethodInvoker(delegate
                     {
@@ -220,7 +216,6 @@ namespace GmailClient
                     ListViewItem lviSpam = new ListViewItem(m.From);
                     lviSpam.SubItems.Add(m.Subject);
                     lviSpam.SubItems.Add(m.Body);
-                    lviSpam.SubItems.Add(i.ToString());
                     lviSpam.SubItems.Add(m.IsUnread.ToString());
                     this.Invoke(new MethodInvoker(delegate
                     {
@@ -228,8 +223,6 @@ namespace GmailClient
                     }));
                     if (m.IsUnread) { lviSpam.SubItems[lviSpam.SubItems.Count].BackColor = Color.White; }
                 }
-                
-                i++;
             }
             this.Invoke(new MethodInvoker(delegate
             {
@@ -299,7 +292,7 @@ namespace GmailClient
         {
             foreach (ListViewItem item in lvMensajes.SelectedItems)
             {
-                (new frmView(this, mensajes[Convert.ToInt32(item.SubItems[3].Text) - 1])).Show();
+                (new frmView(this, mensajes[lvMensajes.Items.IndexOf(item)])).Show();
             }
         }
 
@@ -311,6 +304,22 @@ namespace GmailClient
         private void tsmiMarcarLeido_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmPrincipal_SizeChanged(object sender, EventArgs e)
+        {
+            lvMensajes.Columns[0].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
+            lvMensajes.Columns[1].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
+            lvMensajes.Columns[2].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.4f);
+            lvMensajes.Columns[3].Width = 0;
+            lvSpam.Columns[0].Width = Convert.ToInt32(lvSpam.Size.Width * 0.3f);
+            lvSpam.Columns[1].Width = Convert.ToInt32(lvSpam.Size.Width * 0.3f);
+            lvSpam.Columns[2].Width = Convert.ToInt32(lvSpam.Size.Width * 0.4f);
+            lvSpam.Columns[3].Width = 0;
+            lvCorreosEnviados.Columns[0].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.3f);
+            lvCorreosEnviados.Columns[1].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.3f);
+            lvCorreosEnviados.Columns[2].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.4f);
+            lvCorreosEnviados.Columns[3].Width = 0;
         }
     }
 }
