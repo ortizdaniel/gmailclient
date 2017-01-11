@@ -267,7 +267,6 @@ namespace GmailClient
                 this.BackColor = dlg.Color;
             }
         }
-<<<<<<< HEAD
         private void ordenaCorreus(List<int> lista)
         {
             for(int i = lista[0]; i < lista.Count(); i++) 
@@ -275,7 +274,6 @@ namespace GmailClient
 
             }
         }
-=======
 
         private void lvMensajes_DoubleClick(object sender, EventArgs e)
         {
@@ -289,6 +287,5 @@ namespace GmailClient
         {
             lvMensajes_DoubleClick(sender, e);
         }
->>>>>>> 09ba677063206a4d3b68f204901fdeb64fb90f42
     }
 }
