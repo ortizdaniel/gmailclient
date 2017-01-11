@@ -19,6 +19,8 @@ namespace GmailClient
         public frmRedactar()
         {
             InitializeComponent();
+            btnBold.BackColor = Color.LightGray;
+            btnUnderline.BackColor = Color.LightGray;
             cbFont.SelectedItem = "Microsoft Sans Serif";
             cbSize.SelectedItem = "10";
             size = Int32.Parse(cbSize.SelectedItem.ToString());
@@ -50,15 +52,45 @@ namespace GmailClient
 
         private void btnBold_Click(object sender, EventArgs e)
         {
-            //Console.Write(tbContenido.SelectedText.ToString());
             bold = !bold;
-            //if(richTextBox1.SelectionFont.Bold)
-            //if(tbContenido.SelectionFont.
+            if (underline)
+            {
+                btnUnderline.BackColor = Color.LightGray;
+                underline = false;
+            }
+            if (bold)
+            {
+                btnBold.BackColor = Color.Gray;
+                Font font = new Font(rtbContenido.Font, FontStyle.Bold);
+                rtbContenido.Font = font;
+            }else
+            {
+                btnBold.BackColor = Color.LightGray;
+                Font font = new Font(rtbContenido.Font, FontStyle.Regular);
+                rtbContenido.Font = font;
+            }
         }
 
         private void btnUnderline_Click(object sender, EventArgs e)
         {
             underline = !underline;
+            if (bold)
+            {
+                btnBold.BackColor = Color.LightGray;
+                bold = false;
+            }
+            if (underline)
+            {
+                btnUnderline.BackColor = Color.Gray;
+                Font font = new Font(rtbContenido.Font, FontStyle.Underline);
+                rtbContenido.Font = font;
+            }
+            else
+            {
+                btnUnderline.BackColor = Color.LightGray;
+                Font font = new Font(rtbContenido.Font, FontStyle.Regular);
+                rtbContenido.Font = font;
+            }
         }
 
         private void cbSize_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,7 +106,6 @@ namespace GmailClient
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(rtbContenido.SelectedText);//testing
         }
     }
 }
