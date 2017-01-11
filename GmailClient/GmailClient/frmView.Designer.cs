@@ -150,10 +150,10 @@
             this.txtAsunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAsunto.BackColor = System.Drawing.Color.White;
-            this.txtAsunto.Location = new System.Drawing.Point(61, 27);
+            this.txtAsunto.Location = new System.Drawing.Point(76, 27);
             this.txtAsunto.Name = "txtAsunto";
             this.txtAsunto.ReadOnly = true;
-            this.txtAsunto.Size = new System.Drawing.Size(526, 20);
+            this.txtAsunto.Size = new System.Drawing.Size(511, 20);
             this.txtAsunto.TabIndex = 14;
             // 
             // txtRemitente
