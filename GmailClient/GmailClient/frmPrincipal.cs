@@ -207,10 +207,8 @@ namespace GmailClient
                     lviSent.SubItems.Add(m.IsUnread.ToString());
                     this.Invoke(new MethodInvoker(delegate
                     {
-
                         lvCorreosEnviados.Items.Add(lviSent);
                     }));
-                    if (m.IsUnread) { lviSent.SubItems[i-1].BackColor = Color.White; }
                 }
                 
                 if (m.IsSpam)
@@ -223,7 +221,6 @@ namespace GmailClient
                     {
                         lvSpam.Items.Add(lviSpam);
                     }));
-                    if (m.IsUnread) { lviSpam.SubItems[lviSpam.SubItems.Count].BackColor = Color.White; }
                 }
             }
             this.Invoke(new MethodInvoker(delegate
@@ -271,6 +268,16 @@ namespace GmailClient
         private void bgwMessages_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             pgbProgreso.Value = 0;
+            Font fontBold = new Font(lvMensajes.Font, FontStyle.Bold);
+            for(int i = 0; i< lvMensajes.Items.Count; i++)
+            {
+                Console.WriteLine(lvMensajes.Items[i].SubItems[3].Text);
+                if (lvMensajes.Items[i].SubItems[3].Text.Equals("true"))
+                {
+                    lvMensajes.Items[i].Font = fontBold;
+                    lvMensajes.Items[i].BackColor = Color.White;
+                }
+            }
         }
 
         private void tsmiColorFondo_Click(object sender, EventArgs e)
@@ -303,7 +310,7 @@ namespace GmailClient
             lvMensajes_DoubleClick(sender, e);
         }
 
-        private void tsmiMarcarLeido_Click(object sender, EventArgs e)
+        public void tsmiMarcarLeido_Click(object sender, EventArgs e)
         {
 
         }
