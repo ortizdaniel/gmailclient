@@ -204,6 +204,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -321,6 +322,9 @@
             // 
             // tbcBandejas
             // 
+            this.tbcBandejas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbcBandejas.Controls.Add(this.tbpBandejaEntrada);
             this.tbcBandejas.Controls.Add(this.tbpSpam);
             this.tbcBandejas.Controls.Add(this.tbpEnviados);
@@ -344,6 +348,9 @@
             // 
             // lvMensajes
             // 
+            this.lvMensajes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvMensajes.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lvMensajes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmRemitente,
@@ -426,6 +433,9 @@
             // 
             // lvSpam
             // 
+            this.lvSpam.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvSpam.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lvSpam.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -469,6 +479,9 @@
             // 
             // lvCorreosEnviados
             // 
+            this.lvCorreosEnviados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvCorreosEnviados.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lvCorreosEnviados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader6,
@@ -523,7 +536,6 @@
             this.Controls.Add(this.imLSGmail);
             this.Controls.Add(this.btnRedactar);
             this.Controls.Add(this.btnActualizar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmPrincipal";
