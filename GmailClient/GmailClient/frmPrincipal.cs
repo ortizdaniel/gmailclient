@@ -86,10 +86,10 @@ namespace GmailClient
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            lvMensajes.Clear();
+            lvMensajes.Items.Clear();
             if (bgwMessages.IsBusy)
             {
-                MessageBox.Show(this, "Espera, que sigo trabajando!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(this, "Proceso en marcha espera a que termine", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
