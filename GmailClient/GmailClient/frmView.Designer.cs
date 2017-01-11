@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtContenido = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnMarcarComoLeido = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMarcarComoNoLeido = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,25 +36,14 @@
             this.btnReenviar = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtAsunto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtRemitente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtContenido = new System.Windows.Forms.TextBox();
+            this.txtAsunto = new System.Windows.Forms.TextBox();
+            this.txtRemitente = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtContenido
-            // 
-            this.txtContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContenido.BackColor = System.Drawing.Color.White;
-            this.txtContenido.Location = new System.Drawing.Point(12, 92);
-            this.txtContenido.Multiline = true;
-            this.txtContenido.Name = "txtContenido";
-            this.txtContenido.ReadOnly = true;
-            this.txtContenido.Size = new System.Drawing.Size(575, 365);
-            this.txtContenido.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -119,17 +107,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Contenido:";
             // 
-            // txtAsunto
-            // 
-            this.txtAsunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAsunto.BackColor = System.Drawing.Color.White;
-            this.txtAsunto.Location = new System.Drawing.Point(61, 27);
-            this.txtAsunto.Name = "txtAsunto";
-            this.txtAsunto.ReadOnly = true;
-            this.txtAsunto.Size = new System.Drawing.Size(526, 20);
-            this.txtAsunto.TabIndex = 6;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -138,17 +115,6 @@
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Asunto:";
-            // 
-            // txtRemitente
-            // 
-            this.txtRemitente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRemitente.BackColor = System.Drawing.Color.White;
-            this.txtRemitente.Location = new System.Drawing.Point(76, 53);
-            this.txtRemitente.Name = "txtRemitente";
-            this.txtRemitente.ReadOnly = true;
-            this.txtRemitente.Size = new System.Drawing.Size(511, 20);
-            this.txtRemitente.TabIndex = 8;
             // 
             // label1
             // 
@@ -159,17 +125,60 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Remitente:";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(200, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(10, 20);
+            this.textBox1.TabIndex = 12;
+            // 
+            // txtContenido
+            // 
+            this.txtContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtContenido.BackColor = System.Drawing.Color.White;
+            this.txtContenido.Location = new System.Drawing.Point(12, 92);
+            this.txtContenido.Multiline = true;
+            this.txtContenido.Name = "txtContenido";
+            this.txtContenido.ReadOnly = true;
+            this.txtContenido.Size = new System.Drawing.Size(575, 365);
+            this.txtContenido.TabIndex = 13;
+            // 
+            // txtAsunto
+            // 
+            this.txtAsunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAsunto.BackColor = System.Drawing.Color.White;
+            this.txtAsunto.Location = new System.Drawing.Point(61, 27);
+            this.txtAsunto.Name = "txtAsunto";
+            this.txtAsunto.ReadOnly = true;
+            this.txtAsunto.Size = new System.Drawing.Size(526, 20);
+            this.txtAsunto.TabIndex = 14;
+            // 
+            // txtRemitente
+            // 
+            this.txtRemitente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRemitente.BackColor = System.Drawing.Color.White;
+            this.txtRemitente.Location = new System.Drawing.Point(76, 53);
+            this.txtRemitente.Name = "txtRemitente";
+            this.txtRemitente.ReadOnly = true;
+            this.txtRemitente.Size = new System.Drawing.Size(511, 20);
+            this.txtRemitente.TabIndex = 15;
+            // 
             // frmView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 469);
             this.Controls.Add(this.txtRemitente);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtAsunto);
+            this.Controls.Add(this.txtContenido);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtContenido);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmView";
@@ -184,8 +193,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtContenido;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem btnMarcarComoLeido;
         private System.Windows.Forms.ToolStripMenuItem btnMarcarComoNoLeido;
@@ -194,9 +201,11 @@
         private System.Windows.Forms.ToolStripMenuItem btnEliminar;
         private System.Windows.Forms.ToolStripMenuItem btnMarcarComoSpam;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtAsunto;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtRemitente;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtContenido;
+        private System.Windows.Forms.TextBox txtAsunto;
+        private System.Windows.Forms.TextBox txtRemitente;
     }
 }
