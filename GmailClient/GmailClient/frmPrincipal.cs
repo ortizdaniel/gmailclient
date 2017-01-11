@@ -174,7 +174,7 @@ namespace GmailClient
                        
             int i = 1;
             addToProgress(10);
-            mensajes = MessageManager.getMensajes(userId, service, 20, new string[] {"INBOX"});
+            mensajes = MessageManager.getMensajes(userId, service, 20);
             addToProgress(30);
             int differencePerMsg = 60 / (mensajes.Count);
             this.Invoke(new MethodInvoker(delegate

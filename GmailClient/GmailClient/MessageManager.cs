@@ -75,15 +75,13 @@ public class MessageManager
     }
 
 
-    public static List<Message> ListMessages(GmailService service, String userId, int maxMessages, string[] labels, string query = null)
+    public static List<Message> ListMessages(GmailService service, String userId, int maxMessages, string query = null)
     {
         List<Message> result = new List<Message>();
         UsersResource.MessagesResource.ListRequest request = service.Users.Messages.List(userId);
-        request.MaxResults = maxMessages;
-        request.LabelIds = new Google.Apis.Util.Repeatable<string>(labels);
-                ListMessagesResponse response = request.Execute();
-                result.AddRange(response.Messages);
-               
+        request.MaxResults = maxMessages;        
+        ListMessagesResponse response = request.Execute();
+        result.AddRange(response.Messages);               
 
         return result;
     }
@@ -93,11 +91,11 @@ public class MessageManager
      * @return: lista de los mensajes
      * 
      */
-    public static List<Mensaje> getMensajes(String userId, GmailService service, int maxMensajes, string[] labels)
+    public static List<Mensaje> getMensajes(String userId, GmailService service, int maxMensajes)
     {
         List<Mensaje> mensajes = new List<Mensaje>();
 
-        List<Message> messages = ListMessages(service, userId, maxMensajes, labels);
+        List<Message> messages = ListMessages(service, userId, maxMensajes);
 
         int i = 0;
         foreach (Message ms in messages)
@@ -124,7 +122,9 @@ public class MessageManager
                     msg.From = h.Value;
                 }
             }
-            foreach (string l in labels) {
+
+            foreach(String l in m.LabelIds)
+            {
                 if (l == "INBOX")
                 {
                     msg.IsInbox = true;
@@ -133,7 +133,7 @@ public class MessageManager
                 {
                     msg.IsUnread = true;
                 }
-                
+
                 if (l == "SPAM")
                 {
                     msg.IsSpam = true;
