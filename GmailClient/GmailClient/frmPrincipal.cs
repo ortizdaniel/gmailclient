@@ -55,10 +55,6 @@ namespace GmailClient
             lvCorreosEnviados.Columns[2].Width = 300;
             lvCorreosEnviados.Columns[3].Width = 0;
             lvCorreosEnviados.Columns[4].Width = 0;
-            for (int i = 0; i < lvMensajes.Items.Count;i++)
-            {
-                lvMensajes.Items[i].BackColor = Color.Gray;
-            }
             /* Carga mensajes */
             bgwMessages.RunWorkerAsync();
         }
@@ -124,13 +120,16 @@ namespace GmailClient
 
         private void tsmiEliminar_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+            //List<int> listaCorreos = new List<int>();
+            for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
             {
-                
                 int messageNumber = Convert.ToInt32(lvMensajes.SelectedItems[i].SubItems[3].Text) - 1;
-                Console.WriteLine("Num = {0} \n Id = {1} \n Text = {2}", messageNumber, mensajes[messageNumber].MessageId, mensajes[messageNumber].Body);
+                //listaCorreos.Add(messageNumber);
+                lvMensajes.SelectedItems[i].BackColor = Color.DarkGray;
+                lvMensajes.SelectedItems[i].ForeColor = Color.White;
                 MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
             }
+            //ordenaCorreus(listaCorreos);
         }
         
 
@@ -185,6 +184,7 @@ namespace GmailClient
                     {
                         lvMensajes.Items.Add(lvi);
                     }));
+
                 }
                 if (m.IsSent)
                 {
@@ -198,6 +198,7 @@ namespace GmailClient
 
                         lvCorreosEnviados.Items.Add(lviSent);
                     }));
+                    if (m.IsUnread) { lviSent.SubItems[i-1].BackColor = Color.White; }
                 }
                 if (m.IsSpam)
                 {
@@ -210,6 +211,7 @@ namespace GmailClient
                     {
                         lvSpam.Items.Add(lviSpam);
                     }));
+                    if (m.IsUnread) { lviSpam.SubItems[lviSpam.SubItems.Count].BackColor = Color.White; }
                 }
                 i++;
             }
@@ -256,6 +258,13 @@ namespace GmailClient
             if(dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 this.BackColor = dlg.Color;
+            }
+        }
+        private void ordenaCorreus(List<int> lista)
+        {
+            for(int i = lista[0]; i < lista.Count(); i++) 
+            {
+
             }
         }
     }
