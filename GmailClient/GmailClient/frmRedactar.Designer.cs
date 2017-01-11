@@ -109,7 +109,7 @@
             "12",
             "14",
             "16"});
-            this.cbSize.Location = new System.Drawing.Point(140, 3);
+            this.cbSize.Location = new System.Drawing.Point(139, 3);
             this.cbSize.Name = "cbSize";
             this.cbSize.Size = new System.Drawing.Size(40, 21);
             this.cbSize.TabIndex = 6;
@@ -132,7 +132,7 @@
             // btnBold
             // 
             this.btnBold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBold.Location = new System.Drawing.Point(192, 3);
+            this.btnBold.Location = new System.Drawing.Point(191, 3);
             this.btnBold.Name = "btnBold";
             this.btnBold.Size = new System.Drawing.Size(28, 25);
             this.btnBold.TabIndex = 8;
@@ -143,7 +143,7 @@
             // btnUnderline
             // 
             this.btnUnderline.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUnderline.Location = new System.Drawing.Point(231, 3);
+            this.btnUnderline.Location = new System.Drawing.Point(230, 3);
             this.btnUnderline.Name = "btnUnderline";
             this.btnUnderline.Size = new System.Drawing.Size(28, 25);
             this.btnUnderline.TabIndex = 9;
@@ -178,7 +178,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.51323F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
             this.tableLayoutPanel1.Controls.Add(this.cbFont, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbSize, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnBold, 2, 0);
@@ -226,7 +226,7 @@
             this.Controls.Add(this.lblContenido);
             this.Controls.Add(this.lblDestinatario);
             this.Name = "frmRedactar";
-            this.Text = "frmRedactar";
+            this.Text = "Redactar mensaje";
             this.Load += new System.EventHandler(this.frmRedactar_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).EndInit();
