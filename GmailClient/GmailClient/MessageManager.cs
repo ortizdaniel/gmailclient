@@ -158,7 +158,7 @@ public class MessageManager
     {
         try
         {
-            service.Users.Messages.Delete(userId, messageId).Execute();
+            service.Users.Messages.Trash(userId, messageId).Execute();
         }
         catch (Exception e)
         {
