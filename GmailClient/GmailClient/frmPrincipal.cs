@@ -20,6 +20,7 @@ namespace GmailClient
         string userId;
         List<Mensaje> mensajes;
         int numeroMensajes = 0;
+        Font fontBasica;
 
         public frmPrincipal(GmailService service, string userId)
         {
@@ -52,10 +53,12 @@ namespace GmailClient
             lvSpam.Columns[1].Width = Convert.ToInt32(lvSpam.Size.Width * 0.3f);
             lvSpam.Columns[2].Width = Convert.ToInt32(lvSpam.Size.Width * 0.4f);
             lvSpam.Columns[3].Width = 0;
+            lvSpam.Columns[4].Width = 0;
             lvCorreosEnviados.Columns[0].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.3f);
             lvCorreosEnviados.Columns[1].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.3f);
             lvCorreosEnviados.Columns[2].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.4f);
             lvCorreosEnviados.Columns[3].Width = 0;
+            lvCorreosEnviados.Columns[4].Width = 0;
 
             /* Carga mensajes */
             bgwMessages.RunWorkerAsync();
@@ -276,11 +279,29 @@ namespace GmailClient
             Font fontBold = new Font(lvMensajes.Font, FontStyle.Bold);
             for(int i = 0; i< lvMensajes.Items.Count; i++)
             {
-                Console.WriteLine(lvMensajes.Items[i].SubItems[3].Text);
                 if (lvMensajes.Items[i].SubItems[3].Text.Equals("True"))
                 {
                     lvMensajes.Items[i].Font = fontBold;
                     lvMensajes.Items[i].BackColor = Color.White;
+                }else
+                {
+                    fontBasica = lvMensajes.Items[i].Font;
+                }
+            }
+            for (int i = 0; i < lvSpam.Items.Count; i++)
+            {
+                if (lvSpam.Items[i].SubItems[3].Text.Equals("True"))
+                {
+                    lvSpam.Items[i].Font = fontBold;
+                    lvSpam.Items[i].BackColor = Color.White;
+                }
+            }
+            for (int i = 0; i < lvCorreosEnviados.Items.Count; i++)
+            {
+                if (lvCorreosEnviados.Items[i].SubItems[3].Text.Equals("True"))
+                {
+                    lvCorreosEnviados.Items[i].Font = fontBold;
+                    lvCorreosEnviados.Items[i].BackColor = Color.White;
                 }
             }
         }
@@ -325,6 +346,34 @@ namespace GmailClient
 
         public void tsmiMarcarLeido_Click(object sender, EventArgs e)
         {
+            List<String> listaMensajes = new List<string>();
+            listaMensajes.Add("UNREAD");
+            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada")) {
+                for (int i = 0; i<lvMensajes.SelectedItems.Count; i++)
+                {
+                    MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text,null,listaMensajes);
+                    lvMensajes.SelectedItems[i].Font = fontBasica;
+                    lvMensajes.SelectedItems[i].BackColor = Color.LightGray;
+                }
+            }
+            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
+            {
+                for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
+                {
+                    MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, null, listaMensajes);
+                    lvSpam.SelectedItems[i].Font = fontBasica;
+                    lvSpam.SelectedItems[i].BackColor = Color.LightGray;
+                }
+            }
+            if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
+            {
+                for (int i = 0; i < lvCorreosEnviados.SelectedItems.Count; i++)
+                {
+                    MessageManager.ModifyMessage(service, userId, lvCorreosEnviados.SelectedItems[i].SubItems[4].Text, null, listaMensajes);
+                    lvCorreosEnviados.SelectedItems[i].Font = fontBasica;
+                    lvCorreosEnviados.SelectedItems[i].BackColor = Color.LightGray;
+                }
+            }
 
         }
 
@@ -347,6 +396,39 @@ namespace GmailClient
         private void cbNumMensajes_SelectedIndexChanged(object sender, EventArgs e)
         {
             numeroMensajes = Convert.ToInt32(cbNumMensajes.SelectedItem);
+        }
+
+        private void tsmiMarcarNoLeido_Click(object sender, EventArgs e)
+        {
+            List<String> listaMensajes = new List<string>();
+            listaMensajes.Add("UNREAD");
+            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
+            {
+                for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+                {
+                    MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                    lvMensajes.Items[i].Font = new Font (lvMensajes.Items[i].Font,FontStyle.Bold);
+                    lvMensajes.Items[i].BackColor = Color.White;
+                }
+            }
+            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
+            {
+                for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
+                {
+                    MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                    lvSpam.Items[i].Font = new Font(lvSpam.Items[i].Font, FontStyle.Bold);
+                    lvSpam.Items[i].BackColor = Color.White;
+                }
+            }
+            if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
+            {
+                for (int i = 0; i < lvCorreosEnviados.SelectedItems.Count; i++)
+                {
+                    MessageManager.ModifyMessage(service, userId, lvCorreosEnviados.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                    lvCorreosEnviados.Items[i].Font = new Font(lvCorreosEnviados.Items[i].Font, FontStyle.Bold);
+                    lvCorreosEnviados.Items[i].BackColor = Color.White;
+                }
+            }
         }
     }
 }
