@@ -30,8 +30,10 @@ namespace GmailClient
                 if (Login.isLogged())
                 {
                     service = Login.DoLogin();
-                    Application.Run(new frmPrincipal(service, "me"));
+               // MessageManager.SendMessage("me", "dortiziriarte@gmail.com", "tehakeo", "probar", service);
+                Application.Run(new frmPrincipal(service, "me"));
                 }
+             
             
             //Se mira si no hay ningun archivo de login
             

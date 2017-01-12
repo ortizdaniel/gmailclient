@@ -4,6 +4,7 @@ using Google.Apis.Gmail.v1.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Mail;
 using System.Text;
 
 // ...
@@ -31,6 +32,40 @@ public class MessageManager
 
         return result;
     }
+
+    private static string Base64UrlEncode(string input)
+    {
+        var inputBytes = System.Text.Encoding.UTF8.GetBytes(input);
+        // Special "url-safe" base64 encode.
+        return Convert.ToBase64String(inputBytes)
+          .Replace('+', '-')
+          .Replace('/', '_')
+          .Replace("=", "");
+    }
+
+    public static void SendMessage(string userId, string destinatario, string mensaje, string asunto, GmailService s)
+    {
+        var msg = new AE.Net.Mail.MailMessage
+        {
+            Subject = asunto,
+            Body = mensaje,
+            From = new MailAddress(Usuario.GetProfile(s, userId).EmailAddress)
+        };
+        msg.To.Add(new MailAddress(destinatario));
+        msg.ReplyTo.Add(msg.From); // Bounces without this!!
+        var msgStr = new StringWriter();
+        msg.Save(msgStr);
+        
+        var result = s.Users.Messages.Send(new Message
+        {
+            Raw = Base64UrlEncode(msgStr.ToString())
+        }, "me").Execute();
+    }
+    
+
+    
+
+
 
     /// <summary>
     /// Get a Thread with given ID.
