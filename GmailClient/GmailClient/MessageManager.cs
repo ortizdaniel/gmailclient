@@ -246,5 +246,23 @@ public class MessageManager
         }
         return null;
     }
+    public static Message ModifyMessage(GmailService service, String userId,
+      String messageId, List<String> labelsToAdd, List<String> labelsToRemove)
+    {
+        ModifyMessageRequest mods = new ModifyMessageRequest();
+        mods.AddLabelIds = labelsToAdd;
+        mods.RemoveLabelIds = labelsToRemove;
+
+        try
+        {
+            return service.Users.Messages.Modify(mods, userId, messageId).Execute();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("An error occurred: " + e.Message);
+        }
+
+        return null;
+    }
 
 }

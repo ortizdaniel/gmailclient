@@ -64,12 +64,13 @@
             this.clmAsunto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPreview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmUnseen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbpSpam = new System.Windows.Forms.TabPage();
             this.lvSpam = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmRemitenteSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmAsuntoSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmContenidoSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmUnseenSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbpEnviados = new System.Windows.Forms.TabPage();
             this.lvCorreosEnviados = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -79,7 +80,8 @@
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.cbNumMensajes = new System.Windows.Forms.ComboBox();
             this.lbNumMensajes = new System.Windows.Forms.Label();
-            this.clmId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmIdMessageSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -101,7 +103,7 @@
             this.tsmiMarcarLeido,
             this.tsmiMarcarNoLeido});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 158);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // btnLeerMensajes
@@ -119,7 +121,6 @@
             this.tsmiResponder.Name = "tsmiResponder";
             this.tsmiResponder.Size = new System.Drawing.Size(191, 22);
             this.tsmiResponder.Text = "Responder";
-            this.tsmiResponder.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // tsmiResponderRemitente
             // 
@@ -158,6 +159,7 @@
             this.tsmiMarcarNoLeido.Name = "tsmiMarcarNoLeido";
             this.tsmiMarcarNoLeido.Size = new System.Drawing.Size(191, 22);
             this.tsmiMarcarNoLeido.Text = "Marcar como no leído";
+            this.tsmiMarcarNoLeido.Click += new System.EventHandler(this.tsmiMarcarNoLeido_Click);
             // 
             // btnActualizar
             // 
@@ -222,7 +224,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(146, 35);
             this.tableLayoutPanel1.TabIndex = 10;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // statusStrip1
             // 
@@ -351,7 +352,6 @@
             this.tbpBandejaEntrada.TabIndex = 0;
             this.tbpBandejaEntrada.Text = "Bandeja de entrada";
             this.tbpBandejaEntrada.UseVisualStyleBackColor = true;
-            this.tbpBandejaEntrada.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // lvMensajes
             // 
@@ -413,10 +413,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvSpam.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lvSpam.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader5});
+            this.clmRemitenteSpam,
+            this.clmAsuntoSpam,
+            this.clmContenidoSpam,
+            this.clmUnseenSpam,
+            this.clmIdMessageSpam});
             this.lvSpam.ContextMenuStrip = this.contextMenuStrip1;
             this.lvSpam.FullRowSelect = true;
             this.lvSpam.GridLines = true;
@@ -427,24 +428,24 @@
             this.lvSpam.UseCompatibleStateImageBehavior = false;
             this.lvSpam.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
+            // clmRemitenteSpam
             // 
-            this.columnHeader1.Text = "Remitente";
-            this.columnHeader1.Width = 154;
+            this.clmRemitenteSpam.Text = "Remitente";
+            this.clmRemitenteSpam.Width = 154;
             // 
-            // columnHeader2
+            // clmAsuntoSpam
             // 
-            this.columnHeader2.Text = "Asunto";
-            this.columnHeader2.Width = 168;
+            this.clmAsuntoSpam.Text = "Asunto";
+            this.clmAsuntoSpam.Width = 168;
             // 
-            // columnHeader3
+            // clmContenidoSpam
             // 
-            this.columnHeader3.Text = "Contenido";
-            this.columnHeader3.Width = 340;
+            this.clmContenidoSpam.Text = "Contenido";
+            this.clmContenidoSpam.Width = 340;
             // 
-            // columnHeader5
+            // clmUnseenSpam
             // 
-            this.columnHeader5.Text = "Unseen";
+            this.clmUnseenSpam.Text = "Unseen";
             // 
             // tbpEnviados
             // 
@@ -467,7 +468,8 @@
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader8,
-            this.columnHeader10});
+            this.columnHeader10,
+            this.columnHeader1});
             this.lvCorreosEnviados.ContextMenuStrip = this.contextMenuStrip1;
             this.lvCorreosEnviados.FullRowSelect = true;
             this.lvCorreosEnviados.GridLines = true;
@@ -533,6 +535,10 @@
             this.lbNumMensajes.TabIndex = 15;
             this.lbNumMensajes.Text = "Numero de mensajes a cargar:";
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,8 +559,7 @@
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GmailClient";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.SizeChanged += new System.EventHandler(this.frmPrincipal_SizeChanged);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).EndInit();
@@ -612,10 +617,10 @@
         private System.Windows.Forms.ColumnHeader clmUnseen;
         private System.Windows.Forms.ToolStripMenuItem btnLeerMensajes;
         private System.Windows.Forms.ListView lvSpam;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader clmRemitenteSpam;
+        private System.Windows.Forms.ColumnHeader clmAsuntoSpam;
+        private System.Windows.Forms.ColumnHeader clmContenidoSpam;
+        private System.Windows.Forms.ColumnHeader clmUnseenSpam;
         private System.Windows.Forms.ListView lvCorreosEnviados;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
@@ -624,6 +629,8 @@
         private System.Windows.Forms.ComboBox cbNumMensajes;
         private System.Windows.Forms.Label lbNumMensajes;
         private System.Windows.Forms.ColumnHeader clmId;
+        private System.Windows.Forms.ColumnHeader clmIdMessageSpam;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Apis.Gmail.v1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,12 @@ namespace GmailClient
 {
     public partial class frmRedactar : Form
     {
-        private Boolean bold = false;
-        private Boolean underline = false;
+        private bool bold = false;
+        private bool underline = false;
         int size = 10;
+        private GmailService service;
 
-        public frmRedactar()
+        public frmRedactar(GmailService service)
         {
             InitializeComponent();
             btnBold.BackColor = Color.LightGray;
@@ -27,6 +29,7 @@ namespace GmailClient
             Font font = new Font(cbFont.SelectedItem.ToString(), size);
             tbAsunto.Font = font;
             tbDestinatario.Font = font;
+            this.service = service;
         }
 
         private void frmRedactar_Load(object sender, EventArgs e)

@@ -12,6 +12,7 @@ using Google.Apis.Services;
 using Google.Apis.Requests;
 using System.Net.Http;
 using System.Net.Mail;
+using System.Windows.Forms;
 
 namespace GmailClient
 {
@@ -19,7 +20,15 @@ namespace GmailClient
     {
         public static Profile GetProfile(GmailService service, string userId)
         {
-            Profile p = service.Users.GetProfile(userId).Execute();
+            Profile p = null;
+            try
+            {
+                p = service.Users.GetProfile(userId).Execute();
+            } catch (HttpRequestException ex)
+            {
+                MessageBox.Show("Error al crear petición con internet. Deteniendo ejecución", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
             return p;
         }
     }

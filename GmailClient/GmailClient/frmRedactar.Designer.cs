@@ -132,7 +132,7 @@
             // btnBold
             // 
             this.btnBold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBold.Location = new System.Drawing.Point(191, 3);
+            this.btnBold.Location = new System.Drawing.Point(190, 3);
             this.btnBold.Name = "btnBold";
             this.btnBold.Size = new System.Drawing.Size(28, 25);
             this.btnBold.TabIndex = 8;
@@ -143,7 +143,7 @@
             // btnUnderline
             // 
             this.btnUnderline.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUnderline.Location = new System.Drawing.Point(230, 3);
+            this.btnUnderline.Location = new System.Drawing.Point(229, 3);
             this.btnUnderline.Name = "btnUnderline";
             this.btnUnderline.Size = new System.Drawing.Size(28, 25);
             this.btnUnderline.TabIndex = 9;
@@ -153,7 +153,7 @@
             // 
             // btnEnviar
             // 
-            this.btnEnviar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEnviar.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnEnviar.Location = new System.Drawing.Point(334, 19);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(128, 34);
@@ -178,7 +178,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.51323F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
             this.tableLayoutPanel1.Controls.Add(this.cbFont, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbSize, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnBold, 2, 0);
