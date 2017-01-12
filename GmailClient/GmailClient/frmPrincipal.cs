@@ -371,7 +371,7 @@ namespace GmailClient
             numeroMensajes = Convert.ToInt32(cbNumMensajes.SelectedItem);
         }
 
-        private void tsmiMarcarNoLeido_Click(object sender, EventArgs e)
+        public void tsmiMarcarNoLeido_Click(object sender, EventArgs e)
         {
             List<String> listaMensajes = new List<string>();
             listaMensajes.Add("UNREAD");
@@ -380,8 +380,8 @@ namespace GmailClient
                 for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
                 {
                     MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
-                    lvMensajes.Items[i].Font = new Font (lvMensajes.Items[i].Font,FontStyle.Bold);
-                    lvMensajes.Items[i].BackColor = Color.White;
+                    lvMensajes.SelectedItems[i].Font = new Font (lvMensajes.Items[i].Font,FontStyle.Bold);
+                    lvMensajes.SelectedItems[i].BackColor = Color.White;
                 }
             }
             if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
@@ -389,8 +389,8 @@ namespace GmailClient
                 for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
                 {
                     MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
-                    lvSpam.Items[i].Font = new Font(lvSpam.Items[i].Font, FontStyle.Bold);
-                    lvSpam.Items[i].BackColor = Color.White;
+                    lvSpam.SelectedItems[i].Font = new Font(lvSpam.Items[i].Font, FontStyle.Bold);
+                    lvSpam.SelectedItems[i].BackColor = Color.White;
                 }
             }
             if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
@@ -398,8 +398,8 @@ namespace GmailClient
                 for (int i = 0; i < lvCorreosEnviados.SelectedItems.Count; i++)
                 {
                     MessageManager.ModifyMessage(service, userId, lvCorreosEnviados.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
-                    lvCorreosEnviados.Items[i].Font = new Font(lvCorreosEnviados.Items[i].Font, FontStyle.Bold);
-                    lvCorreosEnviados.Items[i].BackColor = Color.White;
+                    lvCorreosEnviados.SelectedItems[i].Font = new Font(lvCorreosEnviados.Items[i].Font, FontStyle.Bold);
+                    lvCorreosEnviados.SelectedItems[i].BackColor = Color.White;
                 }
             }
         }
