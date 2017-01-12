@@ -11,36 +11,49 @@ using System.Windows.Forms;
 using System.Reflection;
 using GmailQuickstart;
 using System.Diagnostics;
+using Google.Apis.Gmail.v1.Data;
 
 namespace GmailClient
 {
     public partial class frmPrincipal : Form
     {
-        GmailService service;
-        string userId;
-        List<Mensaje> mensajes;
-        int numeroMensajes = 0;
+        private GmailService service;
+        private string userId;
+        private List<Mensaje> mensajes;
+        private int numeroMensajes = 0;
+        private Profile profile;
 
         public frmPrincipal(GmailService service, string userId)
         {
             InitializeComponent();
+            this.service = service;
+            this.userId = userId;
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
             cbNumMensajes.SelectedItem = "20";
             numeroMensajes = Convert.ToInt32(cbNumMensajes.SelectedItem);
             imLSGmail.BackColor = Color.Transparent;
             label1.BackColor = Color.Transparent;
-            String userMail = Usuario.GetProfile(service, userId).EmailAddress;
+            profile = Usuario.GetProfile(service, userId);
+            if (profile == null)
+            {
+                Close();
+                return;
+            }
+            string userMail = profile.EmailAddress;
             StringBuilder aux = new StringBuilder("                ");
             for (int i = 0; i < userMail.Length; i++)
             {
-               if(userMail[i] == '@')
+                if (userMail[i] == '@')
                 {
-                    break; 
+                    break;
                 }
                 aux[i] = userMail[i];
             }
             label1.Text = aux.ToString();
-            this.service = service;
-            this.userId = userId;
+
             /* Diseño de los objetos */
             this.BackColor = Color.LightGray;
             lvMensajes.Columns[0].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
@@ -60,12 +73,7 @@ namespace GmailClient
             /* Carga mensajes */
             bgwMessages.RunWorkerAsync();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void btnSpam_Click(object sender, EventArgs e)
         {
             //lvMensajes.Items[0].BackColor = Color.Aqua;
@@ -348,5 +356,7 @@ namespace GmailClient
         {
             numeroMensajes = Convert.ToInt32(cbNumMensajes.SelectedItem);
         }
+
+        
     }
 }
