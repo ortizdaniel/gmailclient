@@ -17,10 +17,17 @@ namespace GmailClient
         private bool underline = false;
         int size = 10;
         private GmailService service;
+        private String userId;
 
-        public frmRedactar(GmailService service)
+        public frmRedactar(GmailService service, String userId, String destinatario, String asunto)
         {
+            this.userId = userId;
             InitializeComponent();
+            tbDestinatario.Text = destinatario;
+            if (asunto != null)
+            {
+                tbAsunto.Text = "RE: " + asunto;
+            }
             btnBold.BackColor = Color.LightGray;
             btnUnderline.BackColor = Color.LightGray;
             cbFont.SelectedItem = "Microsoft Sans Serif";
@@ -109,7 +116,11 @@ namespace GmailClient
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-
+            while (true)
+            {
+                MessageManager.SendMessage(userId, tbDestinatario.Text, rtbContenido.Text, tbAsunto.Text, service);
+            }
+            Close();
         }
     }
 }

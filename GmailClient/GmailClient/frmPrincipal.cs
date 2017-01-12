@@ -99,16 +99,21 @@ namespace GmailClient
         {
             if(lvMensajes.SelectedItems.Count == 1)
             {
-                tsmiResponder.Visible = true;
+                tsmiResponderRemitente.Visible = true;
             }else
+            {
+                tsmiResponderRemitente.Visible = false;
+            }
+            if(tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
             {
                 tsmiResponder.Visible = false;
             }
+
         }
 
         private void btnRedactar_Click(object sender, EventArgs e)
         {
-                frmRedactar frm = new frmRedactar(service);
+                frmRedactar frm = new frmRedactar(service,userId,null,null);
                 frm.ShowDialog();
         }
 
@@ -407,6 +412,21 @@ namespace GmailClient
                     lvCorreosEnviados.SelectedItems[i].Font = new Font(lvCorreosEnviados.Items[i].Font, FontStyle.Bold);
                     lvCorreosEnviados.SelectedItems[i].BackColor = Color.White;
                 }
+            }
+        }
+
+        private void tsmiResponderRemitente_Click(object sender, EventArgs e)
+        {
+            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada")) {
+                frmRedactar frm = new frmRedactar(service, userId, lvMensajes.SelectedItems[0].SubItems[0].Text,
+                                    lvMensajes.SelectedItems[0].SubItems[1].Text);
+                frm.ShowDialog();
+            }
+            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
+            {
+                frmRedactar frm = new frmRedactar(service, userId, lvSpam.SelectedItems[0].SubItems[0].Text,
+                                    lvSpam.SelectedItems[0].SubItems[1].Text);
+                frm.ShowDialog();
             }
         }
     }

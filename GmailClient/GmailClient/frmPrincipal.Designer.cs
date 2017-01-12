@@ -71,17 +71,17 @@
             this.clmAsuntoSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmContenidoSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmUnseenSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmIdMessageSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbpEnviados = new System.Windows.Forms.TabPage();
             this.lvCorreosEnviados = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.cbNumMensajes = new System.Windows.Forms.ComboBox();
             this.lbNumMensajes = new System.Windows.Forms.Label();
-            this.clmIdMessageSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -127,6 +127,7 @@
             this.tsmiResponderRemitente.Name = "tsmiResponderRemitente";
             this.tsmiResponderRemitente.Size = new System.Drawing.Size(172, 22);
             this.tsmiResponderRemitente.Text = "Responder";
+            this.tsmiResponderRemitente.Click += new System.EventHandler(this.tsmiResponderRemitente_Click);
             // 
             // tsmiResponderAll
             // 
@@ -499,6 +500,10 @@
             // 
             this.columnHeader10.Text = "Unseen";
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            // 
             // bgwMessages
             // 
             this.bgwMessages.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwMessages_DoWork);
@@ -534,10 +539,6 @@
             this.lbNumMensajes.Size = new System.Drawing.Size(151, 13);
             this.lbNumMensajes.TabIndex = 15;
             this.lbNumMensajes.Text = "Numero de mensajes a cargar:";
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Id";
             // 
             // frmPrincipal
             // 
