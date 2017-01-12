@@ -298,14 +298,20 @@ namespace GmailClient
 
         private void lvMensajes_DoubleClick(object sender, EventArgs e)
         {
+            List<String> listaMensajes = new List<string>();
+            listaMensajes.Add("UNREAD");
             foreach (ListViewItem item in lvMensajes.SelectedItems)
             {
                 foreach (Mensaje m in mensajes)
                 {
-                    Console.WriteLine(m.MessageId);
-                    Console.WriteLine(item.SubItems[4].Text.ToString());
                     if (m.MessageId == item.SubItems[4].Text)
                     {
+                        if (item.SubItems[3].Text.Equals("True"))
+                        {
+                            MessageManager.ModifyMessage(service, userId, m.MessageId, null, listaMensajes);
+                            lvMensajes.SelectedItems[0].Font = fontBasica;
+                            lvMensajes.SelectedItems[0].BackColor = Color.LightGray;
+                        }
                         (new frmView(this, m)).Show();
                     }
                 }
