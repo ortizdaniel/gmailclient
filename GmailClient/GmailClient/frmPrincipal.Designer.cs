@@ -80,11 +80,8 @@
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.cbNumMensajes = new System.Windows.Forms.ComboBox();
             this.lbNumMensajes = new System.Windows.Forms.Label();
-<<<<<<< HEAD
             this.clmIdMessageSpam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-=======
->>>>>>> 419476c0f56bdbf48a0e507d57ced77513321a39
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();

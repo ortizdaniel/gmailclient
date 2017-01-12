@@ -252,6 +252,7 @@ namespace GmailClient
                 }else
                 {
                     fontBasica = lvMensajes.Items[i].Font;
+                    lvMensajes.Items[i].BackColor = Color.LightGray;
                 }
             }
             for (int i = 0; i < lvSpam.Items.Count; i++)
@@ -260,6 +261,9 @@ namespace GmailClient
                 {
                     lvSpam.Items[i].Font = fontBold;
                     lvSpam.Items[i].BackColor = Color.White;
+                }else
+                {
+                    lvSpam.Items[i].BackColor = Color.LightGray;
                 }
             }
             for (int i = 0; i < lvCorreosEnviados.Items.Count; i++)
@@ -268,6 +272,9 @@ namespace GmailClient
                 {
                     lvCorreosEnviados.Items[i].Font = fontBold;
                     lvCorreosEnviados.Items[i].BackColor = Color.White;
+                }else
+                {
+                    lvCorreosEnviados.Items[i].BackColor = Color.LightGray;
                 }
             }
         }
