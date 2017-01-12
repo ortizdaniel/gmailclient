@@ -119,7 +119,6 @@
             this.tsmiResponder.Name = "tsmiResponder";
             this.tsmiResponder.Size = new System.Drawing.Size(191, 22);
             this.tsmiResponder.Text = "Responder";
-            this.tsmiResponder.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // tsmiResponderRemitente
             // 
@@ -222,7 +221,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(146, 35);
             this.tableLayoutPanel1.TabIndex = 10;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // statusStrip1
             // 
@@ -351,7 +349,6 @@
             this.tbpBandejaEntrada.TabIndex = 0;
             this.tbpBandejaEntrada.Text = "Bandeja de entrada";
             this.tbpBandejaEntrada.UseVisualStyleBackColor = true;
-            this.tbpBandejaEntrada.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // lvMensajes
             // 
@@ -553,7 +550,6 @@
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GmailClient";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.SizeChanged += new System.EventHandler(this.frmPrincipal_SizeChanged);
             this.contextMenuStrip1.ResumeLayout(false);

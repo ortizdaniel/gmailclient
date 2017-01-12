@@ -78,22 +78,7 @@ namespace GmailClient
         {
             //lvMensajes.Items[0].BackColor = Color.Aqua;
         }
-
-        private void btnEnviados_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
-        private void lvMensajes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             lvMensajes.Items.Clear();
@@ -105,16 +90,6 @@ namespace GmailClient
             {
                 bgwMessages.RunWorkerAsync();
             }
-        }
-
-        private void btnOpcionesUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -130,7 +105,6 @@ namespace GmailClient
 
         private void btnRedactar_Click(object sender, EventArgs e)
         {
-
                 frmRedactar frm = new frmRedactar();
                 frm.ShowDialog();
         }
@@ -149,25 +123,9 @@ namespace GmailClient
             }
         }
         
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
         }
 
         private void addToProgress(int n)
