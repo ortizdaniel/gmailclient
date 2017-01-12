@@ -79,6 +79,7 @@
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.cbNumMensajes = new System.Windows.Forms.ComboBox();
             this.lbNumMensajes = new System.Windows.Forms.Label();
+            this.clmId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -362,7 +363,8 @@
             this.clmRemitente,
             this.clmAsunto,
             this.clmPreview,
-            this.clmUnseen});
+            this.clmUnseen,
+            this.clmId});
             this.lvMensajes.ContextMenuStrip = this.contextMenuStrip1;
             this.lvMensajes.FullRowSelect = true;
             this.lvMensajes.GridLines = true;
@@ -621,6 +623,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ComboBox cbNumMensajes;
         private System.Windows.Forms.Label lbNumMensajes;
+        private System.Windows.Forms.ColumnHeader clmId;
     }
 }
 

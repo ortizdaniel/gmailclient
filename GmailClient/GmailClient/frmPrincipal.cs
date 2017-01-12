@@ -47,6 +47,7 @@ namespace GmailClient
             lvMensajes.Columns[1].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
             lvMensajes.Columns[2].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.4f);
             lvMensajes.Columns[3].Width = 0;
+            lvMensajes.Columns[4].Width = 0;
             lvSpam.Columns[0].Width = Convert.ToInt32(lvSpam.Size.Width * 0.3f);
             lvSpam.Columns[1].Width = Convert.ToInt32(lvSpam.Size.Width * 0.3f);
             lvSpam.Columns[2].Width = Convert.ToInt32(lvSpam.Size.Width * 0.4f);
@@ -196,6 +197,7 @@ namespace GmailClient
                     lvi.SubItems.Add(m.Subject);
                     lvi.SubItems.Add(m.Body);
                     lvi.SubItems.Add(m.IsUnread.ToString());
+                    lvi.SubItems.Add(m.MessageId);
                     this.Invoke(new MethodInvoker(delegate
                     {
                         lvMensajes.Items.Add(lvi);
@@ -304,7 +306,15 @@ namespace GmailClient
         {
             foreach (ListViewItem item in lvMensajes.SelectedItems)
             {
-                (new frmView(this, mensajes[lvMensajes.Items.IndexOf(item)])).Show();
+                foreach (Mensaje m in mensajes)
+                {
+                    Console.WriteLine(m.MessageId);
+                    Console.WriteLine(item.SubItems[4].Text.ToString());
+                    if (m.MessageId == item.SubItems[4].Text)
+                    {
+                        (new frmView(this, m)).Show();
+                    }
+                }
             }
         }
 
