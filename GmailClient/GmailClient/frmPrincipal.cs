@@ -108,7 +108,7 @@ namespace GmailClient
 
         private void btnRedactar_Click(object sender, EventArgs e)
         {
-                frmRedactar frm = new frmRedactar();
+                frmRedactar frm = new frmRedactar(service);
                 frm.ShowDialog();
         }
 
