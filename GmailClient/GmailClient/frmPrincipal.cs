@@ -99,10 +99,10 @@ namespace GmailClient
         {
             if(lvMensajes.SelectedItems.Count == 1)
             {
-                tsmiResponderRemitente.Visible = true;
+                tsmiResponder.Visible = true;
             }else
             {
-                tsmiResponderRemitente.Visible = false;
+                tsmiResponder.Visible = false;
             }
             if(tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
             {
@@ -293,20 +293,11 @@ namespace GmailClient
             }
         }
 
-        private void ordenaCorreus(List<int> lista)
-        {
-            for(int i = lista[0]; i < lista.Count(); i++) 
-            {
-
-            }
-        }
-
         private void lvMensajes_DoubleClick(object sender, EventArgs e)
         {
             List<String> listaMensajes = new List<string>();
             listaMensajes.Add("UNREAD");
-            foreach (ListViewItem item in lvMensajes.SelectedItems)
-            {
+            ListViewItem item = lvMensajes.SelectedItems[0];
                 foreach (Mensaje m in mensajes)
                 {
                     if (m.MessageId == item.SubItems[4].Text)
@@ -317,9 +308,9 @@ namespace GmailClient
                             lvMensajes.SelectedItems[0].Font = fontBasica;
                             lvMensajes.SelectedItems[0].BackColor = Color.LightGray;
                         }
-                        (new frmView(this, m)).Show();
+                        (new frmView(this, m)).ShowDialog();
                     }
-                }
+                
             }
         }
 
@@ -328,7 +319,7 @@ namespace GmailClient
             lvMensajes_DoubleClick(sender, e);
         }
 
-        public void tsmiMarcarLeido_Click(object sender, EventArgs e)
+        internal void tsmiMarcarLeido_Click(object sender, EventArgs e)
         {
             List<String> listaMensajes = new List<string>();
             listaMensajes.Add("UNREAD");
@@ -382,7 +373,7 @@ namespace GmailClient
             numeroMensajes = Convert.ToInt32(cbNumMensajes.SelectedItem);
         }
 
-        public void tsmiMarcarNoLeido_Click(object sender, EventArgs e)
+        internal void tsmiMarcarNoLeido_Click(object sender, EventArgs e)
         {
             List<String> listaMensajes = new List<string>();
             listaMensajes.Add("UNREAD");
@@ -415,19 +406,14 @@ namespace GmailClient
             }
         }
 
-        private void tsmiResponderRemitente_Click(object sender, EventArgs e)
+        internal void tsmiResponder_Click(object sender, EventArgs e)
         {
-            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada")) {
-                frmRedactar frm = new frmRedactar(service, userId, lvMensajes.SelectedItems[0].SubItems[0].Text,
-                                    lvMensajes.SelectedItems[0].SubItems[1].Text);
-                frm.ShowDialog();
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
-            {
-                frmRedactar frm = new frmRedactar(service, userId, lvSpam.SelectedItems[0].SubItems[0].Text,
-                                    lvSpam.SelectedItems[0].SubItems[1].Text);
-                frm.ShowDialog();
-            }
+            List< String > destinatarios = new List<string>();
+            destinatarios.Add(lvMensajes.SelectedItems[0].SubItems[0].Text);
+            frmRedactar frm = new frmRedactar(service, userId,destinatarios,
+                                     lvMensajes.SelectedItems[0].SubItems[1].Text);
+            frm.ShowDialog();
         }
+
     }
 }

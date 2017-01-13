@@ -19,11 +19,34 @@ namespace GmailClient
         private GmailService service;
         private String userId;
 
-        public frmRedactar(GmailService service, String userId, String destinatario, String asunto)
+        public frmRedactar(GmailService service, String userId, List<String> destinatario, String asunto)
         {
             this.userId = userId;
             InitializeComponent();
-            tbDestinatario.Text = destinatario;
+            StringBuilder strbdr = new StringBuilder();
+            String dest;
+            if (destinatario != null)
+            {
+                if (destinatario.Count > 1)
+                {
+                    for (int i = 0; i < destinatario.Count; i++)
+                    {
+                        dest = destinatario[i];
+                        if (i == (destinatario.Count - 1))
+                        {
+                            strbdr.Append(dest);
+                        }
+                        else
+                        {
+                            strbdr.Append(dest + ", ");
+                        }
+                    }
+                }
+                else
+                {
+                    tbDestinatario.Text = destinatario[0];
+                }
+            }
             if (asunto != null)
             {
                 tbAsunto.Text = "RE: " + asunto;
@@ -116,9 +139,10 @@ namespace GmailClient
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            while (true)
+            List<string> lista = new List<string>(tbDestinatario.Text.Replace(" ", "").Split(','));
+            foreach (string dest in lista)
             {
-                MessageManager.SendMessage(userId, tbDestinatario.Text, rtbContenido.Text, tbAsunto.Text, service);
+                MessageManager.SendMessage(userId, dest, rtbContenido.Text, tbAsunto.Text, service);
             }
             Close();
         }

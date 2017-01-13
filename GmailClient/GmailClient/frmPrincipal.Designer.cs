@@ -33,8 +33,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnLeerMensajes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiResponder = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiResponderRemitente = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiResponderAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReenviar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMarcarSpam = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMarcarLeido = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,42 +97,34 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnLeerMensajes,
             this.tsmiResponder,
+            this.tsmiReenviar,
             this.tsmiEliminar,
             this.tsmiMarcarSpam,
             this.tsmiMarcarLeido,
             this.tsmiMarcarNoLeido});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 180);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // btnLeerMensajes
             // 
             this.btnLeerMensajes.Name = "btnLeerMensajes";
             this.btnLeerMensajes.Size = new System.Drawing.Size(191, 22);
-            this.btnLeerMensajes.Text = "Leer mensaje(s)";
+            this.btnLeerMensajes.Text = "Leer mensaje";
             this.btnLeerMensajes.Click += new System.EventHandler(this.btnLeerMensajes_Click);
             // 
             // tsmiResponder
             // 
-            this.tsmiResponder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiResponderRemitente,
-            this.tsmiResponderAll});
             this.tsmiResponder.Name = "tsmiResponder";
             this.tsmiResponder.Size = new System.Drawing.Size(191, 22);
             this.tsmiResponder.Text = "Responder";
+            this.tsmiResponder.Click += new System.EventHandler(this.tsmiResponder_Click);
             // 
-            // tsmiResponderRemitente
+            // tsmiReenviar
             // 
-            this.tsmiResponderRemitente.Name = "tsmiResponderRemitente";
-            this.tsmiResponderRemitente.Size = new System.Drawing.Size(172, 22);
-            this.tsmiResponderRemitente.Text = "Responder";
-            this.tsmiResponderRemitente.Click += new System.EventHandler(this.tsmiResponderRemitente_Click);
-            // 
-            // tsmiResponderAll
-            // 
-            this.tsmiResponderAll.Name = "tsmiResponderAll";
-            this.tsmiResponderAll.Size = new System.Drawing.Size(172, 22);
-            this.tsmiResponderAll.Text = "Responder a todos";
+            this.tsmiReenviar.Name = "tsmiReenviar";
+            this.tsmiReenviar.Size = new System.Drawing.Size(191, 22);
+            this.tsmiReenviar.Text = "Reenviar";
             // 
             // tsmiEliminar
             // 
@@ -586,8 +577,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsmiResponder;
-        private System.Windows.Forms.ToolStripMenuItem tsmiResponderRemitente;
-        private System.Windows.Forms.ToolStripMenuItem tsmiResponderAll;
         private System.Windows.Forms.ToolStripMenuItem tsmiEliminar;
         private System.Windows.Forms.ToolStripMenuItem tsmiMarcarSpam;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -632,6 +621,7 @@
         private System.Windows.Forms.ColumnHeader clmId;
         private System.Windows.Forms.ColumnHeader clmIdMessageSpam;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReenviar;
     }
 }
 

@@ -90,6 +90,7 @@
             this.btnReenviar.Name = "btnReenviar";
             this.btnReenviar.Size = new System.Drawing.Size(64, 20);
             this.btnReenviar.Text = "Reenviar";
+            this.btnReenviar.Click += new System.EventHandler(this.btnReenviar_Click);
             // 
             // btnEliminar
             // 

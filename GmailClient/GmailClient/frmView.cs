@@ -1,5 +1,6 @@
 ﻿using Google.Apis.Gmail.v1;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace GmailClient
@@ -26,12 +27,17 @@ namespace GmailClient
 
         private void btnMarcarComoLeido_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             principal.tsmiEliminar_Click(sender, e);
+        }
+
+        private void btnReenviar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
