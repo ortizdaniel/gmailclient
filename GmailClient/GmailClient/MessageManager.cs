@@ -110,11 +110,16 @@ public class MessageManager
     }
 
 
-    public static List<Message> ListMessages(GmailService service, String userId, int maxMessages, string query = null)
+    public static List<Message> ListMessages(GmailService service, String userId, int maxMessages, string[] labels = null)
     {
         List<Message> result = new List<Message>();
         UsersResource.MessagesResource.ListRequest request = service.Users.Messages.List(userId);
-        request.MaxResults = maxMessages;        
+        request.MaxResults = maxMessages;
+        if (labels != null)
+        {
+            request.LabelIds = labels;
+        }
+         
         ListMessagesResponse response = request.Execute();
         result.AddRange(response.Messages);               
 
@@ -126,11 +131,11 @@ public class MessageManager
      * @return: lista de los mensajes
      * 
      */
-    public static List<Mensaje> getMensajes(String userId, GmailService service, int maxMensajes)
+    public static List<Mensaje> getMensajes(String userId, GmailService service, int maxMensajes, string[] labels = null)
     {
         List<Mensaje> mensajes = new List<Mensaje>();
 
-        List<Message> messages = ListMessages(service, userId, maxMensajes);
+        List<Message> messages = ListMessages(service, userId, maxMensajes, labels);
 
         int i = 0;
         foreach (Message ms in messages)
@@ -160,6 +165,14 @@ public class MessageManager
 
             foreach(String l in m.LabelIds)
             {
+                if (l == "SPAM")
+                {
+                    msg.IsSpam = true;
+                }
+                if (l == "TRASH")
+                {
+                    msg.IsTrash = true;
+                }
                 if (l == "CATEGORY_SOCIAL")
                 {
                     msg.IsSocial = true;
@@ -175,11 +188,6 @@ public class MessageManager
                 if (l == "UNREAD")
                 {
                     msg.IsUnread = true;
-                }
-
-                if (l == "SPAM")
-                {
-                    msg.IsSpam = true;
                 }
                 if (l == "SENT")
                 {
