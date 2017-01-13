@@ -88,6 +88,9 @@
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.cbNumMensajes = new System.Windows.Forms.ComboBox();
             this.lbNumMensajes = new System.Windows.Forms.Label();
+            this.tsmiNoCargan = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAdjuntarArchivos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmVerArchivosAdjuntos = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -246,9 +249,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
-            this.acercaDeToolStripMenuItem,
             this.tsmiUser,
-            this.tsmiInterfaz});
+            this.tsmiInterfaz,
+            this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(734, 24);
@@ -272,9 +275,13 @@
             // 
             // acercaDeToolStripMenuItem
             // 
+            this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNoCargan,
+            this.tsmiAdjuntarArchivos,
+            this.tsmVerArchivosAdjuntos});
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.acercaDeToolStripMenuItem.Text = "Acerca de";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.acercaDeToolStripMenuItem.Text = "Ayuda";
             // 
             // tsmiUser
             // 
@@ -583,6 +590,7 @@
             // 
             // cbNumMensajes
             // 
+            this.cbNumMensajes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbNumMensajes.FormattingEnabled = true;
             this.cbNumMensajes.Items.AddRange(new object[] {
             "5",
@@ -604,12 +612,34 @@
             // 
             // lbNumMensajes
             // 
+            this.lbNumMensajes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbNumMensajes.AutoSize = true;
             this.lbNumMensajes.Location = new System.Drawing.Point(501, 77);
             this.lbNumMensajes.Name = "lbNumMensajes";
             this.lbNumMensajes.Size = new System.Drawing.Size(151, 13);
             this.lbNumMensajes.TabIndex = 15;
             this.lbNumMensajes.Text = "Numero de mensajes a cargar:";
+            // 
+            // tsmiNoCargan
+            // 
+            this.tsmiNoCargan.Name = "tsmiNoCargan";
+            this.tsmiNoCargan.Size = new System.Drawing.Size(233, 22);
+            this.tsmiNoCargan.Text = "¿No cargan los correos?";
+            this.tsmiNoCargan.Click += new System.EventHandler(this.tsmiNoCargan_Click);
+            // 
+            // tsmiAdjuntarArchivos
+            // 
+            this.tsmiAdjuntarArchivos.Name = "tsmiAdjuntarArchivos";
+            this.tsmiAdjuntarArchivos.Size = new System.Drawing.Size(233, 22);
+            this.tsmiAdjuntarArchivos.Text = "¿Puedo adjuntar archivos?";
+            this.tsmiAdjuntarArchivos.Click += new System.EventHandler(this.tsmiAdjuntarArchivos_Click);
+            // 
+            // tsmVerArchivosAdjuntos
+            // 
+            this.tsmVerArchivosAdjuntos.Name = "tsmVerArchivosAdjuntos";
+            this.tsmVerArchivosAdjuntos.Size = new System.Drawing.Size(233, 22);
+            this.tsmVerArchivosAdjuntos.Text = "¿Puedo ver archivos adjuntos?";
+            this.tsmVerArchivosAdjuntos.Click += new System.EventHandler(this.tsmVerArchivosAdjuntos_Click);
             // 
             // frmPrincipal
             // 
@@ -710,6 +740,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNoCargan;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAdjuntarArchivos;
+        private System.Windows.Forms.ToolStripMenuItem tsmVerArchivosAdjuntos;
     }
 }
 
