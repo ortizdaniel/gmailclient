@@ -103,7 +103,7 @@
             this.tsmiMarcarLeido,
             this.tsmiMarcarNoLeido});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 180);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // btnLeerMensajes
@@ -138,6 +138,7 @@
             this.tsmiMarcarSpam.Name = "tsmiMarcarSpam";
             this.tsmiMarcarSpam.Size = new System.Drawing.Size(191, 22);
             this.tsmiMarcarSpam.Text = "Marcar como spam";
+            this.tsmiMarcarSpam.Click += new System.EventHandler(this.tsmiMarcarSpam_Click);
             // 
             // tsmiMarcarLeido
             // 

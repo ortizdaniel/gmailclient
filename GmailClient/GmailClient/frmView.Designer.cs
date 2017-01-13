@@ -72,18 +72,21 @@
             this.btnMarcarComoNoLeido.Name = "btnMarcarComoNoLeido";
             this.btnMarcarComoNoLeido.Size = new System.Drawing.Size(136, 20);
             this.btnMarcarComoNoLeido.Text = "Marcar como no léido";
+            this.btnMarcarComoNoLeido.Click += new System.EventHandler(this.btnMarcarComoNoLeido_Click);
             // 
             // btnMarcarComoSpam
             // 
             this.btnMarcarComoSpam.Name = "btnMarcarComoSpam";
             this.btnMarcarComoSpam.Size = new System.Drawing.Size(122, 20);
             this.btnMarcarComoSpam.Text = "Marcar como spam";
+            this.btnMarcarComoSpam.Click += new System.EventHandler(this.btnMarcarComoSpam_Click);
             // 
             // btnResponder
             // 
             this.btnResponder.Name = "btnResponder";
             this.btnResponder.Size = new System.Drawing.Size(75, 20);
             this.btnResponder.Text = "Responder";
+            this.btnResponder.Click += new System.EventHandler(this.btnResponder_Click);
             // 
             // btnReenviar
             // 

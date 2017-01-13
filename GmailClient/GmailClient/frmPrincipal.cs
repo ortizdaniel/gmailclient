@@ -415,5 +415,37 @@ namespace GmailClient
             frm.ShowDialog();
         }
 
+        internal void tsmiMarcarSpam_Click(object sender, EventArgs e)
+        {
+            List<String> listaMensajes = new List<string>();
+            listaMensajes.Add("SPAM");
+            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
+            {
+                for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+                {
+                    MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                    lvMensajes.SelectedItems[i].Font = fontBasica;
+                    lvMensajes.SelectedItems[i].BackColor = Color.LightGray;
+                }
+            }
+            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
+            {
+                for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
+                {
+                    MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                    lvSpam.SelectedItems[i].Font = fontBasica;
+                    lvSpam.SelectedItems[i].BackColor = Color.LightGray;
+                }
+            }
+            /*if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
+            {
+                for (int i = 0; i < lvCorreosEnviados.SelectedItems.Count; i++)
+                {
+                    MessageManager.ModifyMessage(service, userId, lvCorreosEnviados.SelectedItems[i].SubItems[4].Text, null, listaMensajes);
+                    lvCorreosEnviados.SelectedItems[i].Font = fontBasica;
+                    lvCorreosEnviados.SelectedItems[i].BackColor = Color.LightGray;
+                }
+            }*/
+        }
     }
 }
