@@ -535,7 +535,7 @@ namespace GmailClient
             List<String> listaMensajes = new List<string>();
             listaMensajes.Add("UNREAD");
             ListViewItem item = lvSpam.SelectedItems[0];
-            foreach (Mensaje m in mensajes)
+            foreach (Mensaje m in mensajesSpam)
             {
                 Console.WriteLine(m.MessageId + " , " + item.SubItems[4].Text);
 
@@ -560,7 +560,7 @@ namespace GmailClient
             List<String> listaMensajes = new List<string>();
             listaMensajes.Add("UNREAD");
             ListViewItem item = lvPapelera.SelectedItems[0];
-            foreach (Mensaje m in mensajes)
+            foreach (Mensaje m in mensajesTrash)
             {
                 if (m.MessageId == item.SubItems[4].Text)
                 {
