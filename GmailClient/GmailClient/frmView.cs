@@ -33,6 +33,7 @@ namespace GmailClient
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             principal.tsmiEliminar_Click(sender, e);
+            Close();
         }
 
         private void btnReenviar_Click(object sender, EventArgs e)
