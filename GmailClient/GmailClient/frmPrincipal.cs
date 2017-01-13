@@ -91,12 +91,15 @@ namespace GmailClient
         
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            //No hacer nada en caso de que ya se esten cargando los mensajes, o cargarlos en caso contrario
             if (bgwMessages.IsBusy)
             {
+                //Mostrar al usuario un mensaje de informacion
                 MessageBox.Show(this, "Proceso en marcha espera a que termine", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
+                //Limpiar todas las tabs 
                 lvMensajes.Items.Clear();
                 lvSpam.Items.Clear();
                 lvCorreosEnviados.Items.Clear();
@@ -247,6 +250,8 @@ namespace GmailClient
 
         private void addToProgress(int n)
         {
+            //Ya que una thread externa no puede modificar nada de la form, se ha de llamar a
+            //la thread que le pertenece la form y modificarla a partir de ella
             this.Invoke(new MethodInvoker(delegate
             {
                 try
@@ -587,6 +592,8 @@ namespace GmailClient
 
         private bool oneSelectedAny()
         {
+            //Funcion util para saber que al menos un mensaje esta seleccionado en cualquier tab
+            //No aporta informacion de la tab que era.
             return lvMensajes.SelectedItems.Count >= 1 || lvSpam.SelectedItems.Count >= 1 ||
                 lvCorreosEnviados.SelectedItems.Count >= 1 || lvPapelera.SelectedItems.Count >= 1;
         }

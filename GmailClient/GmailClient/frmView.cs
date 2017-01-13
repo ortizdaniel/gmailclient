@@ -13,11 +13,12 @@ namespace GmailClient
 
         public frmView(frmPrincipal principal, Mensaje m)
         {
+            //Recibir como parametros la instancia de la form principal y el mensaje en cuestion
             InitializeComponent();
             /* No donem opcio a respondre un correu nostre */
             if (m.From.Equals(principal.getProfile().EmailAddress))
             {
-                btnResponder.Visible = false;
+                btnResponder.Enabled = false;
             }
             this.m = m;
             this.principal = principal;
@@ -32,17 +33,22 @@ namespace GmailClient
 
         private void btnMarcarComoLeido_Click(object sender, EventArgs e)
         {
+            //Llamar a la funcion ya codificada en la form principal
             principal.tsmiMarcarLeido_Click(sender, e);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            //Llamar a la funcion ya codificada en la form principal y cerrar esta
+            //ventana para prevenir posibles errores
             principal.tsmiEliminar_Click(sender, e);
             Close();
         }
 
         private void btnReenviar_Click(object sender, EventArgs e)
         {
+            //Ya que frmRedactar toma una List<String> como parametro en su constructor, esta
+            //es la manera "mas sencilla" de "arreglarlo"
             List<string> guarro = new List<string>();
             guarro.Add(m.To);
             (new frmRedactar(principal.getService(), "me", guarro, m.Subject, m.Body)).ShowDialog();
@@ -50,16 +56,20 @@ namespace GmailClient
 
         private void btnMarcarComoNoLeido_Click(object sender, EventArgs e)
         {
+            //Llamar a la funcion ya codificada en la form principal
             principal.tsmiMarcarNoLeido_Click(sender, e);
         }
 
         private void btnMarcarComoSpam_Click(object sender, EventArgs e)
         {
+            //Llamar a la funcion ya codificada en la form principal
             principal.tsmiMarcarSpam_Click(sender, e);
         }
 
         private void btnResponder_Click(object sender, EventArgs e)
         {
+            //Ya que frmRedactar toma una List<String> como parametro en su constructor, esta
+            //es la manera "mas sencilla" de "arreglarlo"
             List<string> guarro = new List<string>();
             guarro.Add(m.To);
             (new frmRedactar(principal.getService(), "me", guarro, m.Subject, m.Body)).ShowDialog();
