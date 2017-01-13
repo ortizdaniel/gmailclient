@@ -38,7 +38,9 @@ namespace GmailClient
 
         private void btnReenviar_Click(object sender, EventArgs e)
         {
-            principal.tsmiReenviar_Click(sender, e);
+            List<string> guarro = new List<string>();
+            guarro.Add(m.To);
+            (new frmRedactar(principal.getService(), "me", guarro, m.Subject, m.Body)).ShowDialog();
         }
 
         private void btnMarcarComoNoLeido_Click(object sender, EventArgs e)
@@ -53,7 +55,9 @@ namespace GmailClient
 
         private void btnResponder_Click(object sender, EventArgs e)
         {
-            principal.tsmiResponder_Click(sender, e);
+            List<string> guarro = new List<string>();
+            guarro.Add(m.To);
+            (new frmRedactar(principal.getService(), "me", guarro, m.Subject, m.Body)).ShowDialog();
         }
     }
 }

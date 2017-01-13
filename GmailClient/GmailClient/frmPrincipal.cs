@@ -154,7 +154,9 @@ namespace GmailClient
 
         internal void tsmiEliminar_Click(object sender, EventArgs e)
         {
-            this.Invoke(new MethodInvoker(delegate
+            if (oneSelectedAny())
+            {
+                this.Invoke(new MethodInvoker(delegate
             {
                 try
                 {
@@ -165,71 +167,72 @@ namespace GmailClient
                 }
                 catch (ArgumentOutOfRangeException ex) { }
             }));
-            /* Eliminem el missatge en funció de la pestanya a la que estigui */
-            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
-            {
-               
-                foreach (ListViewItem item in lvMensajes.SelectedItems)
+                /* Eliminem el missatge en funció de la pestanya a la que estigui */
+                if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
                 {
-                    int messageNumber = lvMensajes.Items.IndexOf(item);
-                    item.Remove();
-                    MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
-                    for (int i = messageNumber; i < mensajes.Count - 1; i++)
+
+                    foreach (ListViewItem item in lvMensajes.SelectedItems)
                     {
-                        mensajes[i] = mensajes[i + 1];
+                        int messageNumber = lvMensajes.Items.IndexOf(item);
+                        item.Remove();
+                        MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
+                        for (int i = messageNumber; i < mensajes.Count - 1; i++)
+                        {
+                            mensajes[i] = mensajes[i + 1];
+                        }
                     }
                 }
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
-            {
-                foreach (ListViewItem item in lvSpam.SelectedItems)
+                if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
                 {
-                    int messageNumber = lvSpam.Items.IndexOf(item);
-                    item.Remove();
-                    MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
-                    for (int i = messageNumber; i < mensajes.Count - 1; i++)
+                    foreach (ListViewItem item in lvSpam.SelectedItems)
                     {
-                        mensajes[i] = mensajes[i + 1];
+                        int messageNumber = lvSpam.Items.IndexOf(item);
+                        item.Remove();
+                        MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
+                        for (int i = messageNumber; i < mensajes.Count - 1; i++)
+                        {
+                            mensajes[i] = mensajes[i + 1];
+                        }
                     }
                 }
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
-            {
-                foreach (ListViewItem item in lvCorreosEnviados.SelectedItems)
+                if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
                 {
-                    int messageNumber = lvCorreosEnviados.Items.IndexOf(item);
-                    item.Remove();
-                    MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
-                    for (int i = messageNumber; i < mensajes.Count - 1; i++)
+                    foreach (ListViewItem item in lvCorreosEnviados.SelectedItems)
                     {
-                        mensajes[i] = mensajes[i + 1];
+                        int messageNumber = lvCorreosEnviados.Items.IndexOf(item);
+                        item.Remove();
+                        MessageManager.DeleteMessage(service, userId, mensajes[messageNumber].MessageId);
+                        for (int i = messageNumber; i < mensajes.Count - 1; i++)
+                        {
+                            mensajes[i] = mensajes[i + 1];
+                        }
                     }
                 }
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Papelera"))
-            {
-                foreach (ListViewItem item in lvPapelera.SelectedItems)
+                if (tbcBandejas.SelectedTab.Text.Equals("Papelera"))
                 {
-                    int messageNumber = lvPapelera.Items.IndexOf(item);
-                    item.Remove();
-                    MessageManager.DeleteForeverMessage(service, userId, mensajes[messageNumber].MessageId);
-                    for (int i = messageNumber; i < mensajes.Count - 1; i++)
+                    foreach (ListViewItem item in lvPapelera.SelectedItems)
                     {
-                        mensajes[i] = mensajes[i + 1];
+                        int messageNumber = lvPapelera.Items.IndexOf(item);
+                        item.Remove();
+                        MessageManager.DeleteForeverMessage(service, userId, mensajes[messageNumber].MessageId);
+                        for (int i = messageNumber; i < mensajes.Count - 1; i++)
+                        {
+                            mensajes[i] = mensajes[i + 1];
+                        }
                     }
                 }
-            }
-            this.Invoke(new MethodInvoker(delegate
-            {
-                try
+                this.Invoke(new MethodInvoker(delegate
                 {
-                    lvMensajes.EndUpdate();
-                    lvSpam.EndUpdate();
-                    lvCorreosEnviados.EndUpdate();
-                    lvPapelera.EndUpdate();
-                }
-                catch (ArgumentOutOfRangeException ex) { }
-            }));
+                    try
+                    {
+                        lvMensajes.EndUpdate();
+                        lvSpam.EndUpdate();
+                        lvCorreosEnviados.EndUpdate();
+                        lvPapelera.EndUpdate();
+                    }
+                    catch (ArgumentOutOfRangeException ex) { }
+                }));
+            }
         }
         
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -576,56 +579,70 @@ namespace GmailClient
 
             }
         }
+
+        private bool oneSelectedAny()
+        {
+            return lvMensajes.SelectedItems.Count >= 1 || lvSpam.SelectedItems.Count >= 1 ||
+                lvCorreosEnviados.SelectedItems.Count >= 1 || lvPapelera.SelectedItems.Count >= 1;
+        }
+
         private void btnLeerMensajes_Click(object sender, EventArgs e)
         {
-            /* Obrir missatges a partir del boto secundari */
-            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
+            if (oneSelectedAny())
             {
-                lvMensajes_DoubleClick(sender, e);
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
-            {
-                lvSpam_DoubleClick(sender, e);
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
-            {
-                lvCorreosEnviados_DoubleClick(sender, e);
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Papelera"))
-            {
-                lvPapelera_DoubleClick(sender, e);
+                /* Obrir missatges a partir del boto secundari */
+                if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
+                {
+                    lvMensajes_DoubleClick(sender, e);
+                }
+                if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
+                {
+                    lvSpam_DoubleClick(sender, e);
+                }
+                if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
+                {
+                    lvCorreosEnviados_DoubleClick(sender, e);
+                }
+                if (tbcBandejas.SelectedTab.Text.Equals("Papelera"))
+                {
+                    lvPapelera_DoubleClick(sender, e);
+                }
             }
         }
 
         internal void tsmiMarcarLeido_Click(object sender, EventArgs e)
         {
-            /* Marcar com a llegit */
-            List<String> listaMensajes = new List<string>();
-            listaMensajes.Add("UNREAD");
-            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada")) {
-                for (int i = 0; i<lvMensajes.SelectedItems.Count; i++)
-                {
-                    MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text,null,listaMensajes);
-                    lvMensajes.SelectedItems[i].Font = fontBasica;
-                    lvMensajes.SelectedItems[i].BackColor = Color.LightGray;
-                }
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
+            if (oneSelectedAny())
             {
-                for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
+                /* Marcar com a llegit */
+                List<String> listaMensajes = new List<string>();
+                listaMensajes.Add("UNREAD");
+                if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
                 {
-                    MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, null, listaMensajes);
-                    lvSpam.SelectedItems[i].Font = fontBasica;
-                    lvSpam.SelectedItems[i].BackColor = Color.LightGray;
+                    for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+                    {
+                        MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text, null, listaMensajes);
+                        lvMensajes.SelectedItems[i].Font = fontBasica;
+                        lvMensajes.SelectedItems[i].BackColor = Color.LightGray;
+                    }
                 }
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
-            {
-                for (int i = 0; i < lvCorreosEnviados.SelectedItems.Count; i++)
+                if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
                 {
-                    MessageManager.ModifyMessage(service, userId, lvCorreosEnviados.SelectedItems[i].SubItems[4].Text, null, listaMensajes);
-                    lvCorreosEnviados.SelectedItems[i].Font = fontBasica;
-                    lvCorreosEnviados.SelectedItems[i].BackColor = Color.LightGray;
+                    for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
+                    {
+                        MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, null, listaMensajes);
+                        lvSpam.SelectedItems[i].Font = fontBasica;
+                        lvSpam.SelectedItems[i].BackColor = Color.LightGray;
+                    }
+                }
+                if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
+                {
+                    for (int i = 0; i < lvCorreosEnviados.SelectedItems.Count; i++)
+                    {
+                        MessageManager.ModifyMessage(service, userId, lvCorreosEnviados.SelectedItems[i].SubItems[4].Text, null, listaMensajes);
+                        lvCorreosEnviados.SelectedItems[i].Font = fontBasica;
+                        lvCorreosEnviados.SelectedItems[i].BackColor = Color.LightGray;
+                    }
                 }
             }
 
@@ -664,79 +681,111 @@ namespace GmailClient
 
         internal void tsmiMarcarNoLeido_Click(object sender, EventArgs e)
         {
-            /* Marquem com a no llegit */
-            List<String> listaMensajes = new List<string>();
-            listaMensajes.Add("UNREAD");
-            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
+            if (oneSelectedAny())
             {
-                for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+                /* Marquem com a no llegit */
+                List<String> listaMensajes = new List<string>();
+                listaMensajes.Add("UNREAD");
+                if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
                 {
-                    MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
-                    lvMensajes.SelectedItems[i].Font = new Font (lvMensajes.Items[i].Font,FontStyle.Bold);
-                    lvMensajes.SelectedItems[i].BackColor = Color.White;
+                    for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+                    {
+                        MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                        lvMensajes.SelectedItems[i].Font = new Font(lvMensajes.Items[i].Font, FontStyle.Bold);
+                        lvMensajes.SelectedItems[i].BackColor = Color.White;
+                    }
                 }
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
-            {
-                for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
+                if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
                 {
-                    MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
-                    lvSpam.SelectedItems[i].Font = new Font(lvSpam.Items[i].Font, FontStyle.Bold);
-                    lvSpam.SelectedItems[i].BackColor = Color.White;
+                    for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
+                    {
+                        MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                        lvSpam.SelectedItems[i].Font = new Font(lvSpam.Items[i].Font, FontStyle.Bold);
+                        lvSpam.SelectedItems[i].BackColor = Color.White;
+                    }
                 }
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
-            {
-                for (int i = 0; i < lvCorreosEnviados.SelectedItems.Count; i++)
+                if (tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
                 {
-                    MessageManager.ModifyMessage(service, userId, lvCorreosEnviados.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
-                    lvCorreosEnviados.SelectedItems[i].Font = new Font(lvCorreosEnviados.Items[i].Font, FontStyle.Bold);
-                    lvCorreosEnviados.SelectedItems[i].BackColor = Color.White;
+                    for (int i = 0; i < lvCorreosEnviados.SelectedItems.Count; i++)
+                    {
+                        MessageManager.ModifyMessage(service, userId, lvCorreosEnviados.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                        lvCorreosEnviados.SelectedItems[i].Font = new Font(lvCorreosEnviados.Items[i].Font, FontStyle.Bold);
+                        lvCorreosEnviados.SelectedItems[i].BackColor = Color.White;
+                    }
                 }
             }
         }
 
         internal void tsmiResponder_Click(object sender, EventArgs e)
         {
-            /* Obrim la finestra de redactar per a respondre a un correu */
-            List< String > destinatarios = new List<string>();
-            destinatarios.Add(lvMensajes.SelectedItems[0].SubItems[0].Text);
-            frmRedactar frm = new frmRedactar(service, userId,destinatarios,
-                                     lvMensajes.SelectedItems[0].SubItems[1].Text,null);
-            frm.ShowDialog();
+            if (oneSelectedAny())
+            {
+                /* Obrim la finestra de redactar per a respondre a un correu */
+                List<String> destinatarios = new List<string>();
+                destinatarios.Add(lvMensajes.SelectedItems[0].SubItems[0].Text);
+                frmRedactar frm = new frmRedactar(service, userId, destinatarios,
+                                         lvMensajes.SelectedItems[0].SubItems[1].Text, null);
+                frm.ShowDialog();
+            }
         }
 
         internal void tsmiMarcarSpam_Click(object sender, EventArgs e)
         {
-            /* Marquem com a SPAM un missatge */
-            List<String> listaMensajes = new List<string>();
-            listaMensajes.Add("SPAM");
-            if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
+            if (oneSelectedAny())
             {
-                for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+                /* Marquem com a SPAM un missatge */
+                List<String> listaMensajes = new List<string>();
+                listaMensajes.Add("SPAM");
+                if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
                 {
-                    MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
-                    lvMensajes.SelectedItems[i].Font = fontBasica;
-                    lvMensajes.SelectedItems[i].BackColor = Color.LightGray;
+                    for (int i = 0; i < lvMensajes.SelectedItems.Count; i++)
+                    {
+                        MessageManager.ModifyMessage(service, userId, lvMensajes.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                        lvMensajes.SelectedItems[i].Font = fontBasica;
+                        lvMensajes.SelectedItems[i].BackColor = Color.LightGray;
+                    }
                 }
-            }
-            if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
-            {
-                for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
+                if (tbcBandejas.SelectedTab.Text.Equals("Spam"))
                 {
-                    MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
-                    lvSpam.SelectedItems[i].Font = fontBasica;
-                    lvSpam.SelectedItems[i].BackColor = Color.LightGray;
+                    for (int i = 0; i < lvSpam.SelectedItems.Count; i++)
+                    {
+                        MessageManager.ModifyMessage(service, userId, lvSpam.SelectedItems[i].SubItems[4].Text, listaMensajes, null);
+                        lvSpam.SelectedItems[i].Font = fontBasica;
+                        lvSpam.SelectedItems[i].BackColor = Color.LightGray;
+                    }
                 }
             }
         }
 
         internal void tsmiReenviar_Click(object sender, EventArgs e)
         {
-            /* Reenviem un correu a un altre persona */
-            frmRedactar frm = new frmRedactar(service, userId, null,
+            if (oneSelectedAny())
+            {
+                /* Reenviem un correu a un altre persona */
+                frmRedactar frm = new frmRedactar(service, userId, null,
                                      lvMensajes.SelectedItems[0].SubItems[1].Text, lvMensajes.SelectedItems[0].SubItems[2].Text);
-            frm.ShowDialog();
+                frm.ShowDialog();
+            }
+        }
+
+        private void tsmiNoCargan_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Seguramente se están cargando. Puedes verlo en la barra de progreso en la esquina inferior izquierda.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void tsmiAdjuntarArchivos_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("No. Se implentará en futuras versiones.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void tsmVerArchivosAdjuntos_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("No. Se implentará en futuras versiones.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        internal GmailService getService()
+        {
+            return service;
         }
     }
 }
