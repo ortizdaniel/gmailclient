@@ -114,16 +114,22 @@ public class MessageManager
     {
         List<Message> result = new List<Message>();
         UsersResource.MessagesResource.ListRequest request = service.Users.Messages.List(userId);
-        request.MaxResults = maxMessages;
-        if (labels != null)
+        if (request != null)
         {
-            request.LabelIds = labels;
+            request.MaxResults = maxMessages;
+            if (labels != null)
+            {
+                request.LabelIds = labels;
+            }
+            ListMessagesResponse response = request.Execute();
+            if (response.Messages == null)
+            {
+                return null;
+            }
+            result.AddRange(response.Messages);
+            return result;
         }
-         
-        ListMessagesResponse response = request.Execute();
-        result.AddRange(response.Messages);               
-
-        return result;
+        return null;        
     }
 
     /**
@@ -136,7 +142,11 @@ public class MessageManager
         List<Mensaje> mensajes = new List<Mensaje>();
 
         List<Message> messages = ListMessages(service, userId, maxMensajes, labels);
-
+        
+        if(messages == null)
+        {
+            return null;
+        }
         int i = 0;
         foreach (Message ms in messages)
         {

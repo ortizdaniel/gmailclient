@@ -248,71 +248,80 @@ namespace GmailClient
                 }
                 catch (ArgumentOutOfRangeException ex) { }
             }));
-            foreach (Mensaje m in mensajes)
+            if (mensajes != null)
             {
-                /* Si es un correu enviat per nosaltres el fiquem al tab de enviats */
-                if (m.IsSent)
+                foreach (Mensaje m in mensajes)
                 {
-                    sent = true;
-                    ListViewItem lviSent = new ListViewItem(m.From);
-                    lviSent.SubItems.Add(m.Subject);
-                    lviSent.SubItems.Add(m.Body);
-                    lviSent.SubItems.Add(m.IsUnread.ToString());
-                    lviSent.SubItems.Add(m.MessageId);
-                    this.Invoke(new MethodInvoker(delegate
+                    /* Si es un correu enviat per nosaltres el fiquem al tab de enviats */
+                    if (m.IsSent)
                     {
-                        lvCorreosEnviados.Items.Add(lviSent);
-                    }));
-                }
-                /* Si NO es un correu enviat per nosaltres el fiquem a inbox */
-                if (m.IsInbox && !sent)
-                {
-                    ListViewItem lvi = new ListViewItem(m.From);
-                    lvi.SubItems.Add(m.Subject);
-                    lvi.SubItems.Add(m.Body);
-                    lvi.SubItems.Add(m.IsUnread.ToString());
-                    lvi.SubItems.Add(m.MessageId);
-                    this.Invoke(new MethodInvoker(delegate
+                        sent = true;
+                        ListViewItem lviSent = new ListViewItem(m.From);
+                        lviSent.SubItems.Add(m.Subject);
+                        lviSent.SubItems.Add(m.Body);
+                        lviSent.SubItems.Add(m.IsUnread.ToString());
+                        lviSent.SubItems.Add(m.MessageId);
+                        this.Invoke(new MethodInvoker(delegate
+                        {
+                            lvCorreosEnviados.Items.Add(lviSent);
+                        }));
+                    }
+                    /* Si NO es un correu enviat per nosaltres el fiquem a inbox */
+                    if (m.IsInbox && !sent)
                     {
-                        lvMensajes.Items.Add(lvi);
-                    }));
+                        ListViewItem lvi = new ListViewItem(m.From);
+                        lvi.SubItems.Add(m.Subject);
+                        lvi.SubItems.Add(m.Body);
+                        lvi.SubItems.Add(m.IsUnread.ToString());
+                        lvi.SubItems.Add(m.MessageId);
+                        this.Invoke(new MethodInvoker(delegate
+                        {
+                            lvMensajes.Items.Add(lvi);
+                        }));
 
+                    }
+                    sent = false;
                 }
-                sent = false;
             }
-            foreach (Mensaje m in mensajesSpam)
+            if (mensajesSpam != null)
             {
-                /* Si es un correu de Spam el fiquem al tab de Spam */
+                foreach (Mensaje m in mensajesSpam)
+                {
+                    /* Si es un correu de Spam el fiquem al tab de Spam */
 
-                if (m.IsSpam)
-                {
-                    ListViewItem lviSpam = new ListViewItem(m.From);
-                    lviSpam.SubItems.Add(m.Subject);
-                    lviSpam.SubItems.Add(m.Body);
-                    lviSpam.SubItems.Add(m.IsUnread.ToString());
-                    lviSpam.SubItems.Add(m.MessageId);
-                    this.Invoke(new MethodInvoker(delegate
+                    if (m.IsSpam)
                     {
-                        lvSpam.Items.Add(lviSpam);
-                    }));
+                        ListViewItem lviSpam = new ListViewItem(m.From);
+                        lviSpam.SubItems.Add(m.Subject);
+                        lviSpam.SubItems.Add(m.Body);
+                        lviSpam.SubItems.Add(m.IsUnread.ToString());
+                        lviSpam.SubItems.Add(m.MessageId);
+                        this.Invoke(new MethodInvoker(delegate
+                        {
+                            lvSpam.Items.Add(lviSpam);
+                        }));
+                    }
                 }
             }
-            foreach (Mensaje m in mensajesTrash)
-            {
-                /* Si es un correu de la paperera el fiquem al tab de la paperera */
-                if (m.IsTrash)
+            if (mensajesTrash != null) {
+                foreach (Mensaje m in mensajesTrash)
                 {
-                    ListViewItem lviPapelera = new ListViewItem(m.From);
-                    lviPapelera.SubItems.Add(m.Subject);
-                    lviPapelera.SubItems.Add(m.Body);
-                    lviPapelera.SubItems.Add(m.IsUnread.ToString());
-                    lviPapelera.SubItems.Add(m.MessageId);
-                    this.Invoke(new MethodInvoker(delegate
+                    /* Si es un correu de la paperera el fiquem al tab de la paperera */
+                    if (m.IsTrash)
                     {
-                        lvPapelera.Items.Add(lviPapelera);
-                    }));
+                        ListViewItem lviPapelera = new ListViewItem(m.From);
+                        lviPapelera.SubItems.Add(m.Subject);
+                        lviPapelera.SubItems.Add(m.Body);
+                        lviPapelera.SubItems.Add(m.IsUnread.ToString());
+                        lviPapelera.SubItems.Add(m.MessageId);
+                        this.Invoke(new MethodInvoker(delegate
+                        {
+                            lvPapelera.Items.Add(lviPapelera);
+                        }));
+                    }
                 }
             }
+            
             this.Invoke(new MethodInvoker(delegate
             {
                 try
