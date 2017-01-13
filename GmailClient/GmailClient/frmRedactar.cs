@@ -15,7 +15,7 @@ namespace GmailClient
     {
         private bool bold = false;
         private bool underline = false;
-        int size = 10;
+        private int size = 10;
         private GmailService service;
         private String userId;
 

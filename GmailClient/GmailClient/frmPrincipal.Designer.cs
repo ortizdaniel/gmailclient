@@ -103,7 +103,7 @@
             this.tsmiMarcarLeido,
             this.tsmiMarcarNoLeido});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 180);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 136);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // btnLeerMensajes
@@ -386,6 +386,11 @@
             // clmUnseen
             // 
             this.clmUnseen.Text = "Unseen";
+            this.clmUnseen.Width = 0;
+            // 
+            // clmId
+            // 
+            this.clmId.Width = 0;
             // 
             // tbpSpam
             // 
