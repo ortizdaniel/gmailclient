@@ -435,6 +435,7 @@
             this.lvSpam.TabIndex = 3;
             this.lvSpam.UseCompatibleStateImageBehavior = false;
             this.lvSpam.View = System.Windows.Forms.View.Details;
+            this.lvSpam.DoubleClick += new System.EventHandler(this.lvSpam_DoubleClick);
             // 
             // clmRemitenteSpam
             // 
@@ -491,6 +492,7 @@
             this.lvCorreosEnviados.TabIndex = 3;
             this.lvCorreosEnviados.UseCompatibleStateImageBehavior = false;
             this.lvCorreosEnviados.View = System.Windows.Forms.View.Details;
+            this.lvCorreosEnviados.DoubleClick += new System.EventHandler(this.lvCorreosEnviados_DoubleClick);
             // 
             // columnHeader6
             // 
@@ -547,6 +549,7 @@
             this.lvPapelera.TabIndex = 3;
             this.lvPapelera.UseCompatibleStateImageBehavior = false;
             this.lvPapelera.View = System.Windows.Forms.View.Details;
+            this.lvPapelera.DoubleClick += new System.EventHandler(this.lvPapelera_DoubleClick);
             // 
             // columnHeader2
             // 

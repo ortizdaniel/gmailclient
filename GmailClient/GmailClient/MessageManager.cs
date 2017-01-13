@@ -216,6 +216,17 @@ public class MessageManager
             Console.WriteLine("Error " + e.Message);
         }
     }
+    public static void DeleteForeverMessage(GmailService service, string userId, string messageId)
+    {
+        try
+        {
+            service.Users.Messages.Delete(userId, messageId).Execute();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error " + e.Message);
+        }
+    }
 
 
     /// <summary>
