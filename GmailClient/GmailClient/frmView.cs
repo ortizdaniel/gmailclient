@@ -37,7 +37,7 @@ namespace GmailClient
 
         private void btnReenviar_Click(object sender, EventArgs e)
         {
-            
+            principal.tsmiReenviar_Click(sender, e);
         }
     }
 }

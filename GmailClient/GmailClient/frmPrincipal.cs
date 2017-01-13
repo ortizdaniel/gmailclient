@@ -113,7 +113,7 @@ namespace GmailClient
 
         private void btnRedactar_Click(object sender, EventArgs e)
         {
-                frmRedactar frm = new frmRedactar(service,userId,null,null);
+                frmRedactar frm = new frmRedactar(service,userId,null,null,null);
                 frm.ShowDialog();
         }
 
@@ -411,9 +411,15 @@ namespace GmailClient
             List< String > destinatarios = new List<string>();
             destinatarios.Add(lvMensajes.SelectedItems[0].SubItems[0].Text);
             frmRedactar frm = new frmRedactar(service, userId,destinatarios,
-                                     lvMensajes.SelectedItems[0].SubItems[1].Text);
+                                     lvMensajes.SelectedItems[0].SubItems[1].Text,null);
             frm.ShowDialog();
         }
 
+        internal void tsmiReenviar_Click(object sender, EventArgs e)
+        {
+            frmRedactar frm = new frmRedactar(service, userId, null,
+                                     lvMensajes.SelectedItems[0].SubItems[1].Text, lvMensajes.SelectedItems[0].SubItems[2].Text);
+            frm.ShowDialog();
+        }
     }
 }

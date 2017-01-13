@@ -103,7 +103,7 @@
             this.tsmiMarcarLeido,
             this.tsmiMarcarNoLeido});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 158);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // btnLeerMensajes
@@ -125,6 +125,7 @@
             this.tsmiReenviar.Name = "tsmiReenviar";
             this.tsmiReenviar.Size = new System.Drawing.Size(191, 22);
             this.tsmiReenviar.Text = "Reenviar";
+            this.tsmiReenviar.Click += new System.EventHandler(this.tsmiReenviar_Click);
             // 
             // tsmiEliminar
             // 
