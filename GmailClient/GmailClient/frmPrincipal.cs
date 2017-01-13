@@ -159,9 +159,21 @@ namespace GmailClient
 
         internal void tsmiEliminar_Click(object sender, EventArgs e)
         {
+            this.Invoke(new MethodInvoker(delegate
+            {
+                try
+                {
+                    lvMensajes.BeginUpdate();
+                    lvSpam.BeginUpdate();
+                    lvCorreosEnviados.BeginUpdate();
+                    lvPapelera.BeginUpdate();
+                }
+                catch (ArgumentOutOfRangeException ex) { }
+            }));
             /* Eliminem el missatge en funció de la pestanya a la que estigui */
             if (tbcBandejas.SelectedTab.Text.Equals("Bandeja de entrada"))
             {
+               
                 foreach (ListViewItem item in lvMensajes.SelectedItems)
                 {
                     int messageNumber = lvMensajes.Items.IndexOf(item);
@@ -212,6 +224,17 @@ namespace GmailClient
                     }
                 }
             }
+            this.Invoke(new MethodInvoker(delegate
+            {
+                try
+                {
+                    lvMensajes.EndUpdate();
+                    lvSpam.EndUpdate();
+                    lvCorreosEnviados.EndUpdate();
+                    lvPapelera.EndUpdate();
+                }
+                catch (ArgumentOutOfRangeException ex) { }
+            }));
         }
         
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -380,8 +403,21 @@ namespace GmailClient
             /* Si estan com a no llegits els marquem d'un altre color */
             pgbProgreso.Value = 0;
             Font fontBold = new Font(lvMensajes.Font, FontStyle.Bold);
+
+            this.Invoke(new MethodInvoker(delegate
+            {
+                try
+                {
+                    lvMensajes.BeginUpdate();
+                    lvSpam.BeginUpdate();
+                    lvCorreosEnviados.BeginUpdate();
+                    lvPapelera.BeginUpdate();
+                }
+                catch (ArgumentOutOfRangeException ex) { }
+            }));
+
             //tab bandeja de entrada
-            for(int i = 0; i< lvMensajes.Items.Count; i++)
+            for (int i = 0; i< lvMensajes.Items.Count; i++)
             {
                 if (lvMensajes.Items[i].SubItems[3].Text.Equals("True"))
                 {
@@ -430,6 +466,17 @@ namespace GmailClient
                     lvPapelera.Items[i].BackColor = Color.LightGray;
                 }
             }
+            this.Invoke(new MethodInvoker(delegate
+            {
+                try
+                {
+                    lvMensajes.EndUpdate();
+                    lvSpam.EndUpdate();
+                    lvCorreosEnviados.EndUpdate();
+                    lvPapelera.EndUpdate();
+                }
+                catch (ArgumentOutOfRangeException ex) { }
+            }));
         }
 
         private void tsmiColorFondo_Click(object sender, EventArgs e)

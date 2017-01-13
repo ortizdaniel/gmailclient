@@ -33,6 +33,7 @@ public class MessageManager
         return result;
     }
 
+    //Para decodificar de Base64 a string
     private static string Base64UrlEncode(string input)
     {
         var inputBytes = System.Text.Encoding.UTF8.GetBytes(input);
@@ -43,8 +44,10 @@ public class MessageManager
           .Replace("=", "");
     }
 
+    //Metodo para enviar mensajes
     public static void SendMessage(string userId, string destinatario, string mensaje, string asunto, GmailService s)
     {
+        //Crear mensaje
         var msg = new AE.Net.Mail.MailMessage
         {
             Subject = asunto,
@@ -52,19 +55,15 @@ public class MessageManager
             From = new MailAddress(Usuario.GetProfile(s, userId).EmailAddress)
         };
         msg.To.Add(new MailAddress(destinatario));
-        msg.ReplyTo.Add(msg.From); // Bounces without this!!
+        msg.ReplyTo.Add(msg.From); 
         var msgStr = new StringWriter();
         msg.Save(msgStr);
-        
+        //Enviarlo
         var result = s.Users.Messages.Send(new Message
         {
             Raw = Base64UrlEncode(msgStr.ToString())
         }, "me").Execute();
-    }
-    
-
-    
-
+    }  
 
 
     /// <summary>
@@ -109,7 +108,7 @@ public class MessageManager
         return null;
     }
 
-
+    //Obtiene una lista de mensajes, los cuales solo contienen la ID
     public static List<Message> ListMessages(GmailService service, String userId, int maxMessages, string[] labels = null)
     {
         List<Message> result = new List<Message>();
@@ -133,14 +132,14 @@ public class MessageManager
     }
 
     /**
-     * Obtiene todos los mensajes de un usuario (recibidos y enviados)
+     * Obtiene todos los mensajes de un usuario ya con el contenido (recibidos y enviados)
      * @return: lista de los mensajes
      * 
      */
     public static List<Mensaje> getMensajes(String userId, GmailService service, int maxMensajes, string[] labels = null)
     {
         List<Mensaje> mensajes = new List<Mensaje>();
-
+        //Obtienes mensajes con solo la id
         List<Message> messages = ListMessages(service, userId, maxMensajes, labels);
         
         if(messages == null)
@@ -148,13 +147,14 @@ public class MessageManager
             return null;
         }
         int i = 0;
+        //Para cada id obtienes el mensaje con contenido
         foreach (Message ms in messages)
         {
             Mensaje msg = new Mensaje();
            
             Message m = service.Users.Messages.Get(userId, ms.Id).Execute();
             
-
+            //Assignas las etiquetas correspondientes
             foreach (MessagePartHeader h in m.Payload.Headers)
             {
                 if (h.Name == "Subject")
@@ -204,17 +204,50 @@ public class MessageManager
                     msg.IsSent = true;
                 }
             }
-                   
+            //Assignas el id unico       
             msg.MessageId = m.Id;
-            msg.Body = m.Snippet;
+            
+            //Assignas el contenido que viene dividido en el mensaje y codificado
+            if (m.Payload.Parts != null)
+            {
+                foreach (MessagePart p in m.Payload.Parts)
+                {                           
+                        msg.Body += GetMimeString(p);     
+                                         
+                    
+                }                            
+                
+            }                  
             
             mensajes.Add(msg);
         }
         
         return mensajes;
     }
+    //Metodo para obtener el contenido del mensaje codificado y en partes
+    public static String GetMimeString(MessagePart Parts)
+    {
+        String Body = "";
 
+        if (Parts.Parts != null)
+        {
+            foreach (MessagePart part in Parts.Parts)
+            {
+                Body = String.Format("{0}\n{1}", Body, GetMimeString(part));
+            }
+        }
+        else if (Parts.Body.Data != null && Parts.Body.AttachmentId == null && Parts.MimeType == "text/plain")
+        {
+            String codedBody = Parts.Body.Data.Replace("-", "+");
+            codedBody = codedBody.Replace("_", "/");
+            byte[] data = Convert.FromBase64String(codedBody);
+            Body = Encoding.UTF8.GetString(data);
+        }
 
+        return Body;
+    }
+
+    //Mover mensaje a la basura
     public static void DeleteMessage(GmailService service, string userId, string messageId)
     {
         try
@@ -226,6 +259,8 @@ public class MessageManager
             Console.WriteLine("Error " + e.Message);
         }
     }
+
+    //Eliminar mensaje definitivamente
     public static void DeleteForeverMessage(GmailService service, string userId, string messageId)
     {
         try
@@ -275,6 +310,8 @@ public class MessageManager
         }
         return null;
     }
+
+    //Modificar mensaje, como los labels
     public static Message ModifyMessage(GmailService service, String userId,
       String messageId, List<String> labelsToAdd, List<String> labelsToRemove)
     {
