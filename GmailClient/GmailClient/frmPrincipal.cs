@@ -84,13 +84,15 @@ namespace GmailClient
         
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            lvMensajes.Items.Clear();
             if (bgwMessages.IsBusy)
             {
                 MessageBox.Show(this, "Proceso en marcha espera a que termine", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
+                lvMensajes.Items.Clear();
+                lvSpam.Items.Clear();
+                lvCorreosEnviados.Items.Clear();
                 bgwMessages.RunWorkerAsync();
             }
         }
@@ -152,7 +154,9 @@ namespace GmailClient
 
         private void bgwMessages_DoWork(object sender, DoWorkEventArgs e)
         {
-                       
+            /* booleans perque tots els emails son inbox */
+            Boolean sent = false;
+            Boolean spam = false;
             addToProgress(10);
             mensajes = MessageManager.getMensajes(userId, service, numeroMensajes);
             addToProgress(30);
@@ -161,14 +165,39 @@ namespace GmailClient
             {
                 try
                 {
-
                     lvMensajes.BeginUpdate();
+                    lvSpam.BeginUpdate();
+                    lvCorreosEnviados.BeginUpdate();
                 }
                 catch (ArgumentOutOfRangeException ex) { }
             }));
             foreach (Mensaje m in mensajes)
             {
-                if (m.IsInbox)
+                if (m.IsSent)
+                {
+                    sent = true;
+                    ListViewItem lviSent = new ListViewItem(m.From);
+                    lviSent.SubItems.Add(m.Subject);
+                    lviSent.SubItems.Add(m.Body);
+                    lviSent.SubItems.Add(m.IsUnread.ToString());
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvCorreosEnviados.Items.Add(lviSent);
+                    }));
+                }
+                if (m.IsSpam)
+                {
+                    spam = true;
+                    ListViewItem lviSpam = new ListViewItem(m.From);
+                    lviSpam.SubItems.Add(m.Subject);
+                    lviSpam.SubItems.Add(m.Body);
+                    lviSpam.SubItems.Add(m.IsUnread.ToString());
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvSpam.Items.Add(lviSpam);
+                    }));
+                }
+                if (m.IsInbox && !sent && !spam)
                 {
                     ListViewItem lvi = new ListViewItem(m.From);
                     lvi.SubItems.Add(m.Subject);
@@ -181,35 +210,16 @@ namespace GmailClient
                     }));
 
                 }
-                if (m.IsSent)
-                {
-                    ListViewItem lviSent = new ListViewItem(m.From);
-                    lviSent.SubItems.Add(m.Subject);
-                    lviSent.SubItems.Add(m.Body);
-                    lviSent.SubItems.Add(m.IsUnread.ToString());
-                    this.Invoke(new MethodInvoker(delegate
-                    {
-                        lvCorreosEnviados.Items.Add(lviSent);
-                    }));
-                }
-                
-                if (m.IsSpam)
-                {
-                    ListViewItem lviSpam = new ListViewItem(m.From);
-                    lviSpam.SubItems.Add(m.Subject);
-                    lviSpam.SubItems.Add(m.Body);
-                    lviSpam.SubItems.Add(m.IsUnread.ToString());
-                    this.Invoke(new MethodInvoker(delegate
-                    {
-                        lvSpam.Items.Add(lviSpam);
-                    }));
-                }
+                sent = false;
+                spam = false;
             }
             this.Invoke(new MethodInvoker(delegate
             {
                 try
                 {
                     lvMensajes.EndUpdate();
+                    lvSpam.EndUpdate();
+                    lvCorreosEnviados.EndUpdate();
                 }
                 catch (ArgumentOutOfRangeException ex) { }
             }));
