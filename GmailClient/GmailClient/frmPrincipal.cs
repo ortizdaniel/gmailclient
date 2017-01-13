@@ -107,6 +107,9 @@ namespace GmailClient
             if(tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
             {
                 tsmiResponder.Visible = false;
+                tsmiMarcarLeido.Visible = false;
+                tsmiMarcarNoLeido.Visible = false;
+                tsmiMarcarSpam.Visible = false;
             }
 
         }
