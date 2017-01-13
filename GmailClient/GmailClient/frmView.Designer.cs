@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmView));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnMarcarComoLeido = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMarcarComoNoLeido = new System.Windows.Forms.ToolStripMenuItem();
@@ -179,6 +180,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

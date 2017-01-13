@@ -84,13 +84,15 @@ namespace GmailClient
         
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            lvMensajes.Items.Clear();
             if (bgwMessages.IsBusy)
             {
                 MessageBox.Show(this, "Proceso en marcha espera a que termine", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
+                lvMensajes.Items.Clear();
+                lvSpam.Items.Clear();
+                lvCorreosEnviados.Items.Clear();
                 bgwMessages.RunWorkerAsync();
             }
         }
@@ -107,13 +109,16 @@ namespace GmailClient
             if(tbcBandejas.SelectedTab.Text.Equals("Correos enviados"))
             {
                 tsmiResponder.Visible = false;
+                tsmiMarcarLeido.Visible = false;
+                tsmiMarcarNoLeido.Visible = false;
+                tsmiMarcarSpam.Visible = false;
             }
 
         }
 
         private void btnRedactar_Click(object sender, EventArgs e)
         {
-                frmRedactar frm = new frmRedactar(service,userId,null,null);
+                frmRedactar frm = new frmRedactar(service,userId,null,null,null);
                 frm.ShowDialog();
         }
 
@@ -149,7 +154,9 @@ namespace GmailClient
 
         private void bgwMessages_DoWork(object sender, DoWorkEventArgs e)
         {
-                       
+            /* booleans perque tots els emails son inbox */
+            Boolean sent = false;
+            Boolean spam = false;
             addToProgress(10);
             mensajes = MessageManager.getMensajes(userId, service, numeroMensajes);
             addToProgress(30);
@@ -158,14 +165,39 @@ namespace GmailClient
             {
                 try
                 {
-
                     lvMensajes.BeginUpdate();
+                    lvSpam.BeginUpdate();
+                    lvCorreosEnviados.BeginUpdate();
                 }
                 catch (ArgumentOutOfRangeException ex) { }
             }));
             foreach (Mensaje m in mensajes)
             {
-                if (m.IsInbox)
+                if (m.IsSent)
+                {
+                    sent = true;
+                    ListViewItem lviSent = new ListViewItem(m.From);
+                    lviSent.SubItems.Add(m.Subject);
+                    lviSent.SubItems.Add(m.Body);
+                    lviSent.SubItems.Add(m.IsUnread.ToString());
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvCorreosEnviados.Items.Add(lviSent);
+                    }));
+                }
+                if (m.IsSpam)
+                {
+                    spam = true;
+                    ListViewItem lviSpam = new ListViewItem(m.From);
+                    lviSpam.SubItems.Add(m.Subject);
+                    lviSpam.SubItems.Add(m.Body);
+                    lviSpam.SubItems.Add(m.IsUnread.ToString());
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvSpam.Items.Add(lviSpam);
+                    }));
+                }
+                if (m.IsInbox && !sent && !spam)
                 {
                     ListViewItem lvi = new ListViewItem(m.From);
                     lvi.SubItems.Add(m.Subject);
@@ -178,35 +210,16 @@ namespace GmailClient
                     }));
 
                 }
-                if (m.IsSent)
-                {
-                    ListViewItem lviSent = new ListViewItem(m.From);
-                    lviSent.SubItems.Add(m.Subject);
-                    lviSent.SubItems.Add(m.Body);
-                    lviSent.SubItems.Add(m.IsUnread.ToString());
-                    this.Invoke(new MethodInvoker(delegate
-                    {
-                        lvCorreosEnviados.Items.Add(lviSent);
-                    }));
-                }
-                
-                if (m.IsSpam)
-                {
-                    ListViewItem lviSpam = new ListViewItem(m.From);
-                    lviSpam.SubItems.Add(m.Subject);
-                    lviSpam.SubItems.Add(m.Body);
-                    lviSpam.SubItems.Add(m.IsUnread.ToString());
-                    this.Invoke(new MethodInvoker(delegate
-                    {
-                        lvSpam.Items.Add(lviSpam);
-                    }));
-                }
+                sent = false;
+                spam = false;
             }
             this.Invoke(new MethodInvoker(delegate
             {
                 try
                 {
                     lvMensajes.EndUpdate();
+                    lvSpam.EndUpdate();
+                    lvCorreosEnviados.EndUpdate();
                 }
                 catch (ArgumentOutOfRangeException ex) { }
             }));
@@ -411,10 +424,11 @@ namespace GmailClient
             List< String > destinatarios = new List<string>();
             destinatarios.Add(lvMensajes.SelectedItems[0].SubItems[0].Text);
             frmRedactar frm = new frmRedactar(service, userId,destinatarios,
-                                     lvMensajes.SelectedItems[0].SubItems[1].Text);
+                                     lvMensajes.SelectedItems[0].SubItems[1].Text,null);
             frm.ShowDialog();
         }
 
+<<<<<<< HEAD
         internal void tsmiMarcarSpam_Click(object sender, EventArgs e)
         {
             List<String> listaMensajes = new List<string>();
@@ -446,6 +460,13 @@ namespace GmailClient
                     lvCorreosEnviados.SelectedItems[i].BackColor = Color.LightGray;
                 }
             }*/
+=======
+        internal void tsmiReenviar_Click(object sender, EventArgs e)
+        {
+            frmRedactar frm = new frmRedactar(service, userId, null,
+                                     lvMensajes.SelectedItems[0].SubItems[1].Text, lvMensajes.SelectedItems[0].SubItems[2].Text);
+            frm.ShowDialog();
+>>>>>>> 4deab9774a09f601f920289840ec474a3c8e4626
         }
     }
 }

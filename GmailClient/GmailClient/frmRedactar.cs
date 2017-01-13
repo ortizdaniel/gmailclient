@@ -19,7 +19,7 @@ namespace GmailClient
         private GmailService service;
         private String userId;
 
-        public frmRedactar(GmailService service, String userId, List<String> destinatario, String asunto)
+        public frmRedactar(GmailService service, String userId, List<String> destinatario, String asunto,String Contenido)
         {
             this.userId = userId;
             InitializeComponent();
@@ -51,6 +51,7 @@ namespace GmailClient
             {
                 tbAsunto.Text = "RE: " + asunto;
             }
+            rtbContenido.Text = Contenido;
             btnBold.BackColor = Color.LightGray;
             btnUnderline.BackColor = Color.LightGray;
             cbFont.SelectedItem = "Microsoft Sans Serif";
