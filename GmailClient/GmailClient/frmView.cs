@@ -14,6 +14,11 @@ namespace GmailClient
         public frmView(frmPrincipal principal, Mensaje m)
         {
             InitializeComponent();
+            /* No donem opcio a respondre un correu nostre */
+            if (m.From.Equals(principal.getProfile().EmailAddress))
+            {
+                btnResponder.Visible = false;
+            }
             this.m = m;
             this.principal = principal;
         }

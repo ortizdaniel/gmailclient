@@ -18,6 +18,7 @@ namespace GmailClient
 {
     public class Usuario
     {
+        //Obtiene un objeto profile con el email del usuario, numero de mensajes...
         public static Profile GetProfile(GmailService service, string userId)
         {
             Profile p = null;

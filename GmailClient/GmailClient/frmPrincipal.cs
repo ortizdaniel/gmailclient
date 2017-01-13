@@ -26,6 +26,11 @@ namespace GmailClient
         private int numeroMensajes = 0;
         private Profile profile;
 
+        public Profile getProfile()
+        {
+            return profile;
+        }
+
         public frmPrincipal(GmailService service, string userId)
         {
             InitializeComponent();

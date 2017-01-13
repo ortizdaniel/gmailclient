@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GmailClient
 {
+    //Clase Mensaje donde se guarda el contenido que se recibe en la clase Message de la Api de Gmail
     public class Mensaje
     {
         public string MessageId { get; set; }

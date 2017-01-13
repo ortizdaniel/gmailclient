@@ -22,7 +22,7 @@ namespace GmailQuickstart
         static string ApplicationName = "Gmail API .NET Quickstart";
 
         /**
-         * Metodo para logearse
+         * Metodo para logearse. Proporcionada por Gmail
          * @return: instancia de GmailService
          * 
          */
@@ -57,6 +57,7 @@ namespace GmailQuickstart
             return service;
         }
 
+        //Para mirar donde se ha guardado el .json
         private static string getTokenPath()
         {
             string credPath = System.Environment.GetFolderPath(
