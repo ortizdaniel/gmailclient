@@ -428,7 +428,6 @@ namespace GmailClient
             frm.ShowDialog();
         }
 
-<<<<<<< HEAD
         internal void tsmiMarcarSpam_Click(object sender, EventArgs e)
         {
             List<String> listaMensajes = new List<string>();
@@ -460,13 +459,13 @@ namespace GmailClient
                     lvCorreosEnviados.SelectedItems[i].BackColor = Color.LightGray;
                 }
             }*/
-=======
+        }
+
         internal void tsmiReenviar_Click(object sender, EventArgs e)
         {
             frmRedactar frm = new frmRedactar(service, userId, null,
                                      lvMensajes.SelectedItems[0].SubItems[1].Text, lvMensajes.SelectedItems[0].SubItems[2].Text);
             frm.ShowDialog();
->>>>>>> 4deab9774a09f601f920289840ec474a3c8e4626
         }
     }
 }
