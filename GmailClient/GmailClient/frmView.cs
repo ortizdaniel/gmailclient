@@ -27,7 +27,7 @@ namespace GmailClient
 
         private void btnMarcarComoLeido_Click(object sender, EventArgs e)
         {
-            
+            principal.tsmiMarcarLeido_Click(sender, e);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -39,6 +39,21 @@ namespace GmailClient
         private void btnReenviar_Click(object sender, EventArgs e)
         {
             principal.tsmiReenviar_Click(sender, e);
+        }
+
+        private void btnMarcarComoNoLeido_Click(object sender, EventArgs e)
+        {
+            principal.tsmiMarcarNoLeido_Click(sender, e);
+        }
+
+        private void btnMarcarComoSpam_Click(object sender, EventArgs e)
+        {
+            principal.tsmiMarcarSpam_Click(sender, e);
+        }
+
+        private void btnResponder_Click(object sender, EventArgs e)
+        {
+            principal.tsmiResponder_Click(sender, e);
         }
     }
 }
