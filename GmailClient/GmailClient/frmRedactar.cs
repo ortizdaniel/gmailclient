@@ -21,10 +21,12 @@ namespace GmailClient
 
         public frmRedactar(GmailService service, String userId, List<String> destinatario, String asunto,String Contenido)
         {
+            /* User ID util per a enviar el correu */
             this.userId = userId;
             InitializeComponent();
             StringBuilder strbdr = new StringBuilder();
             String dest;
+            /* Si hi ha destinatari el fiquem al bloc de text del destinatari */
             if (destinatario != null)
             {
                 if (destinatario.Count > 1)
@@ -47,10 +49,12 @@ namespace GmailClient
                     tbDestinatario.Text = destinatario[0];
                 }
             }
+            /* Si es fa un responder o reenviar s'afegeix l'etiqueta RE: + l'asumpte */
             if (asunto != null)
             {
                 tbAsunto.Text = "RE: " + asunto;
             }
+            /* default interface */
             rtbContenido.Text = Contenido;
             btnBold.BackColor = Color.LightGray;
             btnUnderline.BackColor = Color.LightGray;
@@ -69,24 +73,11 @@ namespace GmailClient
             
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnBold_Click(object sender, EventArgs e)
         {
+            /* Activa o desactiva la negreta al Body */
             bold = !bold;
+            /* No es pot tenir subrallat i negreta a l'hora */
             if (underline)
             {
                 btnUnderline.BackColor = Color.LightGray;
@@ -107,7 +98,9 @@ namespace GmailClient
 
         private void btnUnderline_Click(object sender, EventArgs e)
         {
+            /* Activa o desactiva el subrallat al Body */
             underline = !underline;
+            /* No es pot tenir subrallat i negreta a l'hora */
             if (bold)
             {
                 btnBold.BackColor = Color.LightGray;
@@ -129,17 +122,20 @@ namespace GmailClient
 
         private void cbSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            size = size = Int32.Parse(cbSize.SelectedItem.ToString());
+            /* Canvi de mida de la lletra */
+            size = Int32.Parse(cbSize.SelectedItem.ToString());
             rtbContenido.Font = new Font(rtbContenido.Font.Name,size);
         }
 
         private void cbFont_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /* Tipus de text (Arial,Calibri,...) */
             rtbContenido.Font = new Font(cbFont.SelectedItem.ToString(),size);
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
+            /* Enviem el correu */
             List<string> lista = new List<string>(tbDestinatario.Text.Replace(" ", "").Split(','));
             foreach (string dest in lista)
             {
@@ -147,5 +143,6 @@ namespace GmailClient
             }
             Close();
         }
+
     }
 }
