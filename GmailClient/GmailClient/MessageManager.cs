@@ -206,7 +206,16 @@ public class MessageManager
             }
                    
             msg.MessageId = m.Id;
-            msg.Body = m.Snippet;
+            if (m.Payload.Parts != null)
+            {
+                foreach (MessagePart p in m.Payload.Parts)
+                {
+                    msg.Body += GetMimeString(p);
+                }
+                                
+                
+            }
+                      
             
             mensajes.Add(msg);
         }
@@ -214,6 +223,27 @@ public class MessageManager
         return mensajes;
     }
 
+    public static String GetMimeString(MessagePart Parts)
+    {
+        String Body = "";
+
+        if (Parts.Parts != null)
+        {
+            foreach (MessagePart part in Parts.Parts)
+            {
+                Body = String.Format("{0}\n{1}", Body, GetMimeString(part));
+            }
+        }
+        else if (Parts.Body.Data != null && Parts.Body.AttachmentId == null && Parts.MimeType == "text/plain")
+        {
+            String codedBody = Parts.Body.Data.Replace("-", "+");
+            codedBody = codedBody.Replace("_", "/");
+            byte[] data = Convert.FromBase64String(codedBody);
+            Body = Encoding.UTF8.GetString(data);
+        }
+
+        return Body;
+    }
 
     public static void DeleteMessage(GmailService service, string userId, string messageId)
     {
