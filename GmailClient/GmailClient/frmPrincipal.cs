@@ -59,17 +59,17 @@ namespace GmailClient
             this.BackColor = Color.LightGray;
             lvMensajes.Columns[0].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
             lvMensajes.Columns[1].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
-            lvMensajes.Columns[2].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.4f);
+            lvMensajes.Columns[2].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.4f) - 4;
             lvMensajes.Columns[3].Width = 0;
             lvMensajes.Columns[4].Width = 0;
             lvSpam.Columns[0].Width = Convert.ToInt32(lvSpam.Size.Width * 0.3f);
             lvSpam.Columns[1].Width = Convert.ToInt32(lvSpam.Size.Width * 0.3f);
-            lvSpam.Columns[2].Width = Convert.ToInt32(lvSpam.Size.Width * 0.4f);
+            lvSpam.Columns[2].Width = Convert.ToInt32(lvSpam.Size.Width * 0.4f) - 4;
             lvSpam.Columns[3].Width = 0;
             lvSpam.Columns[4].Width = 0;
             lvCorreosEnviados.Columns[0].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.3f);
             lvCorreosEnviados.Columns[1].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.3f);
-            lvCorreosEnviados.Columns[2].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.4f);
+            lvCorreosEnviados.Columns[2].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.4f) - 4;
             lvCorreosEnviados.Columns[3].Width = 0;
             lvCorreosEnviados.Columns[4].Width = 0;
 

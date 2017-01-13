@@ -39,9 +39,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtContenido = new System.Windows.Forms.TextBox();
             this.txtAsunto = new System.Windows.Forms.TextBox();
             this.txtRemitente = new System.Windows.Forms.TextBox();
+            this.txtContenido = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,19 +132,6 @@
             this.textBox1.Size = new System.Drawing.Size(10, 20);
             this.textBox1.TabIndex = 12;
             // 
-            // txtContenido
-            // 
-            this.txtContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContenido.BackColor = System.Drawing.Color.White;
-            this.txtContenido.Location = new System.Drawing.Point(12, 92);
-            this.txtContenido.Multiline = true;
-            this.txtContenido.Name = "txtContenido";
-            this.txtContenido.ReadOnly = true;
-            this.txtContenido.Size = new System.Drawing.Size(575, 365);
-            this.txtContenido.TabIndex = 13;
-            // 
             // txtAsunto
             // 
             this.txtAsunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -167,14 +154,22 @@
             this.txtRemitente.Size = new System.Drawing.Size(511, 20);
             this.txtRemitente.TabIndex = 15;
             // 
+            // txtContenido
+            // 
+            this.txtContenido.Location = new System.Drawing.Point(15, 93);
+            this.txtContenido.Name = "txtContenido";
+            this.txtContenido.Size = new System.Drawing.Size(572, 364);
+            this.txtContenido.TabIndex = 16;
+            this.txtContenido.Text = "";
+            // 
             // frmView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 469);
+            this.Controls.Add(this.txtContenido);
             this.Controls.Add(this.txtRemitente);
             this.Controls.Add(this.txtAsunto);
-            this.Controls.Add(this.txtContenido);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
@@ -204,8 +199,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox txtContenido;
         private System.Windows.Forms.TextBox txtAsunto;
         private System.Windows.Forms.TextBox txtRemitente;
+        private System.Windows.Forms.RichTextBox txtContenido;
     }
 }
