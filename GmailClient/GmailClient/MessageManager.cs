@@ -208,14 +208,16 @@ public class MessageManager
             msg.MessageId = m.Id;
             if (m.Payload.Parts != null)
             {
+
                 foreach (MessagePart p in m.Payload.Parts)
-                {
-                    msg.Body += GetMimeString(p);
+                {                           
+                        msg.Body += GetMimeString(p);     
+                                         
+                    
                 }
                                 
                 
-            }
-                      
+            }                  
             
             mensajes.Add(msg);
         }
