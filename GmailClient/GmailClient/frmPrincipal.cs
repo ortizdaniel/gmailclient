@@ -322,6 +322,7 @@ namespace GmailClient
                             lvMensajes.SelectedItems[0].BackColor = Color.LightGray;
                         }
                         (new frmView(this, m)).ShowDialog();
+                         break;
                     }
                 
             }
