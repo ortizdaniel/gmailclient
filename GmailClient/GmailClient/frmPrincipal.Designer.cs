@@ -81,6 +81,13 @@
             this.bgwMessages = new System.ComponentModel.BackgroundWorker();
             this.cbNumMensajes = new System.Windows.Forms.ComboBox();
             this.lbNumMensajes = new System.Windows.Forms.Label();
+            this.tbpPapelera = new System.Windows.Forms.TabPage();
+            this.lvPapelera = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -90,6 +97,7 @@
             this.tbpBandejaEntrada.SuspendLayout();
             this.tbpSpam.SuspendLayout();
             this.tbpEnviados.SuspendLayout();
+            this.tbpPapelera.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -330,6 +338,7 @@
             this.tbcBandejas.Controls.Add(this.tbpBandejaEntrada);
             this.tbcBandejas.Controls.Add(this.tbpSpam);
             this.tbcBandejas.Controls.Add(this.tbpEnviados);
+            this.tbcBandejas.Controls.Add(this.tbpPapelera);
             this.tbcBandejas.Location = new System.Drawing.Point(0, 89);
             this.tbcBandejas.Name = "tbcBandejas";
             this.tbcBandejas.SelectedIndex = 0;
@@ -538,6 +547,63 @@
             this.lbNumMensajes.TabIndex = 15;
             this.lbNumMensajes.Text = "Numero de mensajes a cargar:";
             // 
+            // tbpPapelera
+            // 
+            this.tbpPapelera.Controls.Add(this.lvPapelera);
+            this.tbpPapelera.Location = new System.Drawing.Point(4, 22);
+            this.tbpPapelera.Name = "tbpPapelera";
+            this.tbpPapelera.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpPapelera.Size = new System.Drawing.Size(726, 358);
+            this.tbpPapelera.TabIndex = 3;
+            this.tbpPapelera.Text = "Papelera";
+            this.tbpPapelera.UseVisualStyleBackColor = true;
+            // 
+            // lvPapelera
+            // 
+            this.lvPapelera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvPapelera.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lvPapelera.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader9});
+            this.lvPapelera.ContextMenuStrip = this.contextMenuStrip1;
+            this.lvPapelera.FullRowSelect = true;
+            this.lvPapelera.GridLines = true;
+            this.lvPapelera.Location = new System.Drawing.Point(2, 0);
+            this.lvPapelera.Name = "lvPapelera";
+            this.lvPapelera.Size = new System.Drawing.Size(726, 358);
+            this.lvPapelera.TabIndex = 3;
+            this.lvPapelera.UseCompatibleStateImageBehavior = false;
+            this.lvPapelera.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Remitente";
+            this.columnHeader2.Width = 154;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Asunto";
+            this.columnHeader3.Width = 168;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Contenido";
+            this.columnHeader4.Width = 340;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Unseen";
+            this.columnHeader5.Width = 0;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Width = 0;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -572,6 +638,7 @@
             this.tbpBandejaEntrada.ResumeLayout(false);
             this.tbpSpam.ResumeLayout(false);
             this.tbpEnviados.ResumeLayout(false);
+            this.tbpPapelera.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -629,6 +696,13 @@
         private System.Windows.Forms.ColumnHeader clmIdMessageSpam;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ToolStripMenuItem tsmiReenviar;
+        private System.Windows.Forms.TabPage tbpPapelera;
+        private System.Windows.Forms.ListView lvPapelera;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }
 

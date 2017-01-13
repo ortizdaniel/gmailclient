@@ -21,6 +21,8 @@ namespace GmailClient
         private GmailService service;
         private string userId;
         private List<Mensaje> mensajes;
+        private List<Mensaje> mensajesSpam;
+        private List<Mensaje> mensajesTrash;
         private int numeroMensajes = 0;
         private Profile profile;
 
@@ -72,14 +74,14 @@ namespace GmailClient
             lvCorreosEnviados.Columns[2].Width = Convert.ToInt32(lvCorreosEnviados.Size.Width * 0.4f) - 4;
             lvCorreosEnviados.Columns[3].Width = 0;
             lvCorreosEnviados.Columns[4].Width = 0;
+            lvPapelera.Columns[0].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
+            lvPapelera.Columns[1].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.3f);
+            lvPapelera.Columns[2].Width = Convert.ToInt32(lvMensajes.Size.Width * 0.4f) - 4;
+            lvPapelera.Columns[3].Width = 0;
+            lvPapelera.Columns[4].Width = 0;
 
             /* Carga mensajes */
             bgwMessages.RunWorkerAsync();
-        }
-        
-        private void btnSpam_Click(object sender, EventArgs e)
-        {
-            //lvMensajes.Items[0].BackColor = Color.Aqua;
         }
         
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -156,9 +158,10 @@ namespace GmailClient
         {
             /* booleans perque tots els emails son inbox */
             Boolean sent = false;
-            Boolean spam = false;
             addToProgress(10);
             mensajes = MessageManager.getMensajes(userId, service, numeroMensajes);
+            mensajesSpam = MessageManager.getMensajes(userId, service, numeroMensajes, new string[] { "SPAM" });
+            mensajesTrash = MessageManager.getMensajes(userId, service, numeroMensajes, new string[]{ "TRASH" });
             addToProgress(30);
             int differencePerMsg = 60 / (mensajes.Count);
             this.Invoke(new MethodInvoker(delegate
@@ -185,19 +188,7 @@ namespace GmailClient
                         lvCorreosEnviados.Items.Add(lviSent);
                     }));
                 }
-                if (m.IsSpam)
-                {
-                    spam = true;
-                    ListViewItem lviSpam = new ListViewItem(m.From);
-                    lviSpam.SubItems.Add(m.Subject);
-                    lviSpam.SubItems.Add(m.Body);
-                    lviSpam.SubItems.Add(m.IsUnread.ToString());
-                    this.Invoke(new MethodInvoker(delegate
-                    {
-                        lvSpam.Items.Add(lviSpam);
-                    }));
-                }
-                if (m.IsInbox && !sent && !spam)
+                if (m.IsInbox && !sent)
                 {
                     ListViewItem lvi = new ListViewItem(m.From);
                     lvi.SubItems.Add(m.Subject);
@@ -211,7 +202,34 @@ namespace GmailClient
 
                 }
                 sent = false;
-                spam = false;
+            }
+            foreach (Mensaje m in mensajesSpam)
+            {
+                if (m.IsSpam)
+                {
+                    ListViewItem lviSpam = new ListViewItem(m.From);
+                    lviSpam.SubItems.Add(m.Subject);
+                    lviSpam.SubItems.Add(m.Body);
+                    lviSpam.SubItems.Add(m.IsUnread.ToString());
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvSpam.Items.Add(lviSpam);
+                    }));
+                }
+            }
+            foreach (Mensaje m in mensajesTrash)
+            {
+                if (m.IsTrash)
+                {
+                    ListViewItem lviPapelera = new ListViewItem(m.From);
+                    lviPapelera.SubItems.Add(m.Subject);
+                    lviPapelera.SubItems.Add(m.Body);
+                    lviPapelera.SubItems.Add(m.IsUnread.ToString());
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        lvCorreosEnviados.Items.Add(lviPapelera);
+                    }));
+                }
             }
             this.Invoke(new MethodInvoker(delegate
             {
