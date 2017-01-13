@@ -43,6 +43,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.imLSGmail = new System.Windows.Forms.PictureBox();
             this.lbAdvice = new System.Windows.Forms.Label();
+            this.lbAlertDest = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imLSGmail)).BeginInit();
             this.SuspendLayout();
@@ -109,7 +110,7 @@
             "12",
             "14",
             "16"});
-            this.cbSize.Location = new System.Drawing.Point(137, 3);
+            this.cbSize.Location = new System.Drawing.Point(136, 3);
             this.cbSize.Name = "cbSize";
             this.cbSize.Size = new System.Drawing.Size(40, 21);
             this.cbSize.TabIndex = 6;
@@ -132,7 +133,7 @@
             // btnBold
             // 
             this.btnBold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBold.Location = new System.Drawing.Point(188, 3);
+            this.btnBold.Location = new System.Drawing.Point(186, 3);
             this.btnBold.Name = "btnBold";
             this.btnBold.Size = new System.Drawing.Size(28, 25);
             this.btnBold.TabIndex = 8;
@@ -143,7 +144,7 @@
             // btnUnderline
             // 
             this.btnUnderline.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUnderline.Location = new System.Drawing.Point(227, 3);
+            this.btnUnderline.Location = new System.Drawing.Point(225, 3);
             this.btnUnderline.Name = "btnUnderline";
             this.btnUnderline.Size = new System.Drawing.Size(28, 25);
             this.btnUnderline.TabIndex = 9;
@@ -178,7 +179,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.51323F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.Controls.Add(this.cbFont, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbSize, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnBold, 2, 0);
@@ -210,11 +211,21 @@
             this.lbAdvice.Text = "*Si se quiere utilizar diferentes tipos de letra se debe seleccionar el texto que" +
     " se desea cambiar";
             // 
+            // lbAlertDest
+            // 
+            this.lbAlertDest.AutoSize = true;
+            this.lbAlertDest.Location = new System.Drawing.Point(121, 78);
+            this.lbAlertDest.Name = "lbAlertDest";
+            this.lbAlertDest.Size = new System.Drawing.Size(352, 13);
+            this.lbAlertDest.TabIndex = 15;
+            this.lbAlertDest.Text = "*En cas de voler enviar un email a diferents persones separar per coma \',\'";
+            // 
             // frmRedactar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 498);
+            this.Controls.Add(this.lbAlertDest);
             this.Controls.Add(this.lbAdvice);
             this.Controls.Add(this.imLSGmail);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -255,5 +266,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox imLSGmail;
         private System.Windows.Forms.Label lbAdvice;
+        private System.Windows.Forms.Label lbAlertDest;
     }
 }
